@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aghvesagirk Chronicles</title>
+    <link rel="stylesheet" href="R_styles.css" />
+    <link rel="shortcut icon" href="../Nkarner/Logos.jpg" type="image/jpg" />
+  </head>
+  <body>
+    <!-- Top image -->
+    <div class="top-image-container">
+      <img src="../Nkarner/TopImage.png" alt="Top Image" class="top-image" />
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav id="navbar"></nav>
+
+    <!-- Main Content Layout -->
+    <div class="main-content">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <h3>View Options</h3>
+        <br />
+        <input
+          id="cb-toggle"
+          type="checkbox"
+          class="hide-me"
+          aria-label="Toggle Button"
+        />
+        <label for="cb-toggle" class="toggle"></label>
+        <br />
+        <label><input type="checkbox" /> Persons</label><br />
+        <label><input type="checkbox" /> Places</label><br />
+        <label><input type="checkbox" /> Dates</label><br />
+      </div>
+
+      <!-- Graph Area -->
+      <div id="fake-section"></div>
+      <div id="graph-section">
+        <canvas id="myCanvas"></canvas>
+      </div>
+    </div>
+
+    <!-- Text and Index Panel Section -->
+    <div id="bottom-content">
+      <div id="text-area">
+        <div id="armenianText">
+          <h2 id="bookTitle_Arm">Armenian Text</h2>
+          <p>Սկզբնական հայերեն տեքստը այստեղ է:</p>
+        </div>
+        <div id="englishText">
+          <h2 id="bookTitle_Eng">English Translation</h2>
+          <p>The English translation text will appear here.</p>
+        </div>
+      </div>
+
+      <!-- Index Panel -->
+      <div id="index-panel">
+        <div class="year-box" id="section-3504207">
+          Միայնակեաց շուն և սաղմոսասաց և սատանայ
+        </div>
+        <div class="year-box" id="section-5764117">Անզգամ կին</div>
+        <div class="year-box" id="section-5764118">Աղուես և կրիայ 1</div>
+        <div class="year-box" id="section-5764119">Աղքատ մսախորով և արծիւ</div>
+        <div class="year-box" id="section-5764120">Աղքատ մսախորով և արծիւ 1</div>
+        <div class="year-box" id="section-5764392">Աղքատ մսախորով և արծիւ 3</div>
+        <div class="year-box" id="section-5764393">Խոստովանութիւն</div>
+        <script>
+          fetch("index-panel.html")
+            .then((response) => response.text())
+            .then((html) => {
+              document.getElementById("index-panel").innerHTML = html;
+            })
+            .catch((err) =>
+              console.error("Failed to load index-panel.html:", err)
+            );
+        </script>
+      </div>
+    </div>
+
+    </br> </br>
+
+  </body> 
+
+  <!-- navbar -->
+  <script>
+    // Toggle navbar function
+    function toggleNavbar() {
+      console.log("Toggle button clicked");
+      const navbarPages = document.getElementById("navbarSupportedContent");
+      navbarPages.classList.toggle("show");
+    }
+
+    // Load the navbar content from navbar.html
+    fetch("navbar.html")
+      .then((response) => response.text())
+      .then((data) => {
+        document.getElementById("navbar").innerHTML = data;
+
+        // Once navbar is loaded, find all links and adjust them if needed
+        const navLinks = document.querySelectorAll("#navbar .nav-link");
+
+        navLinks.forEach((link) => {
+          const href = link.getAttribute("href");
+
+          // If the href is a hash link (e.g., "#Manuscript"), modify it to point to Home.html
+          if (href && href.startsWith("#")) {
+            link.setAttribute("href", `Home.html${href}`);
+          }
+        });
+      })
+      .catch((error) => console.error("Error loading navbar:", error));
+  </script>
+
+  <!-- graph button -->
+  <script>
+    var cb = document.querySelector("#cb-toggle");
+    var graphSection = document.querySelector("#graph-section");
+    var fakeSection = document.querySelector("#fake-section");
+
+    cb.addEventListener(
+      "click",
+      function () {
+        var currentState = cb.checked ? "on" : "off";
+        console.log("Button is: " + currentState);
+
+        graphSection.style.display = cb.checked ? "block" : "none";
+        fakeSection.style.display = cb.checked ? "none" : "block";
+        document.getElementById("myCanvas").getContext("2d").clearRect(0, 0, document.getElementById("myCanvas").width, document.getElementById("myCanvas").height);
+      },
+      false
+    );
+  </script>
+  
+  <!-- draw nodes -->
+  <script>
+    let nodes = [];
+
+    function handleCanvasClick(event) {
+      const canvas = document.getElementById("myCanvas"); // Reference to the canvas
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = event.clientX - rect.left;
+      const mouseY = event.clientY - rect.top;
+
+      nodes.forEach((node) => {
+        const width = calculateTextWidth(node.text);
+        const height = 50;
+        const x = 100 * (node.rank - 1);
+        const y = 400 + getYOffset(nodes.indexOf(node));
+
+        // Check if the click is within the rectangle
+        if (
+          mouseX >= x &&
+          mouseX <= x + width &&
+          mouseY >= y &&
+          mouseY <= y + height
+        ) {
+          alert("the rank column of " + node.text); // Show alert with the text
+          node.isClicked = true; // Mark the rectangle as clicked
+        }
+      });
+    }
+
+    function calculateTextWidth(text) {
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.font = "16px Arial";
+      return ctx.measureText(text).width + 20; // Add padding
+    }
+
+    // Function to calculate y position offsets for each rank
+    function getYOffset(index) {
+      const offsets = [0, 50, -50, 100, -100];
+      return offsets[index % offsets.length];
+    }
+
+    function drawCanvas() {
+      
+      const canvas = document.getElementById("myCanvas");
+      if (!canvas) {alert("canvas missing"); return;}
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      console.log("Updated Canvas dimensions:", canvas.width, canvas.height);
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Remove existing click event listener if it exists
+      canvas.removeEventListener("click", handleCanvasClick);
+
+      // Add the new click event listener
+      canvas.addEventListener("click", handleCanvasClick);
+
+      // Function to draw a circular rectangle
+      function drawCircleRect(x, y, width, height, text, isClicked) {
+        const radius = 20;
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x + width - radius, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+        ctx.lineTo(x + width, y + height - radius);
+        ctx.quadraticCurveTo(
+          x + width,
+          y + height,
+          x + width - radius,
+          y + height
+        );
+        ctx.lineTo(x + radius, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+        ctx.lineTo(x, y + radius);
+        ctx.quadraticCurveTo(x, y, x + radius, y);
+        ctx.closePath();
+
+        ctx.fillStyle = isClicked ? "#ffcc80" : "#e1f5fe"; // Change color if clicked
+        ctx.fill();
+        ctx.strokeStyle = "#2196F3";
+        ctx.stroke();
+        ctx.fillStyle = "black";
+        ctx.font = "16px Arial";
+        ctx.fillText(
+          text,
+          x + width / 2 - ctx.measureText(text).width / 2,
+          y + height / 2 + 5
+        );
+      }
+
+      // Function to draw an arrow
+      function drawArrow(fromX, fromY, toX, toY) {
+        const headLength = 10; // length of head in pixels
+        const dx = toX - fromX;
+        const dy = toY - fromY;
+        const angle = Math.atan2(dy, dx);
+
+        ctx.beginPath();
+        ctx.moveTo(fromX, fromY);
+        ctx.lineTo(toX, toY);
+        ctx.lineTo(
+          toX - headLength * Math.cos(angle - Math.PI / 6),
+          toY - headLength * Math.sin(angle - Math.PI / 6)
+        );
+        ctx.moveTo(toX, toY);
+        ctx.lineTo(
+          toX - headLength * Math.cos(angle + Math.PI / 6),
+          toY - headLength * Math.sin(angle + Math.PI / 6)
+        );
+        ctx.strokeStyle = "#F44336";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+
+      // Random generation probabilities for each rank
+      const probabilities = [
+        { count: 1, probability: 40 },
+        { count: 2, probability: 25 },
+        { count: 3, probability: 10 },
+        { count: 4, probability: 10 },
+        { count: 5, probability: 5 },
+        { count: 6, probability: 4 },
+        { count: 7, probability: 2.5 },
+        { count: 8, probability: 1.5 },
+        { count: 9, probability: 0.5 },
+        { count: 10, probability: 0.5 },
+      ];
+
+      // Function to randomly choose how many boxes for a rank based on the probability distribution
+      function getRandomBoxCount() {
+        const random = Math.random() * 100;
+        let cumulative = 0;
+        for (let i = 0; i < probabilities.length; i++) {
+          cumulative += probabilities[i].probability;
+          if (random < cumulative) {
+            return probabilities[i].count;
+          }
+        }
+        return 1;
+      }
+
+      // Generate nodes for 20 ranks
+      nodes = [];
+      let currentRank = 1;
+      for (let i = 0; i < 20; i++) {
+        const boxCount = getRandomBoxCount();
+        for (let j = 0; j < boxCount; j++) {
+          nodes.push({
+            text: `Node ${nodes.length + 1}`,
+            rank: currentRank,
+            arrows: [],
+            isClicked: false,
+          });
+        }
+        currentRank++;
+      }
+
+      // Connect nodes to random higher-rank nodes
+      nodes.forEach((node, index) => {
+        const higherRankNodes = nodes.filter((n) => n.rank > node.rank);
+        if (higherRankNodes.length > 0) {
+          const randomNode =
+            higherRankNodes[Math.floor(Math.random() * higherRankNodes.length)];
+          node.arrows.push(nodes.indexOf(randomNode) + 1);
+        }
+      });
+
+      // Draw nodes and arrows
+      const rankGroups = {};
+      nodes.forEach((node) => {
+        if (!rankGroups[node.rank]) {
+          rankGroups[node.rank] = [];
+        }
+        rankGroups[node.rank].push(node);
+      });
+
+      Object.keys(rankGroups).forEach((rank) => {
+        const nodesInRank = rankGroups[rank];
+        const x = 100 * (rank - 1); // Increment x by 100 per rank
+
+        nodesInRank.forEach((node, index) => {
+          const width = calculateTextWidth(node.text);
+          const height = 50; // Consistent height for all boxes
+          const y = 400 + getYOffset(index); // Center vertically and apply y offsets
+          node.x = x;
+          node.y = y;
+          drawCircleRect(x, y, width, height, node.text, node.isClicked);
+        });
+      });
+
+      // Draw arrows
+      nodes.forEach((node) => {
+        node.arrows.forEach((arrowIndex) => {
+          const toNode = nodes[arrowIndex - 1];
+          drawArrow(node.x + 100, node.y + 25, toNode.x, toNode.y + 25);
+        });
+      });
+    }
+    // calls the drawCanvas function and reports in console.
+    // window.addEventListener("load", drawCanvas);window.addEventListener("load", drawCanvas());
+  </script>
+
+  <!-- Using Json -->
+  <script>
+    // imported JSON variables
+    let lemmaNodes = null;
+    let title = null;
+    let rankCount = null;
+    let targetCount = null;
+    let occurrences = null;
+    let actual_time_zone_cuts = null;
+    let extrasList = null;
+    let keyMap = null;
+
+    // my variables
+    let lemmas = null;
+    let TitleSections = null;
+    let thisFileLocation = `converted/section-3504207.json`;
+
+    // Function to filter lemmas and display in #armenianText
+    function filterAndDisplayLemmas() {
+      if (lemmaNodes) {
+        // making sure its loaded
+        lemmas = lemmaNodes
+          .filter((node) => node.is_lemma)
+          .map((node) => node.text)
+          .join(" ");
+        document.querySelector("#armenianText p").textContent = lemmas;
+      } else {
+        console.warn("lemmaNodes is not loaded yet");
+      }
+    }
+
+    // load json data
+    function importTheVariables(data) {
+      // Set each variable to the data from the latest JSON file
+      if (
+        data &&
+        data.nodes &&
+        data.title &&
+        data.rankCount &&
+        data.targetCount &&
+        data.occurrences &&
+        data.actual_time_zone_cuts &&
+        data.extrasList &&
+        data.keyMap
+      ) {
+        lemmaNodes = [...data.nodes];
+        title = data.title || "Untitled";
+        rankCount = data.rankCount || {};
+        targetCount = data.targetCount || {};
+        occurrences = data.occurrences || {};
+        actual_time_zone_cuts = data.actual_time_zone_cuts || null;
+        extrasList = data.extrasList || [];
+        keyMap = data.keyMap || {};
+
+        // Update HTML elements with the latest title
+        document.getElementById("bookTitle_Arm").textContent = title;
+        document.getElementById("bookTitle_Eng").textContent = title;
+
+        console.log("data is loaded: ", {
+          title,
+          rankCount,
+          targetCount,
+          occurrences,
+          actual_time_zone_cuts,
+          extrasList,
+          keyMap,
+        });
+      } else {
+        alert("Nodes or other data not found in JSON");
+      }
+    }
+
+    // Load JSON file using ID of clicked yearbox
+    function loadSectionData(fileId) {
+      if (!fileId) {
+        alert("id missing");
+        return;
+      }
+
+      // fetch json
+      thisFileLocation = `converted/${fileId}.json`;
+      fetch(thisFileLocation)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(`${fileId}.json loaded successfully`);
+          importTheVariables(data);
+          filterAndDisplayLemmas();
+          
+          // Only draw canvas if toggle is active
+          const cb = document.querySelector("#cb-toggle");
+          if (cb && cb.checked) {
+          drawCanvas();
+      }
+        })
+        .catch((error) => {
+          console.error(`Failed to load ${fileId}.json:`, error);
+          alert("Failed to load " + fileId + ".json:");
+        });
+    }
+
+    // Click event listener on yearbox class divs
+    document.addEventListener("DOMContentLoaded", () => {
+      const indexPanel = document.getElementById("index-panel");
+
+      // Use event delegation for handling dynamically added .year-box elements
+      indexPanel.addEventListener("click", (event) => {
+        const target = event.target;
+
+        // Check if the clicked element has the 'year-box' class
+        if (target.classList.contains("year-box")) {
+          const fileId = target.id;
+          if (fileId) {
+            loadSectionData(fileId);
+          }
+        }
+      });
+    });
+
+    // drawCanvas();
+    // loadSectionData('section-3504207');
+    // document.getElementById("cb-toggle").click();
+  </script>
+</html>

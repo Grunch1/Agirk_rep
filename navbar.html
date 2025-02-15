@@ -1,0 +1,157 @@
+<!-- the <a class="nav-link" aria-current="page" href="Home.html#Exploration"> is not actually going to the #Exploration as intended after I added Home.html in the href -->
+
+<style>
+  #navbar {
+    position: relative;
+    position: sticky;
+    top: 0;
+    max-width: 100%;
+    z-index: 1000;
+
+    background-color: #f8f9fa;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadows */
+  }
+
+  .navbar-div {
+    width: 100%;
+    max-width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar-toggler {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .navbar-toggler .navbar-toggler-icon {
+    font-size: 1.5rem;
+  }
+
+  .navbar-pages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+
+  .nav-item {
+    margin-right: 15px;
+    height: 100%;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .nav-link:hover {
+    color: #d62700;
+    text-decoration: underline;
+  }
+  .d-flex {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 1405px) {
+    .navbar-toggler {
+      display: block; /* Show Menu button on smaller screens */
+    }
+
+    .navbar-pages {
+      display: none; /* Hide the menu by default */
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .navbar-pages.show {
+      display: flex; /* Show menu when toggled */
+    }
+
+    .nav-item {
+      width: 180px;
+      height: 50px;
+      margin: 5px auto; /* Center the items and add spacing between them */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-link {
+      width: 100%; /* Make links take up full width */
+      text-align: center;
+      padding: 10px;
+    }
+  }
+</style>
+
+<div class="navbar-div">
+  <!-- Toggler button for smaller screens -->
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    onclick="toggleNavbar()"
+  >
+    <span class="navbar-toggler-icon">&#9776;</span> Menu
+  </button>
+
+  <!-- Navigation menu -->
+  <ul class="navbar-pages" id="navbarSupportedContent">
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="#About">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="#Methods">Methods</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="#Manuscript">
+        Manuscript
+      </a>
+    <!-- </li>
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="#Manuscripts_Detailed">
+        <s>Detailed View</s>
+      </a>
+    </li> -->
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="#Edition">Edition</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="#Exploration">
+        Exploration
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="reading.html"> Reading </a>
+    </li>
+  </ul>
+
+  <!-- Search form -->
+  <form class="d-flex" role="search">
+    <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+    />
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+</div>

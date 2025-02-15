@@ -1,0 +1,4577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing...</title>
+    <link rel="shortcut icon" href="../Nkarner/Logos.jpg" type="image/jpg" />
+
+    <style>
+      :root {
+        --dark: #343a40;
+      }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fffcf4;
+        /* display: flex; */
+        /* align-items: center;
+            justify-content: center; */
+      }
+
+      main {
+        padding: 50px 200px 50px 200px; /* Example padding for main */
+        /* width: 80%;  */
+      }
+      section {
+        width: 100%;
+        max-width: 1800px;
+        overflow: auto;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      #Manuscript {
+        /* display: flex; */
+        align-items: center;
+        justify-content: center;
+        max-height: 700px;
+      }
+
+      .Manuscript_Box {
+        max-height: 700px;
+        width: 300px !important;
+        border: 2px solid #212529;
+        padding: 20px;
+        margin: 50px 300px 50px 300px;
+        background-color: #d2b48c;
+      }
+
+      #Manuscripts_Detailed {
+        display: flex; /* irar kogh linen (box chelini */
+        align-items: center; /* verev - nerqev*/
+        justify-content: center; /* ach u dsax */
+        max-height: 700px;
+      }
+
+      .manuscript_img {
+        margin: 50px 100px 50px 100px;
+      }
+
+      .Manuscript_Details {
+        height: 550px;
+        width: 400px;
+        border: 2px solid #212529;
+        padding: 50px;
+        margin: 50px 100px 50px 100px;
+        background-color: #d2b48c;
+      }
+
+      .Manuscript_2_Read_Button,
+      .Manuscript_2_Download_Button {
+        box-shadow: 0px 0px 50px 2px rgba(120, 104, 57, 0.9); /* 0.X is the alpha value for opacity */
+        background: linear-gradient(
+          to bottom,
+          rgba(212, 130, 50, 0.7) 5%,
+          rgba(179, 115, 25, 0.7) 100%
+        ); /* 0.X is the alpha value for opacity */
+        background-color: rgba(
+          200,
+          140,
+          100,
+          0.7
+        ); /* 0.X is the alpha value for opacity */
+        border-radius: 10px;
+        border: 1px solid #0d2b48;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffd4f6;
+        font-family: Arial;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 15px 20px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #424500;
+      }
+      .Manuscript_2_Read_Button:hover,
+      .Manuscript_2_Download_Button:hover {
+        background: linear-gradient(to bottom, #b37319 5%, #de7e00 100%);
+        background-color: #b37319;
+      }
+      .Manuscript_2_Read_Button:active,
+      .Manuscript_2_Download_Button:active {
+        position: relative;
+        top: 1px;
+      }
+
+      .Reference_Page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 10px;
+        height: 100vh;
+        max-height: 700px;
+        /* delete after testing*/
+      }
+
+      .Reference_of_Araks {
+        height: 220px;
+        width: 500px;
+        border: 2px solid #212529;
+        padding: 20px;
+        background-color: lightblue;
+        box-sizing: border-box;
+        margin: 10px 0;
+      }
+
+      /* Styles for the top image container with background */
+      .top-image-container {
+        max-width: 100%;
+        /* Set width to 100% to fill the parent */
+        height: 390px;
+        /* Set height to 390px */
+        background: url("../Nkarner/parchment.jpg") center/cover no-repeat;
+        /* Set background image */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+      h1 {
+        font-family: "Helvetica", sans-serif;
+      }
+      /*  */
+      /*  */
+      /*  */
+      /* Top image */
+      .top-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        /* Ensure the image is contained within the specified area */
+      }
+
+      /* navbar */
+      a:hover {
+        color: #d62700;
+        text-decoration: underline;
+      }
+
+      /* Ensure at least 10% space in the middle */
+
+      /* Media query for smaller screens */
+      @media (max-width: 1405px) {
+        .navbar-div {
+          max-width: 100%;
+          justify-content: flex-end;
+        }
+
+        .navbar-toggler {
+          display: block;
+        }
+
+        .navbar-pages {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 50px;
+          left: 10px;
+          background-color: #f8f9fa;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+          z-index: 1000;
+          width: calc(100% - 20px);
+        }
+
+        .navbar-pages.active {
+          display: flex;
+        }
+
+        .nav-item {
+          margin: 10px 0;
+        }
+      }
+
+      /* Persons */
+      #Persons {
+        overflow: auto;
+        max-height: 750px;
+      }
+      .person {
+        border: dashed #017d75 1px;
+        margin-bottom: 10px;
+        margin-top: 2px;
+      }
+
+      /* Exploration */
+      #Exploration {
+        text-align: center;
+      }
+      .Exploration_div {
+        min-height: 250px;
+        min-width: 250px;
+        display: inline-block;
+        text-align: center;
+        padding: 4rem 4rem;
+        vertical-align: middle;
+        border: 3px double tan;
+      }
+
+      /* Editions */
+      .Edition-table {
+        margin: 0 auto;
+        width: 60%;
+        max-height: 700px;
+        overflow: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f4f4f4;
+      }
+
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      a {
+        text-decoration: none;
+        color: #007bff;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+      /* Editions */
+
+      /* About */
+      p {
+        margin-bottom: 20px;
+      }
+
+      p.ii {
+        margin-bottom: 16px;
+      }
+
+      img {
+        margin: 20px;
+      }
+
+      div {
+        padding: 15px;
+      }
+
+      div.ii {
+        padding-top: 20px;
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+
+      div.iii {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .center {
+        text-align: center;
+        max-width: 400px;
+      }
+
+      h2 {
+        margin-bottom: 8px;
+      }
+
+      h4 {
+        margin-bottom: 8px;
+      }
+
+      .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .flex-item {
+        flex: 1;
+        min-width: 200px;
+        /* Adjust based on desired responsiveness */
+      }
+
+      .ii .flex-container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .ii .flex-item {
+        flex: 1;
+        margin: 0;
+      }
+      .iii {
+        max-height: 150px;
+      }
+      .About_Profile_Pic {
+        width: 100px;
+      }
+
+      /* About */
+
+      /* footer */
+      footer {
+        padding: auto;
+        border: dashed #000 1px;
+        text-align: center;
+        background-color: #f7f2e8;
+        height: 122px;
+        box-sizing: border-box;
+      }
+
+      /* footer hr {
+        border-top: 1px solid #000;
+        opacity: 0.5;
+        margin: 8px 0;
+      }   */
+
+      .footer-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px; /* spacing between elements */
+        padding: 15px;
+        flex-grow: 1;
+        height: calc(
+          100% - 10px
+        ); /* 10 pixel less than parent margon-top 10px */
+        padding: 10px 15px 0px 15px;
+      }
+
+      .footer-content img {
+        max-height: 50px; /* Adjust according to your design */
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .footer-content p {
+        margin: 0;
+        font-size: 14px;
+      }
+      /* footer */
+
+      /* other */
+      section {
+        display: none;
+      }
+      #About {
+        display: block;
+      }
+      /* main{
+        max-width: 100%;
+      } */
+      /* other */
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll("section");
+        const heading = document.querySelector("#page-heading");
+
+        // Object to store the original display values of each section
+        const originalDisplay = {};
+
+        // Store the original display property for each section
+        sections.forEach((section) => {
+          const displayValue = window.getComputedStyle(section).display;
+          originalDisplay[section.id] =
+            displayValue !== "none" ? displayValue : "block";
+        });
+
+        // Initially show 'About' section and set heading
+        heading.textContent = "About";
+        const initialSection = document.querySelector("#About");
+        initialSection.style.display = originalDisplay["About"];
+
+        // Hide all other sections initially
+        sections.forEach((section) => {
+          if (section.id !== "About") {
+            section.style.display = "none"; // Explicitly hide all other sections
+          }
+        });
+
+        // Handle navigation button clicks
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            // Hide all sections
+            sections.forEach((section) => {
+              section.style.display = "none"; // Hide all sections
+            });
+
+            // Get the target section ID and show the corresponding section
+            const target = link.getAttribute("href");
+            const sectionName = link.textContent.trim();
+            const targetSection = document.querySelector(target);
+
+            if (targetSection) {
+              const originalDisplayValue = originalDisplay[target.slice(1)]; // Remove '#' from target
+              targetSection.style.display = originalDisplayValue || "block";
+
+              // Scroll to the top of the document to show the navbar at its initial position
+              window.scrollTo({ top: 350, behavior: "smooth" });
+            }
+
+            heading.textContent = sectionName;
+          });
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- Top image -->
+    <div class="top-image-container">
+      <img src="../Nkarner/TopImage.png" alt="Top Image" class="top-image" />
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar"></nav>
+
+    <!-- Main -->
+    <main>
+      <h1 id="page-heading"></h1>
+
+      <!-- Manuscript -->
+      
+      <section id="Manuscript">
+        <script>
+        // dynamically load the Manuscript file
+        document.addEventListener("DOMContentLoaded", () => {
+            const placeholder = document.getElementById("Manuscript");
+            fetch('manuscripts.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Error loading HTML: ${response.statusText}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    placeholder.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error("Failed to load HTML:", error);
+                });
+        });
+    </script>
+    </section>
+      <!-- Manuscripts_Detailed -->
+      <section id="Manuscripts_Detailed">
+        <img
+          class="manuscript_img"
+          src="../Nkarner/manuscript_img.jpg"
+          alt="manuscript_img"
+          width="390"
+          height="640"
+        />
+        <div class="Manuscript_Details">
+          <h2>Title : MS 5118</h2>
+          <br />
+          <h2></h2>
+          <h3>Place : Avag Vankʻ (Cilicia)</h3>
+          <h3>Century : 1412</h3>
+          <h3>Scribe : Ṛstakes Sebastatsi</h3>
+          <br />
+          <h3>
+            Colophone :
+            --------------------------------------------------------------------------------------------------------------------------------------------------------------
+          </h3>
+          <br />
+          <br />
+          <br />
+          <a href="#" class="myButton">
+            <button
+              class="Manuscript_2_Read_Button"
+              type="submit"
+              value="Submit"
+            >
+              Read Transcript
+            </button>
+          </a>
+          <a href="#" class="myButton">
+            <button
+              class="Manuscript_2_Download_Button"
+              type="submit"
+              value="Submit"
+            >
+              Download
+            </button>
+          </a>
+        </div>
+      </section>
+
+      <!-- References -->
+      <section id="References" class="Reference_Page">
+        <div class="Reference_of_Araks">
+          <h3>Name: Աղուես գետատար</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m058.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m058.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Աղուես եւ արծիւ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m005.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m005.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Աղքատ մսախորով և արծիւ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m058.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m058.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Աղքատ և հնդահաւ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m343.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m343.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Այծ և գայլ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m135.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m135.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Այծք և գայլք</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m268.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m268.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Այրի և գող տղայն</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m351.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m351.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Առիւծն ծեր հիւանդացեալ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m255.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m255.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Առիւծն հիւանդացեալ և էշ առանց սրտի և ականջի</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m243.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m243.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Առիւծ սուտ հիւանդացեալ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m246.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m246.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Առիւծ և աղուես</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m240.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m240.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Առիւծ և գայլ և աղուես</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m260.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m260.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Առիւծ և թագաւորի աղջիկ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m249.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m249.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Առիւծ և մարդ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="tps://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m403.htm"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="tps://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m403.htm"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Արամազդ և աւձ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m153.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m153.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Արծիւ և կաքաւ և բզեզ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m007.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m007.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Արտուտ թագաւոր թռչնոց</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m209.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m209.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Աւտարափետուր ճայեկ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m200b.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m200b.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Բժիշկ գորտ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m078.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m078.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Գայլ և էշ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m334.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m334.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Գայլագռաւ պանիր ի կտուցն և աղուես</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m204.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m204.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Գառն և փողահար գայլ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m134.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m134.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Եղեգն և ծառք</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m179.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m179.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Երկու աքլօր</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m021.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m021.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Երկու մանդիկ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m350.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m350.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Էշ և թրիք</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m181.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m181.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Էշառիւծ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m333.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m333.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Թագաւոր և աւձ և որդի թագաւորի</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m097.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m097.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Թագաւոր և կուռքն</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m066.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m066.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Թագաւոր և ձկունքն</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m027.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m027.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Թագաւոր և շուն և շուք</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m233.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m233.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Ժիժիք և մեղուք և մրջիմն</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m401.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m401.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Լուսին և արեգակն</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m389.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m389.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Խաւսող և աղուես և շուն</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m225.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m225.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Խեցգետին և ձագք</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m187.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m187.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Կապիկ և ձկնորս</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronohttps://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m113.htmllogia/S_ante06/Aesop/aes_m362.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronohttps://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m113.htmllogia/S_ante06/Aesop/aes_m362.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Կատու և մկունք</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m015.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m015.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Կոզեռն և յաւանակ և խոզք</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m113.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m113.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Կտակ վասն գանձի</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m098.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m098.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Կրիայք և խեցգետին և արծիւ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m419.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m419.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+
+        <div class="Reference_of_Araks">
+          <h3>Name: Հողագործ և արագիլ</h3>
+          <h4>
+            - - - - - - - - - - - - - - - - - - - - - -
+            <a
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m100b.html"
+            >
+              Story origin link</a
+            >
+          </h4>
+          <a
+            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m100b.html"
+          >
+            <button type="Manuscript_Download">learn more</button>
+          </a>
+        </div>
+      </section>
+
+      <!-- Persons -->
+      <section id="Persons" class="Persons_Page">
+        <div class="person">
+          <p><b>Name</b></p>
+          <p>information about the person</p>
+          <p><a href="www.wikipedia.com">link if needed</a></p>
+        </div>
+        <div class="person">
+          <p><b>Name</b></p>
+          <p>information about the person</p>
+          <p><a href="www.wikipedia.com">link if needed</a></p>
+        </div>
+        <div class="person">
+          <p><b>Name</b></p>
+          <p>information about the person</p>
+          <p><a href="www.wikipedia.com">link if needed</a></p>
+        </div>
+        <div class="person">
+          <p><b>Name</b></p>
+          <p>information about the person</p>
+          <p><a href="www.wikipedia.com">link if needed</a></p>
+        </div>
+        <div class="person">
+          <p><b>Name</b></p>
+          <p>information about the person</p>
+          <p><a href="www.wikipedia.com">link if needed</a></p>
+        </div>
+        <div class="person">
+          <p><b>Name</b></p>
+          <p>information about the person</p>
+          <p><a href="www.wikipedia.com">link if needed</a></p>
+        </div>
+        <div class="person">
+          <p><b>Name</b></p>
+          <p>information about the person</p>
+          <p><a href="www.wikipedia.com">link if needed</a></p>
+        </div>
+        <div class="person">
+          <p><b>Name</b></p>
+          <p>information about the person</p>
+          <p><a href="www.wikipedia.com">link if needed</a></p>
+        </div>
+      </section>
+
+      <!-- Exploration -->
+      <section id="Exploration" class="Exploration_Page">
+        <div class="Exploration_div">
+          <a href="#References">
+            <p>Go to References</p>
+          </a>
+        </div>
+
+        <div class="Exploration_div">
+          <a href="#Persons">
+            <p>Go to Persons</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Edition -->
+      <section id="Edition" style="padding: 0px; margin-top: 10px">
+        <div class="Edition-table" style="padding: 0px">
+          <table>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">1. Ագռաւ և հաքիմ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">2. Ագահ մարդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">3. Ագռաւ և ձագքն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">4. Ալմաստ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">5. Աղէքսանդր և երկիր բարութեան</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">6. Աղէքսանդր և կրիայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">7. Աղաւթք աղքատի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">8. Աղաւթք աղքատի 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">9. Աղաւնի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">10. Աղէքսանդր և մերկ իմաստասէրք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">11. Աղէքսանդր և սով</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">12. Աղն կսկծի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">13. Աղն կսկծի 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">14. Աղն կսկծի 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">15. Աղոթասէր պատանի և կախարդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">16. Աղուես գետատար</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">17. Աղուես գետատար 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">18. Աղուես գետատար 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">19. Աղուես որսող նման առիւծու և գայլ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">20. Աղուես որսող նման առիւծու և գայլ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">21. Աղուես և արագիլ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">22. Աղուես և արծիւ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">23. Աղուես և արծիւ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">24. Աղուես և աւձ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">25. Աղուես և բռաքար</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">26. Աղուես և բռաքար 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">27. Աղուես և գայլ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">28. Աղուես և գայլ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">29. Աղուես և գայլ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">30. Աղուես և գայլ 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">31. Աղուես և զրեհ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">32. Աղուես և թղթատար գայլ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">33. Աղուես և թղթատար գայլ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">34. Աղուես և խեցգետին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">35. Աղուես և խեցգետին 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">36. Աղուես և խեցգետին 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">37. Աղուես և կաքաւ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">38. Աղուես և կրիայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">39. Աղուես և կրիայ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">40. Աղուես և որսորդք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">41. Աղուես և որսորդք 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">42. Աղուես և ուղտ մերձիմահ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">43. Աղուես և չիտ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">44. Աղուես և չիտ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">45. Աղուես և պանրացան մարդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">46. Աղուես և սագք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">47. Աղուես և սառն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">48. Աղուես և սառն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">49. Աղքատ այր և աստուած</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">50. Աղքատ մսախորով և արծիւ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">51. Աղքատ մսախորով և արծիւ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">52. Աղքատ մսախորով և արծիւ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">53. Աղքատ մսախորով և արծիւ 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">54. Աղքատ մսախորով և արծիւ 4</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">55. Աղքատ և երէց և աւետարան</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">56. Աղքատ և հնդահաւ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">57. Աղքատ և հողագործ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">58. Ամենատգէտ մարդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">59. Այգի և կամրջակապ խանդակ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">60. Այծ և գայլ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">61. Այծ և գայլ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">62. Այծք և գայլք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">63. Այծք և գայլք 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">64. Այծք և գայլք 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">65. Այծք և գայլք 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">66. Այծք և գայլք 4</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">67. Այր Կիլիք և կին Կիլիք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">68. Այր արևելեան և տասներկու ոսկի բևեռք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">69. Այր գնող և հացծախ և մսագործ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">70. Այր մարդասպան</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">71. Այր մի և ընկոյզ և ձմերուկ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">72. Այր յիմար</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">73. Այր որոյ չէ տեսեալ ոչ բաղանիս և ոչ խոզ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">74. Այր և այգի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">75. Այր և գայլ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">76. Այր և լեզուանի կին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">77. Այր և լեզուանի կին 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">78. Այր և խոզ և կրիայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">79. Այր և կին մի տգեղ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">80. Այր և հարիւր մոթ հաց</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">81. Այր և մեղրակաթ ծառ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">82. Այրի և գող տղայն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">83. Այրի և գող տղայն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">84. Այրի և գող տղայն 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">85. Այրի և գող տղայն 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">86. Այրի և գող տղայն 4</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">87. Այրի և գող տղայն 5</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">88. Այրի և գող տղայն 6</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">89. Այրի և կովն և խորթ և էշն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">90. Այրի և որդին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">91. Անդարձ Աղէքսանդրի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">92. Անզգամ կին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">93. Անզգամ կին 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">94. Անզգամ տաճկուհի և հնարագէտ այրն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">95. Անիրաւ թագաւոր և բարի որդին և եկեղեցի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">96. Անհոգ պարտական</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">97. Անոխակալ խաչեղջերաւոր կենդանի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">98. Անսովոր բան պատճառ հիւանդութեան</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">99. Առիւծ ծեր հիւանդացեալ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">100. Առիւծ ծեր հիւանդացեալ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">101. Առիւծ հիւանդացեալ և էշ առանց սրտի և ականջի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">102. Առիւծ հիւանդացեալ և էշ առանց սրտի և ականջի 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">103. Առիւծ սուտ հիւանդացեալ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">104. Առիւծ սուտ հիւանդացեալ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">105. Առիւծ սուտ հիւանդացեալ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">106. Առիւծ սուտ հիւանդացեալ 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">107. Առիւծ սուտ հիւանդացեալ 4</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">108. Առիւծ և աղուես</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">109. Առիւծ և գայլ և աղուես</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">110. Առիւծ և գայլ և աղուես 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">111. Առիւծ և գայլ և աղուես 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">112. Առիւծ և թագաւորի աղջիկ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">113. Առիւծ և թագաւորի աղջիկ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">114. Առիւծ և ձագք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">115. Առիւծ և մարդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">116. Առիւծ և մարդ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">117. Առիւծ և մարդ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">118. Առիւծ և մեռեալ կորիւն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">119. Առիւծ և որսորդք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">120. Աստուածաշէն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">121. Աստուածաշէն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">122. Արագիլ և ճայեակ և յոպոպ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">123. Արագիլ և ճայեակ և յոպոպ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">124. Արագիլ և ճայեակ և յոպոպ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">125. Արագիլ և տատրակ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">126. Արամազդ և աւձ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">127. Արծաթասէր այր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">128. Արծիւ և բու</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">129. Արծիւ և բու 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">130. Արծիւ և կաքաւ և բզեզ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">131. Արծիւ և կաքաւ և բզեզ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">132. Արծիւ և կաքաւ և բզեզ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">133. Արծիւ և նետ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">134. Արծիւ և փառք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">135. Արուեստք կնոջ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">136. Արջ ձմեռնանինջ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">137. Արջ ձմեռնանինջ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">138. Արջ ձմեռնանինջ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">139. Արջ և խաղող</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">140. Արջ և խաղող 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">141. Արտուտ թագաւոր թռչնոց</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">142. Արտուտ և էշ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">143. Աւագերէց և որդին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">144. Աւագերէց և որդին 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">145. Աւագերէց և որդին 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">146. Աւձ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">147. Աւձ և ծակ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">148. Աւձ և հողագործ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">149. Աւձ և հողագործ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">150. Աւձ և հոտաւետ ծաղիկ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">151. Աւձ և մարդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">152. Աւտարափետուր ճայեկ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">153. Աւտարափետուր ճայեկ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">154. Բազմաշրջութիւն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">155. Բազմարուեստ աղուես</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">156. Բազմարուեստ աղուես 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">157. Բազրկան և գոմէշ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">158. Բաղդադի հիւս և թագաւոր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">159. Բանք իմաստնոց</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">160. Բանք իմաստնոց Արիստոտելի և Սոկրատայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">161. Բարի կին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">162. Բեռնակիր անասուն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">163. Բժիշկ գորտ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">164. Բժիշկ գորտ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">165. Բժիշկ գորտ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">166. Բժիշկ թռչուն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">167. Բժիշկ թռչուն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">168. Բու և խլուրդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">169. Գազան սղոցաձև եղջերբ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">170. Գայլ յուսումն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">171. Գայլ որսորդ և աղուես</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">172. Գայլ և աղուես և ջորի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">173. Գայլ և բրտի շուն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">174. Գայլ և էշ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">175. Գայլ և էշ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">176. Գայլ և հովիւ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">177. Գայլ և ոչխարք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">178. Գայլագռաւ պանիր ի կտուցն և աղուես</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">179. Գայլագռաւ պանիր ի կտուցն և աղուես 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">180. Գայլագռաւ պանիր ի կտուցն և աղուես 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">181. Գայլագռաւ պանիր ի կտուցն և աղուես 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">182. Գայլագռաւ պանիր ի կտուցն և աղուես 4</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">183. Գայլուն խրատ տային</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">184. Գառն և գայլ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">185. Գառն և փողահար գայլ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">186. Գառն և փողահար գայլ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">187. Գետն ընկնի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">188. Գերեզմանակրկիտ և մեռեալ կին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">189. Գերեզմանակրկիտ և մեռեալ կին 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">190. Գինի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">191. Գինի 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">192. Գիտուն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">193. Գլոս</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">194. Գող</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">195. Գող հայր ի տանջանս որդւոյն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">196. Գող հայր ի տանջանս որդւոյն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">197. Գող հայր ի տանջանս որդւոյն 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">198. Գող քահանայ և այրի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">199. Գող և խոջայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">200. Գող և ձմերուկ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">201. Գող և սատանայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">202. Գորտքն և սակաւ ջուր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">203. Դատաստան Աստուծոյ առ աղբերք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">204. Դատաստան Աստուծոյ առ աղբերք 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">205. Դրամաբաշխ տաճիկ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">206. Դրացի և լեզուահատ եզն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">207. Դրացի և լեզուահատ եզն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">208. Դրացի և լեզուահատ եզն 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">209. Դև փայիկ Յուլիանոսի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">210. Եաւթն տլիսմ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">211. Եզն և ձի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">212. Ելչութիւն Աղէքսանդրի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">213. Եկեղեցի և ջրաղաց</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">214. Եղեգն և ծառք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">215. Երեք արք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">216. Երեք բանք իմաստասէրի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">217. Երեք բանք իմաստասէրի 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">218. Երեք եղբարք և ակն պատուական</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">219. Երեք եղբարք և ակն պատուական 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">220. Երեք երեսի ջուր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">221. Երեք ուղորդ բանք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">222. Երեք ուղտք և երեք աղուեսք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">223. Երեք տեսիլ թագաւորի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">224. Երէց ասորի և երիտասարդ հայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">225. Երէց ասորի և երիտասարդ հայ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">226. Երէց և եկեղեցի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">227. Երէց և ժողովուրդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">228. Երինջք և եզինք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">229. Երինջք և եզինք 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">230. Երկու արդար եղբարք ի Ղալաթայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">231. Երկու արդար եղբարք ի Ղալաթայ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">232. Երկու աքլոր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">233. Երկու եղբարք և ծեր աբեղայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">234. Երկու ընկեր և օտարոտի քաղաք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">235. Երկու ընկերք և կարպետ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">236. Երկու իմաստասէրք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">237. Երկու խաչ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">238. Երկու կանայք և կծիկ և դատաւոր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">239. Երկու նախանձախնդիր ծառայք թագաւորի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">240. Երկու նախանձախնդիր ծառայք թագաւորի 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">241. Երկու նկարիչք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">242. Երկու սնտեկնոս և դդում</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">243. Երկու սնտեկնոս և դդում 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">244. Երկուական մանդիկ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">245. Զղջացեալ մեղաւոր և չապաշխարութիւն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">246. Զղջացեալ մեղաւոր և չապաշխարութիւն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">247. Զղջացեալ մեղաւոր և չապաշխարութիւն 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">248. Զուարակք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">249. Էշ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">250. Էշ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">251. Էշ մեծարեալ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">252. Էշ և աւանակն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">253. Էշ և թրիք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">254. Էշառիւծ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">255. Էշառիւծ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">256. Էշառիւծ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">257. Էշառիւծ 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">258. Ընչասէր մարդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">259. Ընչեղ այր և երկու որդիքն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">260. Թագաւոր շիւղ ի մորուս և ծառայն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">261. Թագաւոր և այր գնեալ խեղս</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">262. Թագաւոր և աւձ և որդի թագաւորի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">263. Թագաւոր և աւձ և որդի թագաւոր 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">264. Թագաւոր և երկու ապարանք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">265. Թագաւոր և երկրագործ և վաճառական և բժիշկ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">266. Թագաւոր և զաւրք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">267. Թագաւոր և խազնադար</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">268. Թագաւոր և խոզ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">269. Թագաւոր և խոզ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">270. Թագաւոր և կուռքն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">271. Թագաւոր և կուռքն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">272. Թագաւոր և կուռքն 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">273. Թագաւոր և ձկունք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">274. Թագաւոր և ձկունք 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">275. Թագաւոր և շուն և շուք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">276. Թագաւոր և շուն և շուք 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">277. Թագաւոր և շուն և շուք 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">278. Թագաւոր և շուն և շուք 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">279. Թագաւոր և քեռորդին և նայիպ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">280. Թագաւոր և քեռորդին և նայիպ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">281. Թագաւոր և քեռորդին և նայիպ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">282. Թագաւոր և քեռորդին և նայիպ 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">283. Թագաւոր և քեռորդին և նայիպ 4</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">284. Թագաւորի խեղ դուստր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">285. Թագաւորի որդիք և պատուական ակն և դատաւոր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">286. Թագաւորն Կոստանդիանոս և ճգնաւոր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">287. Թագաւորն Կոստանդիանոս և ճգնաւոր 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">288. Թագաւորն Կոստանդիանոս և ճգնաւոր 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">289. Թագաւորն Կոստանդիանոս և ճգնաւոր 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">290. Թէ ով է իշխան դատել</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">291. Թէ ով է իշխան դատել 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">292. Թէ որպես մեռանի մեղաւոր եկեալ ի զղջումն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">293. Թիւր գիւղ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">294. Ժամանակ մարդոյ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">295. Ժիժիք և մեղուք և մրջիմն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">296. Ժիժիք և մեղուք և մրջիմն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">297. Ժիժիք և մեղուք և մրջիմն 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">298. Իղձք երից որդւոց թագաւորի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">299. Իմաստասէր ի սեղան թագաւորի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">300. Իմաստասէր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">301. Իմաստուն այր և յաղթող թագաւոր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">302. Իմաստուն աւագէշ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">303. Իմաստուն բժիշկ և ագի իշոյ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">304. Իմաստուն բժիշկ և ագի իշոյ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">305. Իմաստուն դատաւոր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">306. Իմաստուն զաւրական</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">307. Իշատէր և գայլ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">308. Իշոյ ծնաւ թոռն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">309. Լեզուանի կին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">310. Լծվար և աւձ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">311. Լուսին և արեգակն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">312. Խաչ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">313. Խաւսող և աղուես և շուն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">314. Խաւսող և աղուես և շուն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">315. Խաւսող և թագաւոր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">316. Խաւսող և թագաւոր 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">317. Խաւսող և թագաւոր 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">318. Խելք և գանձ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">319. Խեցգետին և ձագք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">320. Խէր և շառ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">321. Խլուրդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">322. Խնամեխաւս աքիս</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">323. Խնամեխաւս մեծատուն և կոյս</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">324. Խոզ և բզեզ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">325. Խոզ և գաթայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">326. Խոջայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">327. Խոստովանութիւն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">328. Խոստովանութիւն անկատար</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">329. Խոստովանութիւն մարդասպանի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">330. Ծառ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">331. Ծառ ի հնդիկս</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">332. Ծառ ի հնդիկս 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">333. Ծառ ի հնդիկս 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">334. Ծիծաղ զրուաստրի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">335. Ծովային գազան և անուշահոտ բերանն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">336. Ծովային գազան և անուշահոտ բերանն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">337. Ծովային գազան և անուշահոտ բերանն 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">338. Կաթ մեղու պատճառ պատերազմի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">339. Կանայք կախարդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">340. Կաշառառու դատաւոր և բղուղ մի իւղ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">341. Կաշառառու քահանայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">342. Կապիկ և հայելի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">343. Կապիկ և ձկնորս</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">344. Կապիկ և ձկնորս 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">345. Կատարեալ գիտուն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">346. Կատու և աքիս</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">347. Կատու և աքիս 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">348. Կատու և աքիս 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">349. Կատու և մկունք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">350. Կատու և մկունք 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">351. Կատու և մկունք 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">352. Կատու և մկունք 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">353. Կաւշկակար և անապատական</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">354. Կաքաւ և աւտար ձու</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">355. Կաքաւ և ծուղակ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">356. Կին ծնանեալ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">357. Կոզեռն և յաւանակ և խոզք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">358. Կոզեռն և յաւանակ և խոզք 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">359. Կոզեռն և յաւանակ և խոզք 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">360. Կոզեռն և յաւանակ և խոզք 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">361. Կոկորդիլոս և աւձ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">362. Կուղբ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">363. Կուրաքաշ շուն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">364. Կռունկ թագաւոր թռչնոց և էշ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">365. Կտակ վասն գանձի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">366. Կրաւնաւոր և ծնաւղք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">367. Կրիայ և ձի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">368. Կրիայք և խեցգետինք արծիւ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">369. Կրիայք և խեցգետինք և արծիւ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">370. Կրիայք և խեցգետինք և արծիւ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">371. Հալալ մարդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">372. Հալալ մարդ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">373. Հայր Դանիէլ և քարագործ ևլուժի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">374. Հայր որդի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">375. Հարսն և սկեսուր և սկեսրայր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">376. Հարսն և սկեսուր և սկեսրայր 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">377. Հարսն և սկեսուր և սկեսրայր 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">378. Հարց վասն դժոխոց</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">379. Հաւ և հաւկիթ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">380. Հաւորս և բազայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">381. Հինգ անգիտելի բան</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">382. Հինգ տեսիլք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">383. Հիւր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">384. Հիւր 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">385. Հնարք սատանայի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">386. Հողագործ և արագիլ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">387. Հողագործ և արագիլ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">388. Հողագործ և արագիլ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">389. Հողագործ և արագիլ 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">390. Հողագործ և եկեղեցի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">391. Հպարտ հաւատվոր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">392. Հպարտացեալ կին մերկ աղաւթս</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">393. Հռոմկլայի սոֆի և երէց</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">394. Հրակէր գազան</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">395. Հրակէր գազան 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">396. Հրակէր գազան 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">397. Հրեայ և քրիստոնեայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">398. Հրեայ և քրիստոնեայ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">399. Հրեշտակ աղքատ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">400. Հրեշտակ և աղքատ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">401. Ձկներագէտ ճուհի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">402. Ձկներագէտ ճուհի 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">403. Ձկնորս գայլ և աղուես</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">404. Ձմեռն և գարուն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">405. Ձու չարութեան</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">406. Ձու չարութեան 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">407. Ձուկն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">408. Ձուկն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">409. Ճանապարհորդ և սատանայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">410. Ճոհի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">411. Ճոհի 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">412. Ճոհի 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">413. Ճուհւոյ տղայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">414. Մանուկ և գայլ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">415. Մանուկ և դատաւոր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">416. Մանուկ և ձագք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">417. Մանուկ և ձագք 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">418. Մանուկ և ձագք 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">419. Մանր թռչունք և արագիլ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">420. Մելիք և կարդացող</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">421. Մելիք և կարդացող 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">422. Մեծազգի կին ի Հռաքել</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">423. Մեծատուն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">424. Մեծատուն խաչենացին և որդին քահանայ քրիստոսատես</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">425. Մեծատուն խաչենացին և որդին քահանայ քրիստոսատես 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">426. Մեծատուն խաչենացին և որդին քահանայ քրիստոսատես 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">427. Մեծատուն կին և սև որդի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">428. Մեծատուն և քեռորդին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">429. Մեծատուն և քեռորդին 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">430. Մեծատուն և քեռորդին 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">431. Մեղուք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">432. Մեղք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">433. Միամիտ գողք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">434. Միայնակեաց շուն և հոգետես վանահայր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">435. Միայնակեաց շուն և հոգետես վանահայր 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">436. Միայնակեաց շուն և սաղմոսասաց և սատանայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">437. Միայնակեաց շուն և սաղմոսասաց և սատանայ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">438. Միայնակեաց շուն և սաղմոսասաց և սատանայ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">439. Միայնակեաց և գամբռ շուն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">440. Միայնակեաց և գամբռ շուն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">441. Միայնակեաց և տաճիկ իշխան</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">442. Միմոս Զիս և վաճառական</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">443. Միմոս Զիս և վաճառական 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">444. Միմոս Զիս և վաճառական 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">445. Միմոս Զիս և վաճառական 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">446. Մկունք սպառազինեալք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">447. Մշակ և մեռեալ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">448. Մրջիմն և մարդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">449. Մրջիմն և փայտ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">450. Մրջմնառիւծ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">451. Մրջմնառիւծ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">452. Մրջմնառիւծ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">453. Մրջմնառիւծ 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">454. Մրջմնառիւծ 4</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">455. Մրջմնառիւծ 5</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">456. Մուկն և ուղտ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">457. Մուկն և ուղտ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">458. Մրջիմն և աղաւնի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">459. Մրջիմն և աղաւնի 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">460. Յիմար և ձմերուկ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">461. Յիմար և ձմերուկ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">462. Յիսուս Քրիստոս</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">463. Յուդայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">464. Նանիր և փառք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">465. Նապաստակունք և գորտունք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">466. Նապաստակունք և գորտունք 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">467. Նապաստակունք և գորտունք 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">468. Նապաստակունք և գորտունք 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">469. Նապաստակունք և գորտունք 4</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">470. Նռնենի և ձիթենի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">471. Շուն և խաւսող և աղուես</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">472. Շուն և խաւսող և աղուես 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">473. Շունք և կաշին յաղոց</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">474. Շունք և կաշին յաղոց 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">475. Շունք և կաշին յաղոց 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">476. Շունք և կաշին յաղոց 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">477. Ողորմած շուն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">478. Ողորմած շուն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">479. Ոսկերիչ և կապիկ և վագր և աւձ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">480. Ոսկերիչ և կապիկ և վագր և աւձ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">481. Որդի մեծատան</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">482. Որպէս նորոգի արծիւ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">483. Որպէս նորոգի արծիւ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">484. Որպէս նորոգի արծիւ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">485. Որսորդ և կաքաւ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">486. Որսորդ և կրիայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">487. Ուխտ միայնակեցի ընդ սատանայի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">488. Ուխտ միայնակեցի ընդ սատանայի 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">489. Ուխտաւոր կին և երէց</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">490. Ուխտաւոր կին և երէց 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">491. Ուղտ և աղուես</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">492. Ուղտ և գայլ և աղուես</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">493. Ուղտ և գայլ և աղուես 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">494. Ուղտ և գայլ և աղուես 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">495. Ուղտ և գայլ և աղուես 3</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">496. Ուղտ և գայլ և աղուես 4</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">497. Ուղտ և գայլ և աղուես 5</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">498. Ուղտ և աղուես</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">499. Ուր գանձք անդ սիրտք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">500. Չար կին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">501. Պատահարք գայլի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">502. Պատմութիւն համասփիւռ ծաղկին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">503. Պարգև Աղէքսանդրի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">504. Պարկեշտութիւն առիւծու</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">505. Պարոն Բուրդիէլ և քահանայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">506. Պարտական այր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">507. Պարտական այր 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">508. Պղպղայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">509. Պղպղայ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">510. Ջերմոտ և ուրուկ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">511. Ջուալ մնացորդաց ծայրատ սաղմոսաց</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">512. Սակաւ մեղր աղքատի և թագաւոր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">513. Սակաւախաւս թագաւոր և որդին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">514. Սան Գաբրիէլ հրեշտակապետի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">515. Սարդ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">516. Սէր դստեր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">517. Սիրամարգ թագաւոր թռչնոց</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">518. Սիրամարգ թագաւոր թռչնոց 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">519. Սիրելի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">520. Սիրելի 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">521. Սիրելիք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">522. Սիւն</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">523. Սիւն 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">524. Սուրխամահի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">525. Սպանող</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">526. Վաճառական և ձագ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">527. Վաճառական և ձագ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">528. Վաճառական և մարդասպան և մսագործ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">529. Վասն աղուեսու</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">530. Վասն արջոյ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">531. Վասն աքսի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">532. Վասն ժրահաւու</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">533. Վասն խաբող աղուեսուն և չարութեան նորա</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">534. Վասն միեղջեր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">535. Վարազ և աղուես</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">536. Վարդապետ և սատանայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">537. Վարդապետ և սատանայ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">538. Վարդապետ և սատանայ 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">539. Վարձունեաց աստուածածին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">540. Վէմ և կաթ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">541. Վէմ և կաթ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">542. Վնասակար անդամ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">543. Վնասակար անդամ 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">544. Տաճկաց աւրէնք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">545. Տաճկի աղաւթք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">546. Տաճկի աղաւթք 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">547. Տանուտէր և որդին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">548. Տանուտէր և որդիք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">549. Տանպատեցի ջուլհակ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">550. Տասն այր և կին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">551. Տասն այր և կին 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">552. Տասն վաճառականք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">553. Տասն վաճառականք 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">554. Տիգրիս և որսորդք հայելեաւ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">555. Տխուր թագաւոր</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">556. Րախճան վասն բաղանիս</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">557. Րախճան վասն երկու դրախտապանայ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">558. Րախճան վասն երկու ընկերից</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">559. Րախճան վասն կովուց</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">560. Րախճան վասն հաւուց</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">561. Րախճան վասն հաւուց 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">562. Րախճան վասն հաւուց 2</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">563. Ցաւ և մեղք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">564. Փայիկ Յուլիանոսի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">565. Փայտահատք և ծառք</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">566. Փիլիսոփայ մահու դատապարտեալ և սիրելին</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">567. Փոխ տալ առանց վկայի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">568. Փոխ տալ առանց վկայի 1</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">569. Քահանայ և ղատի</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">570. Քահանայ և մսագործ</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://test.aghvesagirk.com/Lemma/reading.html" target="_blank">571. Քաղաք</a>
+              </td>
+            </tr>
+          </table>
+
+          <br /><br />
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="About">
+        <div class="i">
+          <h2>About the <i>Aghvesagirk</i></h2>
+          <p>
+            The Aghvesagirk is a collection of anonymous fables written between
+            the 14th and 17th centuries, attributed to Vardan Aygektsi. Early in
+            his preaching career, Aygektsi composed the collection Armat Havato,
+            consisting of extracts from Armenian doctrinal-rhetorical literature
+            (13th century). His discourses often included fables and parables,
+            making them clearer and more impactful, thus founding the
+            fable-discourse genre in Armenian literature. <br />
+            <br />
+            Collections compiled in later centuries included a variety of
+            sources: a large number of Aesop’s fables; several chapters from
+            Kalīla wa-Dimna; Persian and Arabic tales and novels; stories from
+            the Armenian version of the Physiologus; small groups of Barlaam and
+            Josaphat's parables; parables about the life of Alexander the Great;
+            Armenian folk tales and novels; stories of good and bad churchmen,
+            biblical narratives, and historical incidents. <br />
+            <br />
+            The Aghvesagirk survives in at least 80 manuscripts held in
+            libraries throughout Europe and the Near East, including Yerevan,
+            Venice, Vienna, Paris, London, Oxford, Berlin, Saint Petersburg, and
+            Jerusalem. These collections of fables vary in the number of fables
+            they contain. The oldest collection preserved in the Matenadaran,
+            was copied in the 14th century (MS 5871). This manuscript contains
+            only seven fables and was scribed by Monk Karapet. The largest
+            collection, written in 1640 by scribe Mkrtichʻ Lehtsʻi, contains 187
+            fables (Matenadaran, MS 8376). <br />
+            <br />
+            The name Aghvesagirk gained prominence in the 17th century,
+            following the publication by Voskan Yerevantsi titled Book of the
+            World and Mythology, which is Aghvesagirk in 1668 Amsterdam
+            (Marseille 1683; Etchmiadzin 1698). The 1894 edition by N. Marr
+            titled Collection of Vardan's Fables is particularly noteworthy for
+            its inclusion of 21 manuscripts. <br />
+            <br />
+            The present edition of the Aghvesagirk is particularly notable for
+            its comprehensive scope, incorporating 56 manuscripts. <br />
+            <br />
+          </p>
+        </div>
+
+        <!-- gic -->
+        <div class="i">
+          <img
+            src="../Nkarner/gic.png"
+            style="width: 95%"
+            alt="Placeholder Image"
+          />
+        </div>
+
+        <div class="ii">
+          <div>
+            <h2>About the project</h2>
+            <p class="ii">
+              <i>
+                This edition was made possible thanks to the generous support of
+                the Austrian Academy of Sciences Foundation and the University
+                of Vienna, which funded the project from 20**-2024 (supervisor
+                prof. Tara L. Andrews). The project utilized the digital tools
+                and methodologies of
+                <a href="https://editions.byzantini.st/ChronicleME/#/Home">
+                  the Chronicle of Matthew of Edessa Online project
+                </a>
+                (https://editions.byzantini.st/ChronicleME/#/Home)
+              </i>
+              <br />
+            </p>
+
+            <h4>Founder</h4>
+          </div>
+
+          <div class="flex-container">
+            <div class="flex-item iii center">
+              <img
+                class="About_Profile_Pic"
+                src="../Nkarner/Ani Shahnazaryan.jpg"
+                alt="Placeholder Image"
+                style="width: 150px"
+              />
+            </div>
+            <div class="flex-item iii">
+              <p class="ii">
+                <b>Ani Shahnazaryan</b> has been as an adjunct lecturer at the
+                American University of Armenia since 2021. Her research
+                interests include Digital Humanities, text encoding and markup,
+                cutting-edge technology of literary study and computer-aided
+                stemmatological analysis. She was a postdoctoral fellow at the
+                University of Vienna (2018-2019) and Free University of Berlin
+                (2020). She has started launching the digital critical edition
+                of Armenian Medieval Fables, used digital technologies by
+                researchers of the University of Vienna.
+              </p>
+            </div>
+          </div>
+
+          <div class="ii">
+            <h4>Contributors</h4>
+            <!-- Project Team -->
+          </div>
+
+          <div class="flex-container">
+            <div class="flex-item iii center">
+              <img
+                class="About_Profile_Pic"
+                src="../Nkarner/Tara L. Andrews.png"
+                alt="Placeholder Image"
+              />
+            </div>
+            <div class="flex-item iii">
+              <p class="ii">
+                <b>Tara L. Andrews </b> has been Professor for Digital
+                Humanities at the University of Vienna since 2016. She did her
+                B.Sc. in Humanities and Engineering at MIT (1995–1999), followed
+                by an M.Phil. (2003–2005) and D.Phil. (2006–2009) at the
+                University of Oxford. She began to study aspects of the
+                Chronicle while preparing her M.Phil. thesis; this together with
+                her doctoral work resulted in a 2016 monograph published by
+                Brill. Tara's research interests include the history and
+                historiography of the Christian Near East in the tenth to
+                twelfth centuries, the application of computational and
+                statistical methods for reconstruction of the copying history of
+                ancient and medieval manuscripts (stemmatology), and reflection
+                on the implications of employing digital media and computational
+                methods in humanities contexts, all of which have figured in
+                production of the present edition.
+              </p>
+            </div>
+          </div>
+
+          <br /><br />
+          <br />
+
+          <div class="flex-container">
+            <div class="flex-item iii center">
+              <img
+                class="About_Profile_Pic"
+                src="../Nkarner/Anahit Safaryan.png"
+                alt="Placeholder Image"
+              />
+            </div>
+            <div class="flex-item iii">
+              <p class="ii">
+                <b>Anahit Safaryan </b> did her BA in History (2009-2013) and MA
+                in History (2013-2015) at Yerevan State University. She started
+                her doctoral studies at the University of Bern (2015-2017),
+                where she was also employed to work on the SNSF project. In
+                2017, together with the project itself, Anahit moved to the
+                University of Vienna to continue her doctoral research, which
+                focuses on the topic of the reception of the Chronicle in the
+                17th and 18th centuries.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex-container">
+            <div class="flex-item iii center">
+              <img
+                class="About_Profile_Pic"
+                src="../Nkarner/Schiwa Aliabadi-Pongratz.png"
+                alt="Placeholder Image"
+              />
+            </div>
+            <div class="flex-item iii">
+              <p class="ii">
+                <b>Schiwa Aliabadi-Pongratz </b> has been employed as an
+                application developer at the University of Vienna since 2018.
+                She has several years of working experience in the field of
+                electronic publishing in the private sector and found her way to
+                Digital Humanities via her recent coursework in South Asian and
+                Buddhist Studies. She is responsible for several tools and
+                applications that were used in the preparation of the critical
+                edition.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ii">
+          <h4>Other Contributors</h4>
+          <h5>Web Development</h5>
+
+          <div class="flex-container">
+            <div class="flex-item iii center">
+              <img
+                class="About_Profile_Pic"
+                src="../Nkarner/Gabriel.jpg"
+                alt="Placeholder Image"
+              />
+              <!-- https://via.placeholder.com/150-->
+            </div>
+            <div class="flex-item iii">
+              <p class="ii">
+                <b>Gabriel Adamyan </b> has a Bachelor's degree in Computer
+                Science from the American University of Armenia. He is
+                responsible for all aspects of the website development process,
+                including database creation, management, functionality tools,
+                data sorting, graph creation, and visual elements.
+                <br />
+                <br />
+                <br />
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        function toggleNavbar() {
+          var navbarContent = document.getElementById("navbarSupportedContent");
+          navbarContent.classList.toggle("active");
+        }
+      </script>
+
+      <!-- Methods -->
+      <section id="Methods">
+        <h4>to be checked with PM</h4>
+        <h2>Methods of edition</h2>
+        <h3>Digital workflow</h3>
+        <p>
+          This edition of the Chronicle has been conceived and implemented with
+          a fully digital workflow. Our implementation relies on two innovative
+          strands of development. The first is a graph-based computational model
+          for critical editions of texts that survive in multiple manuscript
+          copies; more about this model can be found in its documentation. The
+          second strand of development is the use of a "continuous integration"
+          system for management and curation of the textual data, whose stages
+          are described here.
+        </p>
+
+        <h3>Manuscript transcription</h3>
+        <p>
+          We have obtained digital images of most of the extant manuscripts;
+          although we do not, generally speaking, have the rights to publish
+          these, we have been able to use them as the basis of our
+          transcriptions.
+        </p>
+        <img
+          src="../Nkarner/methods_interface.jpg"
+          alt="image"
+          style="max-width: 800px"
+        />
+
+        <p>
+          Transcription was done using T-PEN, a freely available online tool
+          provided by the Center for Digital Theology at St. Louis University.
+          Each line of text is associated with a region of a manuscript image;
+          selected elements of the Text Encoding Initiative were used to capture
+          certain features of the text. (For more information on the
+          transcription, see the "Guidelines for transcription" below.)
+        </p>
+        <br />
+        <h3>The continuous integration pipeline</h3>
+        <img
+          src="../Nkarner/methods_pipeline.png"
+          alt="image"
+          style="max-width: 98%"
+        />
+        <p>
+          tpen-backup <br />
+          Our pipeline process begins each day with export of the T-PEN data in
+          its native Shared Canvas JSON format.
+        </p>
+        <p>
+          tpen2tei <br />
+          The next stage is to convert our transcription files to TEI-XML source
+          files using the tpen2tei Python library, which was developed within
+          the project. The transcriptions as they exist in T-PEN, together with
+          the custom transformations defined for the project for use with
+          tpen2tei, constitute the authoritative source of transcription
+          information. tpen-backup <br />
+          Our pipeline process begins each day with export of the T-PEN data in
+          its native Shared Canvas JSON format.
+          <br />
+          <br />
+          tpen2tei <br />
+          The next stage is to convert our transcription files to TEI-XML source
+          files using the tpen2tei Python library, which was developed within
+          the project. The transcriptions as they exist in T-PEN, together with
+          the custom transformations defined for the project for use with
+          tpen2tei, constitute the authoritative source of transcription
+          information.
+          <br />
+          <br />
+          validate-tei-xml <br />
+          Wherease the tpen2tei step in the pipeline will detect and alert us to
+          any badly-formed XML output from our transcriptions (e.g. bad syntax
+          or mismatched element tags), it does not validate that XML against any
+          TEI schema. That task is done in the subsequent step. If any
+          transcription file is found to have invalid TEI encoding, the data
+          pipeline will stop at this point until the problem is found and fixed.
+          <br />
+          <br />
+          collate <br />
+          Once transcribed, the manuscript texts have been collated with each
+          other, section-by-section, using the software CollateX. We also used
+          the collation to assist in the correct expansion of abbreviated words;
+          these abbreviations and expansions are stored in a separate database,
+          which is consulted for later collation runs in order to improve the
+          results.
+          <br />
+          <br />
+          feed-editions-moe <br />
+          After segmentation into sections and collation, the results are loaded
+          into the Stemmaweb suite of tools for further processing.
+          <br />
+          <br />
+          Editorial work after the pipeline <br />
+          Automated collation, although very good in most cases, is by no means
+          perfect. Each section, once it reached this point in the process, was
+          imported into the Stemmaweb suite of tools for further work. The
+          variant graph viewer within Stemmaweb allows corrections to be made to
+          the collation, and allows the association and classification of
+          individual variants. Manuscripts <br />
+        </p>
+      </section>
+
+      <br /><br />
+
+      <!-- Reading Page -->
+      <h1 id="">
+        <a href="reading.html">Go to reading Page</a>
+      </h1>
+    </main>
+
+    <!-- footer -->
+    <footer id="LastRow">
+      <div class="footer-content">
+        <!--<img src="../Nkarner/cc-logo.png" alt="Creative Commons Logo">-->
+        <p>Created with the generous support of:</p>
+        <img
+          src="../Nkarner/snf_logo.png"
+          alt="Swiss National Science Foundation"
+        />
+        <img src="../Nkarner/vienna_logo.png" alt="Universität Wien Logo" />
+      </div>
+    </footer>
+  </body>
+
+  <script>
+    // Toggle navbar function for small screens
+    function toggleNavbar() {
+      console.log("Toggle button clicked");
+      const navbarPages = document.getElementById("navbarSupportedContent");
+      navbarPages.classList.toggle("show");
+    }
+
+    // Fetch and load the navbar content
+    fetch("navbar.html")
+      .then((response) => response.text())
+      .then((data) => {
+        document.getElementById("navbar").innerHTML = data;
+
+        // Attach toggleNavbar to the button if it exists
+        const navbarToggleButton = document.querySelector(".navbar-toggler");
+        if (navbarToggleButton) {
+          navbarToggleButton.onclick = toggleNavbar;
+        }
+
+        // Initialize navigation based on current URL fragment
+        handleSectionNavigation();
+
+        // Add click event to navbar links to close the navbar on small screens
+        const navLinks = document.querySelectorAll("#navbar .nav-link");
+        navLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            // Close the navbar on small screens when a link is clicked
+            if (window.innerWidth < 1405) {
+              const navbarPages = document.getElementById(
+                "navbarSupportedContent"
+              );
+              if (navbarPages) {
+                navbarPages.classList.remove("show");
+              }
+            }
+          });
+        });
+      })
+      .catch((error) => console.error("Error loading navbar:", error));
+
+    // Function to handle showing the correct section based on the URL fragment
+    function handleSectionNavigation() {
+      const sections = document.querySelectorAll("section");
+      const heading = document.querySelector("#page-heading");
+
+      // Hide all sections initially
+      sections.forEach((section) => (section.style.display = "none"));
+
+      // Get the fragment from the URL (e.g., "#Manuscript")
+      const fragment = window.location.hash;
+      const targetSection = fragment
+        ? document.querySelector(fragment)
+        : document.querySelector("#About");
+
+      if (targetSection) {
+        // Show the target section and update the heading
+        targetSection.style.display = "block";
+        const sectionName =
+          targetSection.getAttribute("data-heading") || targetSection.id;
+        heading.textContent = sectionName;
+
+        // Smooth scroll to the target section
+        targetSection.scrollIntoView({ behavior: "smooth" });
+
+        // Update the page title to reflect the current section
+        document.title = `${sectionName} - Home Page`;
+
+        // Collapse the navbar if the screen is small
+        const navbarPages = document.getElementById("navbarSupportedContent");
+        if (window.innerWidth < 1405 && navbarPages) {
+          navbarPages.classList.remove("show");
+        }
+      } else {
+        console.error(`Section ${fragment} not found.`);
+      }
+    }
+
+    // Listen for hash changes to activate navigation
+    window.addEventListener("hashchange", handleSectionNavigation);
+  </script>
+</html>
