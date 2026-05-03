@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="home.css">
+        <title>Home</title>
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    </head>
+    <body>
+    <header></header>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Load header
+          fetch('Main/header.html')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.text();
+            })
+            .then(data => {
+              document.querySelector('header').innerHTML = data;
+            })
+            .catch(error => {
+              console.error('Error fetching the header:', error);
+            });
+        });
+    </script>
+        <div id="home-page">
+            <div id="introduction">
+                <div style="height: 16px;"></div>
+                <h5>The <i>Chronicle</i> (Ժամանակագրութիւն) of Mattʿēos Uṙhayecʿi, known to most Western historians as Matthew of Edessa, was completed sometime before 1137 and covers events between the Armenian years 401 and 577 (April 952–February 1129). Matthew was a monk, an elder (erecʿ) in a monastery in Edessa, born perhaps in the third quarter of the eleventh century. His work was continued by Grigor, a priest living in the nearby town of Kesun, who provides information about events in the Armenian years 585–611 (February 1136–February 1163) as well. The Chronicle of Uṙhayecʿi is traditionally divided into three books covering respectively the Armenian years 401-500, 500–550, and 550–577, plus the continuation of Grigor.</h6>
+                <div style="height: 16px;"></div>
+                <h5>More information about the edition can be found in the menu bar above; alternatively, you can begin reading the text below.</h6>
+            </div>
+            <div style="display: flex; justify-content: center; margin: 24px 0px;">
+                <img alt="line graphic" src="Nkarner/blue_line.png" style="width: 70%;">
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <div class="row">
+                    <div class="col-6">
+                        <div style="margin-right: 12px;">
+                            <h5 style="text-align: center;">sigil: Lemma Text </h5>
+                            <h6 style="text-align: center;"></h6>
+                            <h5 class="MuiTypography-root MuiTypography-h5" style="text-align: center; margin-bottom: 6px;">401 թ. </h5>
+                            <h6 class="MuiTypography-root MuiTypography-h6" style="text-align: center;">2 Ապրիլ 952–1 Ապրիլ 953</h6>
+                            <div style="white-space: pre-line; margin-top: 16px; margin-left: 32px;">
+                               <p>Իսկ ընդ աւուրսն ընդ այնոսիկ և ի ամին ՆԱ եղև սով սաստիկ ի բազում տեղիս. բայց յաշխարհն հարաւոյ ի յերկրին տաճկաց եղև նեղութիւն մեծ, և առաւել քան զամենայն ի Միջագետս. և ի խստութենէ սովոյն տագնապ և տատանումն լինէր ի բազում տեղիս, և ի հռչակաւոր մայրաքաղաքն Ուռհա զոր կանգնեաց Տիգրան արքայ Հայոց. և կացեալ սովն յայնմ աշխարհին զամս Է, և անթիւ լինէր կոտորածն յերեսաց սովոյն այն. և աշխարհին տաճկաց լինէր անցումն մեծ, և քրիստոնեայք անթիւք մեռան յերեսաց բարկութեան սովուն։ Եւ զկնի Ե ամին եկեալ մարախ յայնմ գաւառին որպէս զաւազ ծովու և ապականեաց զերկիր. և սաստկանայր սովն առաւել քան զառաւել. և զայրացեալ բազմացն և գազանաբար անողորմ արձակեալ՝ զմիմեանս ուտէին. և իշխանքն և մեծամեծքն ընդաւք և մրգաւք կերակրէին, և եղև անցումն անասնոց. բազում գևղք և գաւառք անմարդ լինէին, և այլ ոչ շինեցան մինչև ցայսօր ժամանակի։</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div style="margin-right: 12px;">
+                            <h5 style="text-align: center;">sigil: Lemma Translation</h5>
+                            <h6 style="text-align: center;"></h6>
+                            <h5 style="text-align: center; margin-bottom: 6px;">The year 401 </h5>
+                            <h6 style="text-align: center;">2 April 952–1 April 953</h6>
+                            <div style="white-space: pre-line; margin-top: 16px; margin-left: 32px;">
+                                <p>Now in those days and in the year 401 there was a severe famine in many places. However, in the land to the south, in the country of the Tachiks, there was great suffering–more than in all the rest of Mesopotamia. With the worsening of the famine came turmoil and agitation in many areas, especially in the renowned metropolis of Edessa, which had been constructed by Tigran, king of the Armenians. Famine lasted in that land for seven years, and those who died from it were without number. There was great mortality also in the land of the Tachiks, and countless Christians died from the wrath of the famine. Five years later locusts—as many of them as the sands of the sea—came to that district and polluted the country. Meanwhile, the famine grew ever more devastating. Many people became enraged and, mercilessly, like beasts, attacked and devoured one another, and the princes and grandees dined on legumes and fruit, and the area became devoid of animals. Many villages and districts became depopulated, and nothing else was built up to the present day.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-bottom: 48px;">
+                        <a style="color: grey; text-decoration: none;" stabindex="0" role="button" aria-disabled="false" href="https://editions.byzantini.st/ChronicleME/#/Edition/470857">
+                            <span>
+                                <h4 style="color: grey">READ ON...</h4>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+    </body>
+</html> 

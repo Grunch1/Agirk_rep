@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 30vh;
+    background-color: #f0f0f0;
+}
+
+header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+nav {
+    background-color: #333;
+    padding: 1em;
+    text-align: center;
+}
+
+.nav-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 1em;
+    margin: 0 0.5em;
+    cursor: pointer;
+}
+
+.nav-btn:hover {
+    background-color: #777;
+}
+
+main {
+    padding: 2em;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Add color styles for the h1 elements */
+h1.B {
+    color: blue;
+}
+
+h1.R {
+    color: red;
+}
+
+h1.G {
+    color: green;
+}
+
+h1.Y {
+    color: yellow;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 30vh;
+    background-color: #f0f0f0;
+}
+
+header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+nav {
+    background-color: #333;
+    padding: 1em;
+    text-align: center;
+}
+
+.nav-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 1em;
+    margin: 0 0.5em;
+    cursor: pointer;
+}
+
+.nav-btn:hover {
+    background-color: #777;
+}
+
+main {
+    padding: 2em;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Add color styles for the h1 elements */
+h1.B {
+    color: blue;
+}
+
+h1.R {
+    color: red;
+}
+
+h1.G {
+    color: green;
+}
+
+h1.Y {
+    color: yellow;
+}
+
+</style>
+<body>
+    <header>
+        <img src="your-image.jpg" alt="Random Image">
+    </header>
+    <nav>
+        <button class="nav-btn" data-color="B">B</button>
+        <button class="nav-btn" data-color="R">R</button>
+        <button class="nav-btn" data-color="G">G</button>
+        <button class="nav-btn" data-color="Y">Y</button>
+    </nav>
+    <main>
+        <h1>Hello World!</h1>
+    </main>
+    <footer>
+        <p>Content information from <a href="https://www.wikipedia.org/">Wikipedia</a>.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.nav-btn');
+    const main = document.querySelector('main');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const color = button.dataset.color;
+            console.log(`Button clicked: ${color}`);
+            changeContent(color);
+        });
+    });
+
+    function changeContent(color) {
+        const contentMap = {
+            B: '<h1 class="B">Hello World! no.1</h1>',
+            R: '<h1 class="R">Hello World! no.2</h1>',
+            G: '<h1 class="G">Hello World! no.3</h1>',
+            Y: '<h1 class="Y">Hello World! no.4</h1>'
+        };
+
+        console.log(`Changing content to color: ${color}`);
+        main.innerHTML = contentMap[color];
+    }
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<IfModule mod_mime.c>
+  AddType text/javascript .js
+  AddType text/css .css
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set Content-Type "text/javascript" "expr=%{REQUEST_URI} =~ m#\.js$#"
+</IfModule>

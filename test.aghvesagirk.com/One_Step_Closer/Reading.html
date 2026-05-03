@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronicle of Aghvesagirk</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>The Chronicle of Matthew of Aghvesagirk</h1>
+    </header>
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+nav {
+    background-color: #ddd;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+nav li:hover {
+    background-color: darkgrey;
+}
+
+.main-content {
+    display: flex;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-right: 20px;
+}
+
+.graph-section {
+    flex-grow: 1;
+    background-color: #eaeaea;
+    padding: 10px;
+    border: 1px solid #ccc;
+    position: relative;
+}
+
+#graphCanvas {
+    width: 100%;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.bar-chart {
+    width: 100%;
+    height: 50px;
+    background-color: #d8d8d8;
+    margin-top: 10px;
+}
+
+.bottom-content {
+    display: flex;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.text-area {
+    flex-grow: 3;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    margin-right: 20px;
+}
+
+.text-area h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.index-panel {
+    width: 20%;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.year-box {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.year-box:hover {
+    background-color: darkgrey;
+}
+
+/* New lorem ipsum section styling */
+.lorem-ipsum-section {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+}
+
+.lorem-ipsum-section h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.lorem-ipsum-section p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+    </style>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Methods</li>
+            <li>Manuscripts</li>
+            <li>Edition</li>
+            <li>Exploration</li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Layout -->
+    <div class="main-content">
+        <!-- Left Sidebar: View Options Panel -->
+        <div class="sidebar">
+            <h3>View Options</h3>
+            <label><input type="checkbox"> Graph</label><br>
+            <label><input type="checkbox"> Persons</label><br>
+            <label><input type="checkbox"> Places</label><br>
+            <label><input type="checkbox"> Dates</label><br>
+        </div>
+
+        <!-- Main Graph Area -->
+        <div class="graph-section">
+            <canvas id="graphCanvas"></canvas>
+            <div class="bar-chart"></div> <!-- Placeholder for bar chart -->
+        </div>
+    </div>
+
+    <!-- Text and Index Panel Section -->
+    <div class="bottom-content">
+        <!-- Text Area -->
+        <div class="text-area">
+            <h2 id="bookTitle">The year 401</h2>
+            <div id="armenianText">
+                <p>Սկզբնական հայերեն տեքստը այստեղ է:</p>
+            </div>
+            <div id="englishText">
+                <p>The initial English translation text will appear here.</p>
+            </div>
+        </div>
+
+        <!-- Index Panel -->
+        <div class="index-panel">
+            <div class="year-box">The year 401<br>(2 April 952 – 1 April 953)</div>
+            <div class="year-box">The year 407<br>(1 April 958 – 31 March 959)</div>
+            <div class="year-box">The year 408<br>(1 April 959 – 30 March 960)</div>
+            <!-- Add more year boxes as needed -->
+        </div>
+    </div>
+
+    <!-- Lorem Ipsum Section -->
+    <div class="lorem-ipsum-section">
+        <h2>Lorem Ipsum: A Placeholder Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pharetra, quam eu interdum efficitur, mi est vulputate arcu, vel iaculis tortor felis at mi. Integer vel urna et elit faucibus congue. Nullam at nisl nec sapien auctor cursus. Etiam euismod est non elit hendrerit, et ullamcorper nunc lobortis. In nec suscipit dui, non sollicitudin erat. Suspendisse potenti. Ut dictum, erat ut elementum porttitor, est felis viverra est, non tincidunt arcu ligula a arcu. Maecenas at nunc at orci blandit scelerisque.</p>
+        <p>Sed non orci id ligula faucibus cursus. Phasellus sollicitudin consectetur diam nec consectetur. Pellentesque a nisi et orci varius mollis. Sed ullamcorper egestas lacus, id porttitor magna sodales quis. Quisque sed felis a ex feugiat finibus. Vivamus efficitur mollis ligula, ut tempor orci luctus sit amet. Proin pretium vel lectus et interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed vel est ut felis porta dictum.</p>
+        <p>Aenean finibus turpis a turpis iaculis, sed dignissim est aliquet. Nulla vestibulum lectus vitae turpis dapibus, sed hendrerit turpis dignissim. Suspendisse ac est efficitur, luctus urna eget, ornare leo. Mauris non gravida arcu. Integer facilisis tellus id ligula convallis, vitae efficitur elit mollis. Praesent posuere purus sit amet urna vehicula scelerisque. Aliquam erat volutpat.</p>
+    </div>
+
+</body>
+</html>
