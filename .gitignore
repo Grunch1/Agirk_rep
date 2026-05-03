@@ -1,0 +1,124 @@
+# Root .gitignore for public_html repository
+
+# Node / frontend build artifacts
+node_modules/
+*/node_modules/
+Source code/node_modules/
+Source code/dist/
+Source code/.vite/
+Source code/.cache/
+Source code/coverage/
+Source code/build/
+
+# PHP dependencies and generated files
+myadmin/vendor/
+myadmin/js/dist/
+myadmin/js/node_modules/
+myadmin/.cache/
+vendor/
+
+
+# note
+
+test.aghvesagirk.com/Nkarner
+test.aghvesagirk.com/Lemma\mZip
+
+# Generated data exports
+converted/
+converted (js)/
+converted (test)/
+
+# Vite / React artifacts
+Source code/.temp/
+Source code/npm-debug.log*
+Source code/yarn-debug.log*
+Source code/pnpm-debug.log*
+
+# Build outputs and caches
+dist/
+build/
+.cache/
+.vite/
+.env.local
+
+# Logs and temporary files
+*.log
+*.log*
+*.tmp
+*.bak
+*.swp
+*.swo
+*.orig
+*~
+*~.*
+
+# Generated analysis and tree files
+analysis_output.txt
+tree.txt
+tree_output.txt
+analyze.py
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor settings
+.vscode/
+.idea/
+*.code-workspace
+.project
+.classpath
+
+# Environment files
+*.env
+*.env.*
+!.env.example
+
+# PHP session / temp files
+*.session
+*.cache
+*.tmp
+session/
+temp/
+
+# macOS / IDE
+.AppleDouble
+.LSOverride
+*.iml
+*.iws
+*.ipr
+
+# Optional: ignore private keys if accidentally added
+*.pem
+*.key
+*.crt
+*.pfx
+
+# OS generated files
+._*
+.Spotlight-V100
+.Trashes
+
+# Ignore dependency directories in nested projects
+**/node_modules/
+**/dist/
+**/build/
+**/.vite/
+**/.cache/
+**/vendor/
+
+# Nested git repos
+**/.git/
+
+# Compiled files
+*.pyc
+__pycache__/
+*.o
+*.a
+*.so
+
+
+# note
+test.aghvesagirk.com/Nkarner/
+test.aghvesagirk.com/Lemma/mZip/

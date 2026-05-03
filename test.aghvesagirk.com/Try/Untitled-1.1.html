@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing...</title>
+    <link rel="shortcut icon" href="Logos.jpg" type="image/jpg">
+
+    <style>
+        :root {
+            --dark: #343a40;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fffcf4;
+        }
+
+        .Manuscript_page_1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .Manuscript_Box {
+            height: 350px;
+            width: 300px;
+            border: 2px solid #212529;
+            padding: 50px;
+            margin: 100px;
+            background-color: #d2b48c;
+        }
+
+        .Manuscript_Details {
+            height: 550px;
+            width: 400px;
+            border: 2px solid #212529;
+            padding: 50px;
+            margin: 100px;
+            background-color: #d2b48c;
+        }
+
+        .Reference_Page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 10px;
+            height: 100vh;
+            /* delete after testing*/
+        }
+
+        .Reference_of_Araks {
+            height: 220px;
+            width: 500px;
+            border: 2px solid #212529;
+            padding: 20px;
+            background-color: lightblue;
+            box-sizing: border-box;
+            margin: 10px 0;
+        }
+
+        /* Styles for the top image container with background */
+        .top-image-container {
+            width: 100%;
+            /* Set width to 100% to fill the parent */
+            height: 390px;
+            /* Set height to 390px */
+            background: url('parchment.jpg') center/cover no-repeat;
+            /* Set background image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*  */
+        /*  */
+        /*  */
+        /*  */
+        /*  */
+        /*  */
+        /*  */
+        /*  */
+        /*  */
+        /*  */
+        /*  */
+        /*  */
+        /*  */
+        /* Styles for the top image */
+        .top-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            /* Ensure the image is contained within the specified area */
+        }
+
+        /* Default styles for navbar */
+        .navbar {
+            background-color: #f8f9fa;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Add shadows */
+
+        }
+
+        .navbar-div {
+            width: 100%;
+            max-width: 70%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-toggler {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .navbar-toggler .navbar-toggler-icon {
+            font-size: 1.5rem;
+        }
+
+        .navbar-pages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            height: 100%;
+        }
+
+        .nav-item {
+            margin-right: 15px;
+            height: 100%;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-link:hover {
+            color: #d62700;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #d62700;
+            text-decoration: underline;
+        }
+
+        /* Ensure at least 10% space in the middle */
+        .d-flex {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 767px) {
+            .navbar-div {
+                max-width: 100%;
+            }
+
+            .navbar-toggler {
+                display: block;
+            }
+
+            .navbar-pages {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                left: 10px;
+                background-color: #f8f9fa;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                width: calc(100% - 20px);
+            }
+
+            .navbar-pages.active {
+                display: flex;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .d-flex {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+
+        /* Table Editions */
+        .table-container {
+            margin: 0 auto;
+            width: 60%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Table Editions */
+
+        /* About */
+        p {
+            margin-bottom: 20px;
+        }
+
+        p.ii {
+            margin-bottom: 16px;
+        }
+
+        img {
+            margin: 20px;
+        }
+
+        div {
+            padding: 15px;
+        }
+
+        div.ii {
+            padding-top: 20px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        div.iii {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        h2 {
+            margin-bottom: 8px;
+        }
+
+        h4 {
+            margin-bottom: 8px;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .flex-item {
+            flex: 1;
+            min-width: 200px;
+            /* Adjust based on desired responsiveness */
+        }
+
+        .ii .flex-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .ii .flex-item {
+            flex: 1;
+            margin: 0;
+        }
+
+        /* About */
+    </style>
+</head>
+
+<body>
+    <!-- Top image -->
+    <div class="top-image-container">
+        <img src="TopImage.png" alt="Top Image" class="top-image">
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-div">
+            <!-- Toggler button for smaller screens -->
+            <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation" onclick="toggleNavbar()">
+                <span class="navbar-toggler-icon">&#9776;</span> Menu
+            </button>
+
+            <!-- Navigation menu -->
+            <ul class="navbar-pages" id="navbarSupportedContent">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#About">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#Methods">Methods</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#Manuscripts">Manuscript</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#Manuscripts_Detailed">Manuscripts_Detailed</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#Edition">Edition</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#References">References</a>
+                </li>
+            </ul>
+
+            <!-- Search form -->
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <br><br>
+    <h1 id="Manuscript"> __"Manuscript Page View"</h1>
+    <div class="Manuscript_page_1">
+        <div class="Manuscript_Box">
+            <h3> Title : MS 123</h3>
+            <h4> Place : Livorno</h4>
+            <h4> Century : 17th century</h4>
+            <h4> Scribe : Ter Hisik</h4>
+            <h6> Colophone :
+                ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </h6>
+            <button type="Manuscript_Read_">Read</button>
+            <button type="Manuscript_Download">Download</button>
+        </div>
+
+        <div class="Manuscript_Box">
+            <h3> Title : MS 456</h3>
+            <h4> Place : Livorno</h4>
+            <h4> Century : 17th century</h4>
+            <h4> Scribe : Ter Hisik</h4>
+            <h6> Colophone :
+                ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </h6>
+            <button type="Manuscript_Read_">Read</button>
+            <button type="Manuscript_Download">Download</button>
+        </div>
+
+        <div class="Manuscript_Box">
+            <h3> Title : MS 789</h3>
+            <h4> Place : Livorno</h4>
+            <h4> Century : 17th century</h4>
+            <h4> Scribe : Ter Hisik</h4>
+            <h6> Colophone :
+                ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </h6>
+            <button type="Manuscript_Read_">Read</button>
+            <button type="Manuscript_Download">Download</button>
+        </div>
+    </div>
+
+
+    <h1 id="Manuscripts_Detailed"> __"Manuscript Detailed View"</h1>
+    <div class="Manuscript_page_1">
+        <img src="manuscript_img.jpg" alt="manuscript_img" width="390" height="640">
+        <div class="Manuscript_Details">
+            <h2> Title : MS 1234</h2>
+            <h3> Place : Livorno</h3>
+            <h3> Century : 17th century</h3>
+            <h3> Scribe : Ter Hisik</h3>
+            <h3> Other : some info</h3>
+            <h3> Other : some info</h3>
+            <h3> Other : some info</h3>
+            <h3> Other : some info</h3>
+            <h3> Other : some info</h3>
+            <h5> Colophone :
+                ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            </h5>
+            <button type="Manuscript_Read_">Read</button>
+            <button type="Manuscript_Download">Download</button>
+        </div>
+    </div>
+
+    <h1 id="References"> __"References Page View" Structures</h1>
+    <div class="Reference_Page">
+        <div class="Reference_of_Araks">
+            <h3> Title : MS 1234</h3>
+            <h4>
+                - - - - - - - - - - - - - - - - - - - - - - <a href="www.google.com"> Greek Story origin link</a>
+            </h4>
+            <button type="Manuscript_Download">Or just learn More</button>
+        </div>
+        <div class="Reference_of_Araks">
+            <h3> Title : MS 5678</h3>
+            <h4>
+                - - - - - - - - - - - - - - - - - - - - - - <a href="www.google.com"> Farsi Story origin link</a>
+            </h4>
+            <button type="Manuscript_Download">Or just learn More</button>
+        </div>
+        <div class="Reference_of_Araks">
+            <h3> Title : MS 910</h3>
+            <h4>
+                - - - - - - - - - - - - - - - - - - - - - - <a href="www.google.com"> Roman Story origin link</a>
+            </h4>
+            <button type="Manuscript_Download">Or just learn More</button>
+        </div>
+    </div>
+
+    <h1 id="Edition">__"Editions Page" Structure</h1>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Title</th>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book1" target="_blank">Book Title 1</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book2" target="_blank">Book Title 2</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book3" target="_blank">Book Title 3</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book4" target="_blank">Book Title 4</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book5" target="_blank">Book Title 5</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book6" target="_blank">Book Title 6</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book7" target="_blank">Book Title 7</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book8" target="_blank">Book Title 8</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book9" target="_blank">Book Title 9</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book10" target="_blank">Book Title 10</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book11" target="_blank">Book Title 11</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book12" target="_blank">Book Title 12</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book13" target="_blank">Book Title 13</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book14" target="_blank">Book Title 14</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book15" target="_blank">Book Title 15</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book16" target="_blank">Book Title 16</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book17" target="_blank">Book Title 17</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book18" target="_blank">Book Title 18</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book19" target="_blank">Book Title 19</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://example.com/book20" target="_blank">Book Title 20</a></td>
+            </tr>
+        </table>
+
+        <br>
+        <br>
+        <h1 id="About">"About Page" Structure</h1>
+        <section>
+            <div class="i">
+                <h2>About the Chronicles</h2>
+                <p>Paragraph 1</p>
+                <p>Paragraph 2</p>
+                <p>Paragraph 3</p>
+                <p>Paragraph 4</p>
+            </div>
+
+            <div class="i">
+                <img src="gic.png" style="width: 100%;" alt="Placeholder Image">
+            </div>
+
+            <div class="ii">
+                <div>
+                    <h2>About the project</h2>
+                    <p class="ii">This edition has its beginnings in the D.Phil. thesis of Tara L. Andrews, completed at
+                        the University of Oxford in 2009. The groundwork for the present edition has been laid thanks to
+                        the generous support of the Swiss National Science Foundation, through the project The Chronicle
+                        of Matthew of Edessa Online, which ran from 2015 to 2019.</p>
+                    <h4>Project Team</h4>
+                </div>
+
+                <div class="flex-container">
+                    <div class="flex-item iii">
+                        <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+                    </div>
+                    <div class="flex-item iii">
+                        <p class="ii">Main Contributor</p>
+                    </div>
+                </div>
+
+                <div class="flex-container">
+                    <div class="flex-item iii">
+                        <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+                    </div>
+                    <div class="flex-item iii">
+                        <p class="ii">sub-Contributor</p>
+                    </div>
+                </div>
+
+                <div class="flex-container">
+                    <div class="flex-item iii">
+                        <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+                    </div>
+                    <div class="flex-item iii">
+                        <p class="ii">sub-Contributor</p>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Other Contributors</h4>
+            <h5>Web Development</h5>
+
+            <div class="ii">
+                <div class="flex-container">
+                    <div class="flex-item iii">
+                        <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+                    </div>
+                    <div class="flex-item iii">
+                        <p class="ii"> web-developer</p>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function toggleNavbar() {
+                    var navbarContent = document.getElementById('navbarSupportedContent');
+                    navbarContent.classList.toggle('active');
+                }
+            </script>
+        <h1 id="Methods">"Methods Page Structure" and others - in development</h1>
+</body>
+
+</html>

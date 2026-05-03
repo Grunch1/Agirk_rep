@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #008080;
+      position: relative;
+    }
+    body::before,
+    body::after {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      z-index: 1;
+    }
+    body::before {
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+    }
+    body::after {
+      bottom: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+    }
+    .form-container {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 300px;
+      border: 4px solid #008080;
+      background: rgba(255, 255, 255, 0); /* Transparent background */
+    }
+    .form-container input {
+      width: calc(100% - 40px);
+      padding: 10px 10px 10px 40px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .form-container .icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px; /* Adjust width as needed */
+      height: 20px; /* Adjust height as needed */
+      background-size: cover;
+    }
+    .form-container .icon-first {
+      background-image: url('path/to/a.png'); /* Path to your 'a.png' image */
+    }
+    .form-container .icon-second {
+      background-image: url('path/to/b.png'); /* Path to your 'b.png' image */
+    }
+    .form-container button {
+      background-color: #004d4d;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    .form-container button:hover {
+      background-color: #008080;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Login</h2>
+    <form onsubmit="checkCredentials(event)">
+      <div style="position: relative;">
+        <span class="icon icon-first"></span>
+        <input type="text" id="username" placeholder="Username" required />
+      </div>
+      <div style="position: relative;">
+        <input type="password" id="password" placeholder="Password" required />
+        <span class="icon icon-second"></span>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    var tries = 0;
+    function checkCredentials(event) {
+      event.preventDefault(); // Prevent form submission
+      
+      // Retrieve input values
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      
+      // Example credentials (replace with your actual credentials)
+      var correctUsername = 'user';
+      var correctPassword = 'password';
+      
+      // Credentials Check
+      if (username === correctUsername && password === correctPassword) {
+        sessionStorage.setItem('isLoggedIn', 'true');
+        window.location.href = 'SecretPage.html';
+      } else if(tries > 3) {        
+        print(tries);
+        window.location.href = 'https://www.ravbug.com/bsod/bsod10/';
+      }else {
+        tries = tries + 1;
+        // console.log(tries);
+        // Display error message or handle incorrect credentials
+        alert('Incorrect username or password.' + tries);
+      }
+    }
+  </script>
+</body>
+</html>

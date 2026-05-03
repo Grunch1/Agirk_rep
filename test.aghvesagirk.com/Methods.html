@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="methods.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>methods</title>
+</head>
+<body>
+    <header></header>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Load header
+          fetch('Main/header.html')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.text();
+            })
+            .then(data => {
+              document.querySelector('header').innerHTML = data;
+            })
+            .catch(error => {
+              console.error('Error fetching the header:', error);
+            });
+        });
+    </script>
+    <div class="container content">
+        <div class="row">
+            <div class="col-md-auto">
+                <h2>Methods of edition</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
+                <h4>Digital workflow</h4>
+                <p>
+                    This edition of the Chronicle has been conceived and implemented with a fully digital workflow. Our implementation relies on two innovative strands of development. The first is a graph-based computational model for critical editions of texts that survive in multiple manuscript copies; more about this model can be found in its documentation. The second strand of development is the use of a "continuous integration" system for management and curation of the textual data, whose stages are described here.
+                </p>
+                <hr>
+                <h5>Manuscript transcription</h5>
+                <p>
+                    We have obtained digital images of most of the extant manuscripts; although we do not, generally speaking, have the rights to publish these, we have been able to use them as the basis of our transcriptions.
+                </p>
+                <img class="framed" src="methods_interface.jpg" width="500" alt="T-PEN user interface">
+                <p>
+                    Transcription was done using T-PEN, a freely available online tool provided by the Center for Digital Theology at St. Louis University. Each line of text is associated with a region of a manuscript image; selected elements of the Text Encoding Initiative were used to capture certain features of the text. (For more information on the transcription, see the "Guidelines for transcription" below.) 
+                </p>
+                <hr>
+                <h5>The continuous integration pipeline</h5>
+                <img class="framed" src="methods_pipeline.png" width="100%" alt="Continuous integration pipeline">
+                <h6>
+                    <code>tpen-backup</code>
+                </h6>
+                <p>Our pipeline process begins each day with export of the T-PEN data in its native Shared Canvas JSON format.</p>
+                <h6>
+                    <code>tpen2tei</code>
+                </h6>
+                <p>The next stage is to convert our transcription files to TEI-XML source files using the Python library, which was developed within the project. The transcriptions as they exist in T-PEN, together with the custom transformations defined for the project for use with tpen2tei, constitute the authoritative source of transcription information.</p>
+                <h6>
+                    <code>validate-tei-xml</code>
+                </h6>
+                <p>
+                    Wherease the step in the pipeline will detect and alert us to any badly-formed XML output from our transcriptions (e.g. bad syntax or mismatched element tags), it does not validate that XML against any TEI schema. That task is done in the subsequent step. If any transcription file is found to have invalid TEI encoding, the data pipeline will stop at this point until the problem is found and fixed
+                </p>
+                <h6>
+                    <code>collate</code>
+                </h6>
+                <p>
+                    Once transcribed, the manuscript texts have been collated with each other, section-by-section, using the software. We also used the collation to assist in the correct expansion of abbreviated words; these abbreviations and expansions are stored in a separate database, which is consulted for later collation runs in order to improve the results.
+                </p>
+                <h6>
+                    <code>feed-editions-moe</code>
+                </h6>
+                <p>After segmentation into sections and collation, the results are loaded into the Stemmaweb suite of tools for further processing.</p>
+                <hr>
+                <h5>Editorial work after the pipeline</h5>
+                <p>Automated collation, although very good in most cases, is by no means perfect. Each section, once it reached this point in the process, was imported into the suite of tools for further work. The variant graph viewer within Stemmaweb allows corrections to be made to the collation, and allows the association and classification of individual variants.</p>
+                <h5>Stemmatic analysis</h5>q
+                <p>Stemmatic analysis TODO</p>
+                <p>Text establishment TODO</p>
+                <p>Annotation and translation TODO</p>
+                </div>
+                </div>
+                <div class="row divider">
+                    <div class="col-md-12">
+                        <img src="../home/blue_line.png" style="margin: 3%; width: 100%;" alt="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-auto">
+                        <h4>Guidelines for transcription</h4>
+                        <h5 id="text-division">Text division</h5>
+                        <ul>
+                            <li>Divisions are marked where they occur with the hi tag.</li>
+                            <li>A milestone tag has been inserted at the beginning of each year-specific entry, where the n attribute contains the number of the Armenian year in question. There are also some intra-year milestones when entries are particularly long and include self-contained sub-sections, such as for the letter of Tzimiskēs, the oration of Barseł vardapet, or the confession of faith of Gagik Bagratuni.
+                            </li>
+                            <li>Some manuscripts contain their own section markers or numberings; these are represented a000s notes.</li>
+                        </ul>
+                        <h5 id="special-characters">Special characters</h5>
+                        <ul>
+                            <li>Ideograms and ligatures that form a single glyph have been marked as such with a g</code> tag containing the characters that the glyph would normalize to.</li>
+                            <li>
+                                If an ideogram is followed by seemingly redundant characters (e.g. [erkir]իր), or if a ligature appears to stand for a different set of characters than usual (e.g. the պտ ligature in place of պետ), it is marked as follows:
+                            </li>
+                            <li>All glyphs used in the transcription of a particular manuscript are defined in the TEI header for that manuscript.
+                            </li>
+                        </ul>
+                        <h5 id="punctuation">Punctuation</h5>
+                        <ul>
+                            <li>No distinction between '.' and ',' has been attempted in the transcriptions, as these were not distinguishable in the period that most of the manuscripts were written.</li>
+                            <li>If a manuscript seems to make substantial use of the Armenian character, it has been included in the transcription.</li>
+                            <li>Other accent marks, whatever their seeming function, are rendered with the Armenian ՛ character following the closest vowel to where they occur.</li>
+                            <li>Hyphens, when they appear, are rendered with the Armenian ֊ character.</li>
+                            <li>Apostrophes before ի are not marked, although they are taken into consideration when the text is transcribed in order to determine whether a word boundary has occurred.</li>
+                        </ul>
+                        <h5 id="abbreviations">Abbreviations</h5>
+                        <ul>
+                            <li>Abbreviations are marked with the tag. In general we have not supplied the expansion in the transcription; this is done as part of the collation process.</li>
+                            <li>The tag surrounds the letters marked in the abbreviation, rather than the whole word (unless the whole word is marked.) This is in many cases approximate at best.</li>
+                            <li>We do not distinguish between different forms of abbreviation (e.g. line above vs. two hatch marks). Likewise, if there are two contiguous abbreviation marks in a word, they can be represented as a single abbreviation.</li>
+                        </ul>
+                        <h5 id="corrections">Corrections</h5>
+                        <ul>
+                            <li>If the correction is a replacement, it goes into a construct.</li>
+                            <li>We note the mechanism used to do the correction in the attribute, placed on whichever element is appropriate.</li>
+                            <li>We note a for any added text, unless it is in.</li>
+                            <li>Missing capitals that were evidently meant to be rendered in colored ink are included by means of a tag.
+                            </li>
+                        </ul>
+                        <h5 id="numbers">Numbers</h5>
+                        <ul>
+                            <li>Numbers are tagged using a element, with the numerical value of the number as written.</li>
+                            <li>Periods (i.e. Armenian semicolons) around numbers are assumed to be part of the number representation rather than separate punctuation.</li>
+                            <li>If the number is marked with a line over it, the line is transcribed with the ՟ character.</li>
+                            <li>When a number is split with և, և ի, or similar, it has been wrapped in a single tag (e.g. դ՟ճ՟ և է՟ becomes</li>
+                            <li>If the number is declined explicitly, the declination goes outside the number tag <em>only</em> if it is the last part of the number. e.g. but.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                            <div class="row divider">
+                                <div class="col-md-12">
+                                    <img src="images/edessa_line.png" alt="">
+                                </div>
+                            </div>
+                            <div class="row"><div class="col-md-auto">
+                                <h4>Principles of text establishment</h4>
+                                <p>The following principles of original text comparison were applied while preparing the critical edition of the Chronicle of Matthew of Edessa.</p>
+                            <ul>
+                                <li>The manuscript orthography «աւ» typical of the twelfth century has been preferred to the use of «օ» as used in previous publications (Jerusalem 1869, Vagharshapat 1898).
+                                </li>
+                                <li>Likewise, we have avoided use of the letter «ֆ» as it post-dates the twelfth century. In proper names where the letter «ֆ» appears (M1896, M1767, Ox e.32.), we have used «փ» instead.
+                                </li>
+                                <li>Conversely, although the glyph «և» was not generally in use by the twelfth century, we have retained it in preference to «եւ» on the grounds that many computer fonts automatically render the latter as the former, and it is therefore unfeasible to proofread for this.
+                                </li>
+                                <li>Preference has been given to the classical Armenian orthographic form of the word according to the standard reference works (e.g. <i>Nor Bargirkʿ Haykakan Lezui</i>, the Armenian-English dictionary of Bedrossian). e.g. կաթուղիկոս instead of կաթողիկոս, թուականութիւն instead of թվականութիւն.
+                                </li>
+                                <li>Proper names are rendered in lower-case letters in the vast majority of manuscripts (with the exception of the manuscript Bz644). This has been retained for the critical text.
+
+                                </li>
+                                <li>Numbers have been rendered with Armenian numerals in a normalised form, e.g. Ն rather than ԴՃ for 400, if they are rendered in the manuscripts as such. Where the manuscripts agree that the number was written out (e.g. չորս հարիւր), this has been retained. The abbreviation of numbers and dates with letters mainly appears after the «Bolorgir» became the dominant form of writing from the 13th century. Before that, during the «Yerkatagir» period, numbers and dates were mainly written out in words.
+                                </li>
+                                <li>The intent of the punctuation system is to convey the meaning of the sentence to readers; in this sense, punctuation has been treated more like markup than like reconstructed text. The semicolon (".") and the full stop ("") have been retained in the edition according to manuscript consensus; quotation marks and question marks have been added where appropriate, although these do not usually appear in the manuscripts.
+
+                                </li>
+                            </ul>
+                        </div>
+                        </div>
+                        <hr style="height: 8px; color: rgb(66, 66, 66)">
+                            <div style="margin: 2%;" class="row footer">
+                                <div class="col-md-auto">
+                                    <img src="footer_logo1.png" width="100" alt="CC-BY-SA">
+                            </div>
+                            <div class="col-md-auto">
+                                <p>Created with the generous support of:</p>
+                            </div>
+                            <div class="col-md-auto">
+                                <img src="footer_logo2.png" alt="FNSNF logo" height="50px">
+                                <img src="footer_logo3.jpg" alt="Universität Wien logo" height="50px">
+                            </div>
+                        </div>
+                        </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+    </body>
+</html> 

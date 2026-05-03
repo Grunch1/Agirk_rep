@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gourmet Admin Page</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="shortcut icon" href="Admin_logo.png">
+  
+  <style>
+    body {
+      font-family: "Times New Roman", Georgia, Serif;
+      background-color: #f5f5f5;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Playfair Display", serif;
+      letter-spacing: 5px;
+    }
+    .w3-top {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .w3-bar .w3-button {
+      color: white;
+    }
+    .w3-header {
+      background: url('header.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      padding: 60px;
+      text-align: center;
+    }
+    .w3-header h1 {
+      font-size: 50px;
+    }
+    .action-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .action-container input,
+    .action-container select,
+    .action-container textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .action-container textarea {
+      height: 100px;
+      resize: vertical;
+    }
+    .action-container button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .action-container button:hover {
+      background-color: #45a049;
+    }
+    #innerAside {
+      width: 100%;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .Gabriel-button {
+            color: black !important;
+        }
+        
+    .G-name {
+            font-weight: bold;
+            text-decoration: none;
+            color: #000;
+            position: relative;
+        }
+
+        .G-name::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #8A2BE2, #00CED1, #FF007F);
+            transform: scaleX(0);
+            animation: underline 2s infinite;
+        }
+
+        @keyframes underline {
+            0%, 100% { transform: scaleX(0); }
+            50% { transform: scaleX(1); }
+        }
+table {
+  width: 80%;
+  max-width: 80%;
+  margin: 0 auto; /* centers the table */
+  border-collapse: collapse;
+  table-layout: fixed; /* forces equal column widths */
+}
+
+table th, table td {
+  border: 1px solid #000;
+  padding: 8px;
+  box-sizing: border-box;
+  word-wrap: break-word; /* ensures content wraps within cells */
+}
+
+
+    
+  </style>
+  
+  <script>
+    // Helper function to send a POST request to update_tags.php.
+    function updateTag(group, node) {
+      fetch('update_tags.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ group, node })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          console.error("Error:", data.error);
+          alert("Error: " + data.error);
+        } else {
+          console.log("Update successful:", data);
+        }
+      })
+      .catch(err => {
+        console.error("Fetch error:", err);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const containers = document.querySelectorAll(".action-container");
+
+      /* --- 1. Create a reference link --- */
+      const createLinkContainer = containers[0];
+      const createLinkInputs = createLinkContainer.querySelectorAll("input");
+      const createLinkButton = createLinkContainer.querySelector("button");
+
+      createLinkButton.addEventListener("click", function () {
+        const text = createLinkInputs[0].value.trim();
+        const refLink = createLinkInputs[1].value.trim();
+        if (text && refLink) {
+          updateTag("References", { text: text, value: refLink });
+        } else {
+          alert("Please fill out both fields for the reference link.");
+        }
+      });
+
+      /* --- 2. Tag a text --- */
+      const tagTextContainer = containers[1];
+      const tagTextInput = tagTextContainer.querySelector("input[type='text']");
+      const tagSelect = tagTextContainer.querySelector("select");
+      const tagTextButton = tagTextContainer.querySelector("button");
+
+      // Map option text to JSON keys.
+      const tagMapping = {
+        "Person": "Individuals",
+        "Animal": "Animals",
+        "Location": "Locations",
+        "Date": "Dates"
+      };
+
+      tagTextButton.addEventListener("click", function () {
+        const text = tagTextInput.value.trim();
+        const selectedOptionText = tagSelect.options[tagSelect.selectedIndex].text;
+        const group = tagMapping[selectedOptionText];
+        if (text && group) {
+          updateTag(group, { text: text });
+        } else {
+          alert("Please enter text and select a valid tag type.");
+        }
+      });
+
+      /* --- 3. Add a description --- */
+      const addDescContainer = containers[2];
+      const addDescInput = addDescContainer.querySelector("input[type='text']");
+      const descriptionTextarea = addDescContainer.querySelector("textarea");
+      const addDescButton = addDescContainer.querySelector("button");
+
+      addDescButton.addEventListener("click", function () {
+        const text = addDescInput.value.trim();
+        const description = descriptionTextarea.value.trim();
+        if (text && description) {
+          updateTag("Footnotes", { text: text, value: description });
+        } else {
+          alert("Please enter both text and description.");
+        }
+      });
+
+      // You can add similar event listeners for additional buttons (e.g., Button 4) if needed.
+    });
+    
+    // display tagTable
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("tags.json")
+    .then(response => response.json())
+    .then(data => {
+      displayTags(data);
+      displayTagCounts(data);
+    })
+    .catch(error => console.error("Error loading JSON:", error));
+
+  function displayTags(data) {
+    const container = document.getElementById("tagTable");
+    container.innerHTML = ""; 
+
+    const categoryColors = {
+      "Locations": "#FF5733",
+      "Individuals": "#33A1FF",
+      "Animals": "#4CAF50",
+      "Dates": "#FFC300",
+      "References": "#9C27B0",
+      "Footnotes": "#FF9800"
+    };
+
+    let colorIndex = 0;
+    const defaultColors = ["#E57373", "#64B5F6", "#81C784", "#FFD54F", "#BA68C8", "#F06292"];
+
+    for (const [category, items] of Object.entries(data)) {
+      if (items.length === 0) continue; 
+
+      const bgColor = categoryColors[category] || defaultColors[colorIndex % defaultColors.length];
+      colorIndex++;
+
+      const title = document.createElement("h1");
+      title.textContent = category;
+      title.style.backgroundColor = bgColor;
+      title.style.color = "white";
+      title.style.padding = "10px";
+      title.style.borderRadius = "5px";
+      title.style.textAlign = "center";
+      title.id = `tag-${category}`; 
+      container.appendChild(title);
+
+      const table = document.createElement("table");
+      table.style.width = "80%";
+      table.style.maxWidth = "80%";
+      table.style.margin = "0 auto";
+      table.style.borderCollapse = "collapse";
+      table.style.tableLayout = "fixed";
+
+      const hasValueColumn = category === "Footnotes" || category === "References";
+      const headers = hasValueColumn ? ["Text", "Value"] : ["Text"];
+
+      const thead = document.createElement("thead");
+      const headerRow = document.createElement("tr");
+      headers.forEach(headerText => {
+        const th = document.createElement("th");
+        th.textContent = headerText;
+        th.style.border = "1px solid black";
+        th.style.padding = "8px";
+        th.style.backgroundColor = "#f2f2f2";
+        headerRow.appendChild(th);
+      });
+
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement("tbody");
+      items.forEach(item => {
+        const row = document.createElement("tr");
+
+        const textCell = document.createElement("td");
+        textCell.textContent = item.text;
+        textCell.style.border = "1px solid black";
+        textCell.style.padding = "8px";
+        row.appendChild(textCell);
+
+        if (hasValueColumn) {
+          const valueCell = document.createElement("td");
+          if (category === "References" && item.value) {
+            const link = document.createElement("a");
+            link.href = item.value;
+            link.textContent = item.value;
+            link.target = "_blank";
+            valueCell.appendChild(link);
+          } else {
+            valueCell.textContent = item.value ? item.value : "-";
+          }
+          valueCell.style.border = "1px solid black";
+          valueCell.style.padding = "8px";
+          row.appendChild(valueCell);
+        }
+
+        tbody.appendChild(row);
+      });
+
+      table.appendChild(tbody);
+      container.appendChild(table);
+    }
+  }
+
+  function displayTagCounts(data) {
+    const countContainer = document.getElementById("tagCounts");
+    countContainer.innerHTML = ""; 
+
+    const countBoxContainer = document.createElement("div");
+    countBoxContainer.style.display = "flex";
+    countBoxContainer.style.justifyContent = "center";
+    countBoxContainer.style.gap = "10px";
+    countBoxContainer.style.marginTop = "20px";
+
+    const categoryColors = {
+      "Locations": "#FF5733",
+      "Individuals": "#33A1FF",
+      "Animals": "#4CAF50",
+      "Dates": "#FFC300",
+      "References": "#9C27B0",
+      "Footnotes": "#FF9800"
+    };
+
+    for (const [category, items] of Object.entries(data)) {
+      const countBox = document.createElement("div");
+      countBox.textContent = items.length;
+      countBox.style.backgroundColor = categoryColors[category] || "#ccc";
+      countBox.style.color = "white";
+      countBox.style.padding = "10px";
+      countBox.style.borderRadius = "5px";
+      countBox.style.fontSize = "20px";
+      countBox.style.fontWeight = "bold";
+      countBox.style.width = "50px";
+      countBox.style.textAlign = "center";
+      countBox.style.cursor = "pointer"; 
+
+      countBox.addEventListener("click", function () {
+        const targetSection = document.getElementById(`tag-${category}`);
+        if (targetSection) {
+          const navHeight = document.querySelector("nav")?.offsetHeight || 54.5; // Auto-detect nav height or default to 54.5px
+          const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - navHeight;
+          window.scrollTo({ top: targetPosition, behavior: "smooth" });
+        }
+      });
+
+      countBoxContainer.appendChild(countBox);
+    }
+
+    countContainer.appendChild(countBoxContainer);
+  }
+});
+
+
+
+
+</script>
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing: 4px;">
+      <a href="#home" class="w3-bar-item w3-button Gabriel-button">Gourmet Admin Page</a>
+      <div class="w3-right w3-hide-small">
+        <a href="#about" class="w3-bar-item w3-button Gabriel-button">Intro</a>
+        <a href="#Actions" class="w3-bar-item w3-button Gabriel-button">Actions</a>
+        <a href="#tagTable" class="w3-bar-item w3-button Gabriel-button">Saved</a>
+        <a href="#tagCounts" class="w3-bar-item w3-button Gabriel-button">End</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="w3-content" style="max-width: 1100px;">
+    <!-- About Section -->
+    <div class="w3-row w3-padding-64" id="about">
+      <div class="w3-col m6 w3-padding-large w3-hide-small">
+        <img src="admin.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+        <h6> This admin page lets the Admin efficiently tag, reference, and annotate text. Actions are performed alongside the displayed text, and saved tags are organized into structured tables for easy access. №</h6>
+      </div>
+      <div class="w3-col m6 w3-padding-large">
+        <h1 class="w3-center">Aghvesagirk Admin Page</h1>
+        <h5 class="w3-center">Editing button description</h5>
+        
+        <p class="w3-large">Button 1:</p>
+        <p class="w3-large w3-text-grey w3-hide-medium">
+          Saves a text entry with an associated reference link in the References section of the JSON file.
+        </p>
+        
+        <p class="w3-large">Button 2:</p>
+        <p class="w3-large w3-text-grey w3-hide-medium">
+          Assigns a text entry to a category (e.g., Individuals, Animals, Locations, Dates) and saves it in the respective section.
+        </p>
+        
+        <p class="w3-large">Button 3:</p>
+        <p class="w3-large w3-text-grey w3-hide-medium">
+            Saves a text entry along with an explanation or definition in the Footnotes section.
+        </p>
+        <br>
+        <p class="w3-large w3-text-grey w3-hide-medium">
+            note: refresh using CTR+SHIFT+R after adding new tags if you want to see the new tags at the 'Saved' table bellow.
+        </p>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Actions Section -->
+    <div class="w3-row w3-padding-64" id="Actions">
+      <main class="w3-col l6 w3-padding-large">
+        <h1 class="w3-center">Options:</h1>
+        <br>
+        <div class="action-container">
+          <h3>1. Create a reference link</h3>
+          <input type="text" placeholder="Enter text">
+          <input type="text" placeholder="Enter reference link">
+          <button class="w3-button w3-light-grey w3-left-align">Create Link</button>
+        </div>
+        <div class="action-container">
+          <h3>2. Tag a text</h3>
+          <input type="text" placeholder="Enter text">
+          <select>
+            <option>Person</option>
+            <option>Animal</option>
+            <option>Location</option>
+            <option>Date</option>
+          </select>
+          <button class="w3-button w3-light-grey w3-left-align">Tag Text</button>
+        </div>
+        <div class="action-container">
+          <h3>3. Add a description</h3>
+          <input type="text" placeholder="Enter text">
+          <textarea placeholder="Enter description"></textarea>
+          <button class="w3-button w3-light-grey w3-left-align">Add Description</button>
+        </div>
+        <div class="action-container">
+          <h3>4. Some other Button</h3>
+          <h6>If you want this button to do something, let me know.</h6>
+          <input type="text" placeholder="Enter text">
+          <button class="w3-button w3-light-grey w3-left-align">Button 4</button>
+        </div>
+      </main>
+      
+      <aside class="w3-col l6 w3-padding-large">
+        <h1 class="w3-center">The Text:</h1>
+        <br>
+        <div id="innerAside" id="dropdown-container">
+            
+          <header style="margin: 10px 0px 10px 0px; padding: 0px">
+            <select id="dropdown"></select>
+          </header>
+          
+          <div class="w3-container" id="headerText">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+            </p> 
+          </div>
+          
+          </footer class="w3-container w3-light-grey">
+            <div class="w3-bar">
+              <button class="w3-button w3-bar-item w3-green w3-left" onclick="plusDivs(-1)">тЎ Previous</button>
+              <button class="w3-button w3-bar-item w3-green w3-right" onclick="plusDivs(1)">Next тЏ</button>
+            </div>
+          </footer>
+          
+        </div>
+        
+      </aside>
+      
+    </div>
+    <hr>
+    
+    <!-- Contact Section -->
+    <div class="w3-row w3-padding-64" id="tagTable"> 
+        
+    </div>
+
+    <!-- Tags Count -->
+    <div id="tagCounts"></div>
+    </br>
+    <!-- Extra Section -->
+    <div class="w3-container" id="contact">
+      <h1>More Things To Come...</h1>
+      <br>
+      <p>
+        This website has great future prospects, and will be very insightful for many generations.
+      </p>
+      <br/>
+      
+    </div>
+    <!-- End page content -->
+  </div>
+  <!-- Footer -->
+  <footer class="w3-center w3-light-grey w3-padding-32">
+    <p>Powered by <a href="https://aghvesagirk.com/#/About" target="_blank" class="w3-hover-text-green G-name">Gabriel Coding Skills</a></p>
+  </footer>
+</body>
+
+<script>
+    
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("🚀 Fetching index-panel.html to populate dropdown...");
+
+  fetch("index-panel.html") // Adjust if needed
+    .then(response => {
+      console.log(`🟢 HTTP Status: ${response.status}`); // Debug: Check HTTP response code
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+      return response.text();
+    })
+    .then(html => {
+      console.log("✅ index-panel.html fetched successfully.");
+      
+      if (!html.trim()) {
+        console.error("❌ Fetched HTML is empty!");
+        return;
+      }
+
+      console.log("📜 Full fetched HTML:", html); // Debug: Show fetched content
+
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = html;
+
+      const yearBoxes = tempDiv.querySelectorAll(".year-box");
+
+      if (yearBoxes.length === 0) {
+        console.error("❌ No .year-box elements found in index-panel.html!");
+        return;
+      }
+
+      // Get the select element inside the dropdown container
+      const dropdown = document.getElementById("dropdown");
+      if (!dropdown) {
+        console.error("❌ ERROR: <select id='dropdown'> NOT FOUND in admin123.html!");
+        return;
+      }
+
+      dropdown.innerHTML = ""; // Clear existing options
+
+      yearBoxes.forEach((item, index) => {
+        const option = document.createElement("option");
+        option.value = item.id;
+        option.textContent = item.textContent.trim();
+        dropdown.appendChild(option);
+
+        console.log(`📌 Added option [${index}]:`, option.textContent, " | ID:", option.value);
+      });
+
+      console.log("✅ Dropdown successfully populated with sections.");
+    })
+    .catch(error => console.error("❌ Failed to load index-panel.html:", error));
+});
+
+</script>
+</html>
