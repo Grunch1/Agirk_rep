@@ -37,11 +37,15 @@
       </div>
 
       <!-- Graph Area -->
-      <div id="fake-section"></div>
+      <div id="fake-section">
+        <canvas id="fakeCanvas"></canvas>
+        <div class="overview-container">
+          <div class="overview-header">Graph overview</div>
+          <canvas id="overviewCanvas"></canvas>
+        </div>
+      </div>
       <div id="graph-section">
-        <canvas id="myCanvas">
-        <script type="module" src="assets/index-DaQ1J2es.js"></script>
-        </canvas>
+        <canvas id="myCanvas"></canvas>
       </div>
     </div>
 
@@ -130,7 +134,16 @@
 
         graphSection.style.display = cb.checked ? "block" : "none";
         fakeSection.style.display = cb.checked ? "none" : "block";
-        document.getElementById("myCanvas").getContext("2d").clearRect(0, 0, document.getElementById("myCanvas").width, document.getElementById("myCanvas").height);
+
+        const canvasId = cb.checked ? "myCanvas" : "fakeCanvas";
+        const canvas = document.getElementById(canvasId);
+        if (canvas) {
+          canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        if (nodes.length) {
+          drawCanvas(canvasId);
+        }
       },
       false
     );
@@ -139,37 +152,202 @@
   <!-- draw nodes -->
   <script>
     let nodes = [];
+    let graphEdges = [];
+    const canvasStates = {};
+    let activeDragCanvasId = null;
+    let selectedRank = null;
 
-    function handleCanvasClick(event) {
-      const canvas = document.getElementById("myCanvas"); // Reference to the canvas
-      const rect = canvas.getBoundingClientRect();
-      const mouseX = event.clientX - rect.left;
-      const mouseY = event.clientY - rect.top;
-
-      nodes.forEach((node) => {
-        const width = calculateTextWidth(node.text);
-        const height = 50;
-        const x = 100 * (node.rank - 1);
-        const y = 400 + getYOffset(nodes.indexOf(node));
-
-        // Check if the click is within the rectangle
-        if (
-          mouseX >= x &&
-          mouseX <= x + width &&
-          mouseY >= y &&
-          mouseY <= y + height
-        ) {
-          alert("the rank column of " + node.text); // Show alert with the text
-          node.isClicked = true; // Mark the rectangle as clicked
-        }
-      });
+    function getCanvasState(canvasId) {
+      if (!canvasStates[canvasId]) {
+        resetCanvasState(canvasId);
+      }
+      return canvasStates[canvasId];
     }
 
-    function calculateTextWidth(text) {
-      const canvas = document.getElementById("myCanvas");
-      const ctx = canvas.getContext("2d");
+    function resetCanvasState(canvasId) {
+      canvasStates[canvasId] = {
+        scale: 1,
+        minScale: 0.25,
+        maxScale: 3,
+        translateX: 0,
+        translateY: 0,
+        isDragging: false,
+        pointerStartX: 0,
+        pointerStartY: 0,
+        startTranslateX: 0,
+        startTranslateY: 0,
+        ignoreClick: false,
+      };
+      return canvasStates[canvasId];
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function getCurrentCanvasId() {
+      const cb = document.querySelector("#cb-toggle");
+      return cb && cb.checked ? "myCanvas" : "fakeCanvas";
+    }
+
+    function handleCanvasClick(event, canvasId = null) {
+      const canvas = event.currentTarget || document.getElementById(canvasId || "myCanvas");
+      const id = canvasId || (canvas && canvas.id) || "myCanvas";
+      const rect = canvas.getBoundingClientRect();
+      const state = getCanvasState(id);
+      const mouseX = event.clientX - rect.left;
+      const mouseY = event.clientY - rect.top;
+      const graphX = (mouseX - state.translateX) / state.scale;
+      const graphY = (mouseY - state.translateY) / state.scale;
+
+      nodes.forEach((node) => {
+        const width = calculateTextWidth(node.text, canvas);
+        const height = 50;
+        const x = node.x !== undefined ? node.x : 100 * (node.rank - 1);
+        const y = node.y !== undefined ? node.y : 400 + getYOffset(nodes.indexOf(node));
+
+        if (
+          graphX >= x &&
+          graphX <= x + width &&
+          graphY >= y &&
+          graphY <= y + height
+        ) {
+          alert("The rank column of " + node.text);
+          node.isClicked = true;
+        }
+      });
+      drawCanvas(id);
+    }
+
+    function calculateTextWidth(text, canvas) {
+      const currentCanvas = canvas
+        ? typeof canvas === "string"
+          ? document.getElementById(canvas)
+          : canvas
+        : document.getElementById("myCanvas");
+      if (!currentCanvas) {
+        throw new Error("Canvas not found for calculateTextWidth");
+      }
+      const ctx = currentCanvas.getContext("2d");
+      const prevTransform = ctx.getTransform();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.font = "16px Arial";
-      return ctx.measureText(text).width + 20; // Add padding
+      const width = ctx.measureText(text).width + 20; // Add padding
+      ctx.setTransform(prevTransform);
+      return width;
+    }
+
+    function normalizeCanvasSize(canvas) {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+
+    function getRankCounts() {
+      const rankGroups = {};
+      nodes.forEach((node) => {
+        const rank = Number(node.rank || node.dn5 || 0);
+        if (!rankGroups[rank]) {
+          rankGroups[rank] = 0;
+        }
+        rankGroups[rank]++;
+      });
+      return Object.keys(rankGroups)
+        .map((rank) => ({ rank: Number(rank), count: rankGroups[rank] }))
+        .sort((a, b) => a.rank - b.rank);
+    }
+
+    function getOverviewLayout(overviewCanvas, rankCounts) {
+      const padding = 40;
+      const barWidth = 24;
+      const spacing = 10;
+      const minBars = 40;
+      const totalBars = Math.max(rankCounts.length, minBars);
+      const width = Math.max(
+        overviewCanvas.offsetWidth,
+        padding * 2 + totalBars * barWidth + Math.max(0, totalBars - 1) * spacing
+      );
+      const height = overviewCanvas.offsetHeight;
+      const chartHeight = height - padding * 2;
+      return { padding, barWidth, spacing, width, height, chartHeight };
+    }
+
+    function handleOverviewClick(event) {
+      const overviewCanvas = event.currentTarget;
+      const rankCounts = getRankCounts();
+      if (!rankCounts.length) return;
+
+      const layout = getOverviewLayout(overviewCanvas, rankCounts);
+      const rect = overviewCanvas.getBoundingClientRect();
+      const clickX = event.clientX - rect.left;
+      const chartLeft = layout.padding;
+      const index = Math.floor((clickX - chartLeft) / (layout.barWidth + layout.spacing));
+      if (index < 0 || index >= rankCounts.length) return;
+
+      const rank = rankCounts[index].rank;
+      selectedRank = selectedRank === rank ? null : rank;
+      drawCanvas(getCurrentCanvasId());
+      drawOverviewCanvas();
+    }
+
+    function drawOverviewCanvas() {
+      const overviewCanvas = document.getElementById("overviewCanvas");
+      if (!overviewCanvas) return;
+      const rankCounts = getRankCounts();
+      normalizeCanvasSize(overviewCanvas);
+
+      if (!rankCounts.length) {
+        const ctx = overviewCanvas.getContext("2d");
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, overviewCanvas.width, overviewCanvas.height);
+        ctx.fillStyle = "#444";
+        ctx.font = "14px Arial";
+        ctx.fillText("No graph data to display", 10, 30);
+        return;
+      }
+
+      const layout = getOverviewLayout(overviewCanvas, rankCounts);
+      overviewCanvas.width = layout.width;
+      overviewCanvas.style.width = `${layout.width}px`;
+      overviewCanvas.height = layout.height;
+      const ctx = overviewCanvas.getContext("2d");
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, overviewCanvas.width, overviewCanvas.height);
+
+      const maxCount = Math.max(...rankCounts.map((item) => item.count), 1);
+      ctx.fillStyle = "#222";
+      ctx.font = "12px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText("Rank node counts", overviewCanvas.width / 2, 18);
+
+      ctx.strokeStyle = "#999";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(layout.padding, overviewCanvas.height - layout.padding);
+      ctx.lineTo(overviewCanvas.width - layout.padding + 10, overviewCanvas.height - layout.padding);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(layout.padding, overviewCanvas.height - layout.padding);
+      ctx.lineTo(layout.padding, layout.padding - 10);
+      ctx.stroke();
+
+      rankCounts.forEach((item, index) => {
+        const x = layout.padding + index * (layout.barWidth + layout.spacing);
+        const barHeight = (item.count / maxCount) * layout.chartHeight;
+        const y = overviewCanvas.height - layout.padding - barHeight;
+        const isSelected = selectedRank === item.rank;
+
+        ctx.fillStyle = isSelected ? "#FFC107" : "#4CAF50";
+        ctx.strokeStyle = isSelected ? "#FF9800" : "#2E7D32";
+        ctx.lineWidth = 1;
+        ctx.fillRect(x, y, layout.barWidth, barHeight);
+        ctx.strokeRect(x, y, layout.barWidth, barHeight);
+
+        ctx.fillStyle = "#000";
+        ctx.font = "11px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText(item.count, x + layout.barWidth / 2, y - 6);
+        ctx.fillText(item.rank.toString(), x + layout.barWidth / 2, overviewCanvas.height - layout.padding + 14);
+      });
     }
 
     // Function to calculate y position offsets for each rank
@@ -178,58 +356,64 @@
       return offsets[index % offsets.length];
     }
 
-    function drawCanvas() {
-      
-      const canvas = document.getElementById("myCanvas");
-      if (!canvas) {alert("canvas missing"); return;}
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+    function drawCanvas(canvasId = "myCanvas") {
+      const canvas = typeof canvasId === "string" ? document.getElementById(canvasId) : canvasId;
+      if (!canvas) {
+        alert("canvas missing");
+        return;
+      }
+
+      const state = getCanvasState(canvas.id);
+      normalizeCanvasSize(canvas);
       console.log("Updated Canvas dimensions:", canvas.width, canvas.height);
       const ctx = canvas.getContext("2d");
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Remove existing click event listener if it exists
-      canvas.removeEventListener("click", handleCanvasClick);
+      if (!canvas.dataset.interactionsInitialized) {
+        canvas.style.touchAction = "none";
+        canvas.addEventListener("wheel", (event) => handleCanvasWheel(event, canvas.id));
+        canvas.addEventListener("mousedown", (event) => handleCanvasPointerDown(event, canvas.id));
+        canvas.addEventListener("click", (event) => {
+          const state = getCanvasState(canvas.id);
+          if (state.ignoreClick) {
+            state.ignoreClick = false;
+            return;
+          }
+          handleCanvasClick(event, canvas.id);
+        });
+        canvas.dataset.interactionsInitialized = "true";
+      }
 
-      // Add the new click event listener
-      canvas.addEventListener("click", handleCanvasClick);
+      ctx.save();
+      ctx.translate(state.translateX, state.translateY);
+      ctx.scale(state.scale, state.scale);
 
-      // Function to draw a circular rectangle
-      function drawCircleRect(x, y, width, height, text, isClicked) {
+      function drawCircleRect(x, y, width, height, text, isClicked, isSelected) {
         const radius = 20;
         ctx.beginPath();
         ctx.moveTo(x + radius, y);
         ctx.lineTo(x + width - radius, y);
         ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
         ctx.lineTo(x + width, y + height - radius);
-        ctx.quadraticCurveTo(
-          x + width,
-          y + height,
-          x + width - radius,
-          y + height
-        );
+        ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
         ctx.lineTo(x + radius, y + height);
         ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
         ctx.lineTo(x, y + radius);
         ctx.quadraticCurveTo(x, y, x + radius, y);
         ctx.closePath();
 
-        ctx.fillStyle = isClicked ? "#ffcc80" : "#e1f5fe"; // Change color if clicked
+        ctx.fillStyle = isSelected ? "#FFF59D" : isClicked ? "#ffcc80" : "#e1f5fe";
         ctx.fill();
-        ctx.strokeStyle = "#2196F3";
+        ctx.strokeStyle = isSelected ? "#FBC02D" : "#2196F3";
         ctx.stroke();
         ctx.fillStyle = "black";
         ctx.font = "16px Arial";
-        ctx.fillText(
-          text,
-          x + width / 2 - ctx.measureText(text).width / 2,
-          y + height / 2 + 5
-        );
+        ctx.fillText(text, x + width / 2 - ctx.measureText(text).width / 2, y + height / 2 + 5);
       }
 
-      // Function to draw an arrow
       function drawArrow(fromX, fromY, toX, toY) {
-        const headLength = 10; // length of head in pixels
+        const headLength = 10;
         const dx = toX - fromX;
         const dy = toY - fromY;
         const angle = Math.atan2(dy, dx);
@@ -237,21 +421,14 @@
         ctx.beginPath();
         ctx.moveTo(fromX, fromY);
         ctx.lineTo(toX, toY);
-        ctx.lineTo(
-          toX - headLength * Math.cos(angle - Math.PI / 6),
-          toY - headLength * Math.sin(angle - Math.PI / 6)
-        );
+        ctx.lineTo(toX - headLength * Math.cos(angle - Math.PI / 6), toY - headLength * Math.sin(angle - Math.PI / 6));
         ctx.moveTo(toX, toY);
-        ctx.lineTo(
-          toX - headLength * Math.cos(angle + Math.PI / 6),
-          toY - headLength * Math.sin(angle + Math.PI / 6)
-        );
+        ctx.lineTo(toX - headLength * Math.cos(angle + Math.PI / 6), toY - headLength * Math.sin(angle + Math.PI / 6));
         ctx.strokeStyle = "#F44336";
         ctx.lineWidth = 2;
         ctx.stroke();
       }
 
-      // Random generation probabilities for each rank
       const probabilities = [
         { count: 1, probability: 40 },
         { count: 2, probability: 25 },
@@ -265,7 +442,6 @@
         { count: 10, probability: 0.5 },
       ];
 
-      // Function to randomly choose how many boxes for a rank based on the probability distribution
       function getRandomBoxCount() {
         const random = Math.random() * 100;
         let cumulative = 0;
@@ -278,33 +454,32 @@
         return 1;
       }
 
-      // Generate nodes for 20 ranks
-      nodes = [];
-      let currentRank = 1;
-      for (let i = 0; i < 20; i++) {
-        const boxCount = getRandomBoxCount();
-        for (let j = 0; j < boxCount; j++) {
-          nodes.push({
-            text: `Node ${nodes.length + 1}`,
-            rank: currentRank,
-            arrows: [],
-            isClicked: false,
-          });
+      if (!nodes.length) {
+        selectedRank = null;
+        nodes = [];
+        let currentRank = 1;
+        for (let i = 0; i < 20; i++) {
+          const boxCount = getRandomBoxCount();
+          for (let j = 0; j < boxCount; j++) {
+            nodes.push({
+              text: `Node ${nodes.length + 1}`,
+              rank: currentRank,
+              arrows: [],
+              isClicked: false,
+            });
+          }
+          currentRank++;
         }
-        currentRank++;
+
+        nodes.forEach((node, index) => {
+          const higherRankNodes = nodes.filter((n) => n.rank > node.rank);
+          if (higherRankNodes.length > 0) {
+            const randomNode = higherRankNodes[Math.floor(Math.random() * higherRankNodes.length)];
+            node.arrows.push(nodes.indexOf(randomNode) + 1);
+          }
+        });
       }
 
-      // Connect nodes to random higher-rank nodes
-      nodes.forEach((node, index) => {
-        const higherRankNodes = nodes.filter((n) => n.rank > node.rank);
-        if (higherRankNodes.length > 0) {
-          const randomNode =
-            higherRankNodes[Math.floor(Math.random() * higherRankNodes.length)];
-          node.arrows.push(nodes.indexOf(randomNode) + 1);
-        }
-      });
-
-      // Draw nodes and arrows
       const rankGroups = {};
       nodes.forEach((node) => {
         if (!rankGroups[node.rank]) {
@@ -315,26 +490,84 @@
 
       Object.keys(rankGroups).forEach((rank) => {
         const nodesInRank = rankGroups[rank];
-        const x = 100 * (rank - 1); // Increment x by 100 per rank
+        const x = 100 * (rank - 1);
 
         nodesInRank.forEach((node, index) => {
-          const width = calculateTextWidth(node.text);
-          const height = 50; // Consistent height for all boxes
-          const y = 400 + getYOffset(index); // Center vertically and apply y offsets
+          const width = calculateTextWidth(node.text, canvas);
+          const height = 50;
+          const y = 400 + getYOffset(index);
           node.x = x;
           node.y = y;
-          drawCircleRect(x, y, width, height, node.text, node.isClicked);
+          const isSelected = selectedRank === node.rank;
+          drawCircleRect(x, y, width, height, node.text, node.isClicked, isSelected);
         });
       });
 
-      // Draw arrows
       nodes.forEach((node) => {
         node.arrows.forEach((arrowIndex) => {
           const toNode = nodes[arrowIndex - 1];
+          if (!toNode) return;
           drawArrow(node.x + 100, node.y + 25, toNode.x, toNode.y + 25);
         });
       });
+
+      ctx.restore();
+      drawOverviewCanvas();
     }
+
+    function handleCanvasWheel(event, canvasId) {
+      event.preventDefault();
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      const state = getCanvasState(canvasId);
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = event.clientX - rect.left;
+      const mouseY = event.clientY - rect.top;
+      const graphX = (mouseX - state.translateX) / state.scale;
+      const graphY = (mouseY - state.translateY) / state.scale;
+      const scaleFactor = event.deltaY < 0 ? 1.1 : 0.9;
+      const newScale = clamp(state.scale * scaleFactor, state.minScale, state.maxScale);
+      state.translateX = mouseX - graphX * newScale;
+      state.translateY = mouseY - graphY * newScale;
+      state.scale = newScale;
+      drawCanvas(canvasId);
+    }
+
+    function handleCanvasPointerDown(event, canvasId) {
+      if (event.button !== 0) return;
+      const state = getCanvasState(canvasId);
+      state.isDragging = true;
+      state.pointerStartX = event.clientX;
+      state.pointerStartY = event.clientY;
+      state.startTranslateX = state.translateX;
+      state.startTranslateY = state.translateY;
+      state.ignoreClick = false;
+      activeDragCanvasId = canvasId;
+    }
+
+    function handleCanvasPointerMove(event) {
+      if (!activeDragCanvasId) return;
+      const state = getCanvasState(activeDragCanvasId);
+      if (!state.isDragging) return;
+      const dx = event.clientX - state.pointerStartX;
+      const dy = event.clientY - state.pointerStartY;
+      if (Math.abs(dx) + Math.abs(dy) > 5) {
+        state.ignoreClick = true;
+      }
+      state.translateX = state.startTranslateX + dx;
+      state.translateY = state.startTranslateY + dy;
+      drawCanvas(activeDragCanvasId);
+    }
+
+    function handleCanvasPointerUp() {
+      if (!activeDragCanvasId) return;
+      const state = getCanvasState(activeDragCanvasId);
+      state.isDragging = false;
+      activeDragCanvasId = null;
+    }
+
+    window.addEventListener("mousemove", handleCanvasPointerMove);
+    window.addEventListener("mouseup", handleCanvasPointerUp);
     // calls the drawCanvas function and reports in console.
     // window.addEventListener("load", drawCanvas);window.addEventListener("load", drawCanvas());
   </script>
@@ -372,71 +605,196 @@
 
     // load json data
     function importTheVariables(data) {
-      // Set each variable to the data from the latest JSON file
-      if (
-        data &&
-        data.nodes &&
-        data.title &&
-        data.rankCount &&
-        data.targetCount &&
-        data.occurrences &&
-        data.actual_time_zone_cuts &&
-        data.extrasList &&
-        data.keyMap
-      ) {
-        lemmaNodes = [...data.nodes];
-        title = data.title || "Untitled";
-        rankCount = data.rankCount || {};
-        targetCount = data.targetCount || {};
-        occurrences = data.occurrences || {};
-        actual_time_zone_cuts = data.actual_time_zone_cuts || null;
-        extrasList = data.extrasList || [];
-        keyMap = data.keyMap || {};
-
-        // Update HTML elements with the latest title
-        document.getElementById("bookTitle_Arm").textContent = title;
-        document.getElementById("bookTitle_Eng").textContent = title;
-
-        console.log("data is loaded: ", {
-          title,
-          rankCount,
-          targetCount,
-          occurrences,
-          actual_time_zone_cuts,
-          extrasList,
-          keyMap,
-        });
-      } else {
-        alert("Nodes or other data not found in JSON");
+      if (!data || !Array.isArray(data.nodes) || !data.title) {
+        alert("Invalid JSON: expected at least title and nodes arrays.");
+        console.error("Invalid JSON data:", data);
+        return;
       }
+
+      lemmaNodes = [...data.nodes];
+      title = data.title || "Untitled";
+      rankCount = data.rankCount || {};
+      targetCount = data.targetCount || {};
+      occurrences = data.occurrences || {};
+      actual_time_zone_cuts = data.actual_time_zone_cuts || null;
+      extrasList = data.extrasList || [];
+      keyMap = data.keyMap || {};
+
+      // Update HTML elements with the latest title
+      document.getElementById("bookTitle_Arm").textContent = title;
+      document.getElementById("bookTitle_Eng").textContent = title;
+
+      console.log("data is loaded: ", {
+        title,
+        rankCount,
+        targetCount,
+        occurrences,
+        actual_time_zone_cuts,
+        extrasList,
+        keyMap,
+      });
     }
 
-    // Load JSON file using ID of clicked yearbox
+    function parseGraphMLText(xmlText) {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+      if (xmlDoc.getElementsByTagName("parsererror").length) {
+        throw new Error("Invalid XML document");
+      }
+
+      const keyMapById = {};
+      Array.from(xmlDoc.getElementsByTagName("key")).forEach((key) => {
+        const id = key.getAttribute("id");
+        const name = key.getAttribute("attr.name") || key.getAttribute("name");
+        if (id && name) {
+          keyMapById[id] = name;
+        }
+      });
+
+      const nodes = Array.from(xmlDoc.getElementsByTagName("node")).map((nodeEl) => {
+        const nodeObj = { id: nodeEl.getAttribute("id") };
+        Array.from(nodeEl.getElementsByTagName("data")).forEach((dataEl) => {
+          const keyId = dataEl.getAttribute("key");
+          const name = keyMapById[keyId] || keyId;
+          const value = dataEl.textContent || "";
+          nodeObj[name] = parseGraphMLValue(value, name);
+        });
+        return nodeObj;
+      });
+
+      const graphEl = xmlDoc.getElementsByTagName("graph")[0];
+      const titleValue = graphEl ? graphEl.getAttribute("id") || "Untitled" : "Untitled";
+      const edges = Array.from(xmlDoc.getElementsByTagName("edge")).map((edgeEl) => ({
+        id: edgeEl.getAttribute("id"),
+        source: edgeEl.getAttribute("source"),
+        target: edgeEl.getAttribute("target"),
+      }));
+
+      return {
+        title: titleValue,
+        nodes,
+        edges,
+        rankCount: {},
+        targetCount: {},
+        occurrences: {},
+        actual_time_zone_cuts: null,
+        extrasList: [],
+        keyMap: keyMapById,
+      };
+    }
+
+    function convertGraphMLToCanvasNodes(graphData) {
+      const rawNodes = graphData.nodes || [];
+      const rawEdges = graphData.edges || [];
+      const idToIndex = {};
+
+      const canvasNodes = rawNodes.map((rawNode, index) => {
+        const text =
+          rawNode.text ||
+          rawNode.name ||
+          rawNode.display ||
+          rawNode.normal_form ||
+          rawNode.dn2 ||
+          rawNode.dn13 ||
+          rawNode.id ||
+          `Node ${index + 1}`;
+        const rank = rawNode.rank || rawNode.dn5 || index + 1;
+        const node = {
+          id: rawNode.id,
+          text,
+          rank,
+          arrows: [],
+          isClicked: false,
+        };
+        idToIndex[rawNode.id] = index;
+        return node;
+      });
+
+      rawEdges.forEach((edge) => {
+        const sourceIndex = idToIndex[edge.source];
+        const targetIndex = idToIndex[edge.target];
+        if (sourceIndex !== undefined && targetIndex !== undefined) {
+          canvasNodes[sourceIndex].arrows.push(targetIndex + 1);
+        }
+      });
+
+      return canvasNodes;
+    }
+
+    function parseGraphMLValue(value, name) {
+      const trimmed = value.trim();
+      if (trimmed === "true") return true;
+      if (trimmed === "false") return false;
+      if (/^-?\d+$/.test(trimmed)) return Number(trimmed);
+      if ((trimmed.startsWith("{") && trimmed.endsWith("}")) || (trimmed.startsWith("[") && trimmed.endsWith("]"))) {
+        try {
+          return JSON.parse(trimmed);
+        } catch (e) {
+          return trimmed;
+        }
+      }
+      return trimmed;
+    }
+
+    // Load JSON text and XML graph by section ID
     function loadSectionData(fileId) {
       if (!fileId) {
         alert("id missing");
         return;
       }
 
-      // fetch json
-      thisFileLocation = `converted/${fileId}.json`;
-      fetch(thisFileLocation)
-        .then((response) => response.json())
+      const jsonLocation = `converted/${fileId}.json`;
+      const xmlLocation = `xml/${fileId}.xml`;
+
+      const textPromise = fetch(jsonLocation)
+        .then((response) => {
+          if (!response.ok) throw new Error(response.statusText);
+          return response.json();
+        })
         .then((data) => {
           console.log(`${fileId}.json loaded successfully`);
           importTheVariables(data);
           filterAndDisplayLemmas();
-          
-          // Only draw canvas if toggle is active
-          const cb = document.querySelector("#cb-toggle");
-          if (cb && cb.checked) {
-          drawCanvas();
-      }
+          return { success: true };
         })
         .catch((error) => {
           console.error(`Failed to load ${fileId}.json:`, error);
-          alert("Failed to load " + fileId + ".json:");
+          return { success: false, error };
         });
+
+      const graphPromise = fetch(xmlLocation)
+        .then((response) => {
+          if (!response.ok) throw new Error(response.statusText);
+          return response.text();
+        })
+        .then((text) => {
+          const graphData = parseGraphMLText(text);
+          nodes = convertGraphMLToCanvasNodes(graphData);
+          console.log(`${fileId}.xml loaded successfully`, graphData);
+          return { success: true };
+        })
+        .catch((error) => {
+          console.warn(`Failed to load ${fileId}.xml:`, error);
+          nodes = [];
+          return { success: false, error };
+        });
+
+      Promise.all([textPromise, graphPromise]).then(([textResult, graphResult]) => {
+        if (!textResult.success) {
+          alert("Failed to load " + fileId + ".json");
+          return;
+        }
+
+        if (!graphResult.success) {
+          alert("Failed to load " + fileId + ".xml");
+        }
+
+        resetCanvasState("myCanvas");
+        resetCanvasState("fakeCanvas");
+        const cb = document.querySelector("#cb-toggle");
+        const canvasId = cb && cb.checked ? "myCanvas" : "fakeCanvas";
+        drawCanvas(canvasId);
+      });
     }
 
     // Click event listener on yearbox class divs
@@ -455,6 +813,11 @@
           }
         }
       });
+
+      const overviewCanvas = document.getElementById("overviewCanvas");
+      if (overviewCanvas) {
+        overviewCanvas.addEventListener("click", handleOverviewClick);
+      }
     });
 
     // drawCanvas();
