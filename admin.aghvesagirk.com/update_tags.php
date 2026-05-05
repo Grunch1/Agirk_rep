@@ -14,6 +14,7 @@ if (!isset($input['group']) || !isset($input['node'])) {
 
 $group = $input['group'];
 $node = $input['node'];
+$action = isset($input['action']) ? $input['action'] : 'add';
 
 // Path to your JSON file
 $jsonFile = 'tags.json';
@@ -52,17 +53,49 @@ if (!isset($data[$group])) {
     exit;
 }
 
-// Optionally, check for duplicates using the 'text' as the unique key.
-foreach ($data[$group] as $item) {
-    if (isset($item['text']) && $item['text'] === $node['text']) {
-        http_response_code(400);
-        echo json_encode(['error' => 'Tag with that text already exists in ' . $group]);
-        exit;
-    }
+if (!isset($node['text']) || trim($node['text']) === '') {
+    http_response_code(400);
+    echo json_encode(['error' => 'Missing tag text.']);
+    exit;
 }
 
-// Append the new node to the specified group.
-$data[$group][] = $node;
+if ($action === 'delete') {
+    $removed = false;
+    $data[$group] = array_values(array_filter($data[$group], function ($item) use ($node, &$removed) {
+        if ($removed || !isset($item['text']) || $item['text'] !== $node['text']) {
+            return true;
+        }
+
+        if (isset($node['value']) && ($item['value'] ?? null) !== $node['value']) {
+            return true;
+        }
+
+        $removed = true;
+        return false;
+    }));
+
+    if (!$removed) {
+        http_response_code(404);
+        echo json_encode(['error' => 'Tag was not found in ' . $group]);
+        exit;
+    }
+} elseif ($action === 'add') {
+    // Optionally, check for duplicates using the 'text' as the unique key.
+    foreach ($data[$group] as $item) {
+        if (isset($item['text']) && $item['text'] === $node['text']) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Tag with that text already exists in ' . $group]);
+            exit;
+        }
+    }
+
+    // Append the new node to the specified group.
+    $data[$group][] = $node;
+} else {
+    http_response_code(400);
+    echo json_encode(['error' => 'Invalid action specified.']);
+    exit;
+}
 
 // Save the updated JSON data back to the file.
 if (file_put_contents($jsonFile, json_encode($data, JSON_PRETTY_PRINT)) === false) {

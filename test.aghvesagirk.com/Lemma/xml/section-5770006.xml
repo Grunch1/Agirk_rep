@@ -1,0 +1,3239 @@
+<?xml version="1.0" ?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key attr.name="is_start" attr.type="boolean" for="node" id="dn3"/>
+  <key attr.name="join_next" attr.type="boolean" for="node" id="dn9"/>
+  <key attr.name="is_common" attr.type="boolean" for="node" id="dn11"/>
+  <key attr.name="display" attr.type="string" for="node" id="dn12"/>
+  <key attr.name="is_nonsense" attr.type="boolean" for="node" id="dn14"/>
+  <key attr.name="is_end" attr.type="boolean" for="node" id="dn15"/>
+  <key attr.name="join_prior" attr.type="boolean" for="node" id="dn8"/>
+  <key attr.name="section_id" attr.type="long" for="node" id="dn4"/>
+  <key attr.name="normal_form" attr.type="string" for="node" id="dn7"/>
+  <key attr.name="is_lemma" attr.type="boolean" for="node" id="dn10"/>
+  <key attr.name="extra" attr.type="string" for="node" id="dn6"/>
+  <key attr.name="name" attr.type="string" for="node" id="dn1"/>
+  <key attr.name="rank" attr.type="long" for="node" id="dn5"/>
+  <key attr.name="text" attr.type="string" for="node" id="dn2"/>
+  <key attr.name="neolabel" attr.type="string" for="node" id="dn0"/>
+  <key attr.name="grammar_invalid" attr.type="boolean" for="node" id="dn13"/>
+  <key attr.name="annotation" attr.type="string" for="edge" id="de3"/>
+  <key attr.name="a_derivable_from_b" attr.type="boolean" for="edge" id="de11"/>
+  <key attr.name="non_independent" attr.type="boolean" for="edge" id="de8"/>
+  <key attr.name="reading_a" attr.type="string" for="edge" id="de9"/>
+  <key attr.name="reading_b" attr.type="string" for="edge" id="de4"/>
+  <key attr.name="colocation" attr.type="boolean" for="edge" id="de5"/>
+  <key attr.name="is_significant" attr.type="string" for="edge" id="de7"/>
+  <key attr.name="type" attr.type="string" for="edge" id="de2"/>
+  <key attr.name="alters_meaning" attr.type="long" for="edge" id="de13"/>
+  <key attr.name="displayform" attr.type="string" for="edge" id="de10"/>
+  <key attr.name="b_derivable_from_a" attr.type="boolean" for="edge" id="de12"/>
+  <key attr.name="scope" attr.type="string" for="edge" id="de6"/>
+  <key attr.name="neolabel" attr.type="string" for="edge" id="de0"/>
+  <key attr.name="witnesses" attr.type="stringarray" for="edge" id="de1"/>
+  <graph id="5770006" edgedefault="directed" parse.edgeids="canonical" parse.edges="234" parse.nodeids="canonical" parse.nodes="235" parse.order="nodesfirst">
+    <node id="5770006">
+      <data key="dn0">[SECTION]</data>
+      <data key="dn1">milestone-Ծառ_ի_հնդիկս_1</data>
+    </node>
+    <node id="5544046">
+      <data key="dn0">[READING]</data>
+      <data key="dn2">#START#</data>
+      <data key="dn3">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">0</data>
+    </node>
+    <node id="5709595">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"Ծառ","context":"text/body/ab[87]","n":"Ծառ"},"M5969":{"lit":"Ծառ","line":{"facs":"#z104400847","resp":"#u2140","xml:id":"l104400847","n":"19"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"Ծառ"}}</data>
+      <data key="dn7">Ծառ</data>
+      <data key="dn2">Ծառ</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">2</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5750331">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"մի","context":"text/body/ab[87]","n":"մի"},"M5969":{"lit":"մի","line":{"facs":"#z104400847","resp":"#u2140","xml:id":"l104400847","n":"19"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"մի"},"V31":{"lit":"մի","line":{"facs":"#z104333335","resp":"#u2140","xml:id":"l104333335","n":"14"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"մի"},"M7993":{"lit":"մի","line":{"facs":"#z104199905","resp":"#u2140","xml:id":"l104199905","n":"23"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"մի"}}</data>
+      <data key="dn7">մի</data>
+      <data key="dn2">մի</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">3</data>
+      <data key="dn11">true</data>
+    </node>
+    <node id="5521318">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">ի</data>
+      <data key="dn11">true</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"ի","context":"text/body/ab[87]","n":"ի"},"M5969":{"lit":"ի","line":{"facs":"#z104400847","resp":"#u2140","xml:id":"l104400847","n":"19"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"ի"},"V31":{"lit":"ի","line":{"facs":"#z104333335","resp":"#u2140","xml:id":"l104333335","n":"14"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ի"},"M7993":{"lit":"ի","line":{"facs":"#z104199905","resp":"#u2140","xml:id":"l104199905","n":"23"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ի"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">5</data>
+      <data key="dn2">ի</data>
+    </node>
+    <node id="5567650">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"հնդկաց","context":"text/body/ab[87]","n":"հնդկաց"},"M5969":{"lit":"հնդկաց","line":{"facs":"#z104400847","resp":"#u2140","xml:id":"l104400847","n":"19"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"հնդկաց"},"V31":{"lit":"հնդկաց","line":{"facs":"#z104333335","resp":"#u2140","xml:id":"l104333335","n":"14"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"հնդկաց"},"M7993":{"lit":"հնդկաց","line":{"facs":"#z104199905","resp":"#u2140","xml:id":"l104199905","n":"23"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"հնդկաց"}}</data>
+      <data key="dn11">true</data>
+      <data key="dn7">Հնդկաց</data>
+      <data key="dn9">false</data>
+      <data key="dn2">հնդկաց</data>
+      <data key="dn8">false</data>
+      <data key="dn12">հնդկաց</data>
+      <data key="dn5">6</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+    </node>
+    <node id="5499398">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">աշխարհն</data>
+      <data key="dn2">աշխարհն</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">7</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"աշխարհն","context":"text/body/ab[87]","n":"աշխարհն"},"M5969":{"lit":"աշխարհն","line":{"facs":"#z104400847","resp":"#u2140","xml:id":"l104400847","n":"19"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"աշխարհն"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5603835">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">և</data>
+      <data key="dn11">true</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"և","context":"text/body/ab[87]","n":"և"},"M5969":{"lit":"և","line":{"facs":"#z104400847","resp":"#u2140","xml:id":"l104400847","n":"19"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"և"},"V31":{"lit":"և","line":{"facs":"#z104333335","resp":"#u2140","xml:id":"l104333335","n":"14"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"և"},"M7993":{"lit":"և","line":{"facs":"#z104199905","resp":"#u2140","xml:id":"l104199905","n":"23"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"և"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">8</data>
+      <data key="dn2">և</data>
+    </node>
+    <node id="5743849">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"ունի","context":"text/body/ab[87]","n":"ունի"},"M5969":{"lit":"ունի","line":{"facs":"#z104400848","resp":"#u2140","xml:id":"l104400848","n":"20"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"ունի"},"V31":{"lit":"ունի","line":{"facs":"#z104333335","resp":"#u2140","xml:id":"l104333335","n":"14"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ունի"},"M7993":{"lit":"ունի","line":{"facs":"#z104199905","resp":"#u2140","xml:id":"l104199905","n":"23"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ունի"}}</data>
+      <data key="dn7">ունի</data>
+      <data key="dn2">ունի</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">9</data>
+      <data key="dn11">true</data>
+    </node>
+    <node id="5542604">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">տերև</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">10</data>
+      <data key="dn2">տերև</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"տերև","line":{"facs":"#z104400848","resp":"#u2140","xml:id":"l104400848","n":"20"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"տերև"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5728620">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">գեղեցիկ</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"գեղեցիկ","context":"text/body/ab[87]","n":"գեղեցիկ"},"M5969":{"lit":"գեղեցիկ","line":{"facs":"#z104400848","resp":"#u2140","xml:id":"l104400848","n":"20"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"գեղեցիկ"},"V31":{"lit":"գեղեցիկ","line":{"facs":"#z104333336","resp":"#u2140","xml:id":"l104333336","n":"15"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"գեղեցիկ"},"M7993":{"lit":"գեղեցիկ","line":{"facs":"#z104199905","resp":"#u2140","xml:id":"l104199905","n":"23"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"գեղեցիկ"}}</data>
+      <data key="dn2">գեղեցիկ</data>
+      <data key="dn8">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">11</data>
+      <data key="dn11">true</data>
+    </node>
+    <node id="5690357">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"շուք","context":"text/body/ab[87]","n":"շուք"},"M5969":{"lit":"շուք","line":{"facs":"#z104400848","resp":"#u2140","xml:id":"l104400848","n":"20"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"շուք"},"V31":{"lit":"շուք","line":{"facs":"#z104333337","resp":"#u2140","break":"no","xml:id":"l104333337","n":"16"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"շուք"},"M7993":{"lit":"շուք","line":{"facs":"#z104199906","resp":"#u2140","break":"no","xml:id":"l104199906","n":"24"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"շուք"}}</data>
+      <data key="dn7">շուք</data>
+      <data key="dn2">շուք</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">19</data>
+      <data key="dn11">true</data>
+    </node>
+    <node id="5532410">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">գեղեցիկ</data>
+      <data key="dn2">գեղեցիկ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">20</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"գեղեցիկ","context":"text/body/ab[87]","n":"գեղեցիկ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5722510">
+      <data key="dn0">[READING]</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">21</data>
+      <data key="dn2">և</data>
+      <data key="dn7">և</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"և","context":"text/body/ab[87]","n":"և"},"M5969":{"lit":"և","line":{"facs":"#z104400848","resp":"#u2140","xml:id":"l104400848","n":"20"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"և"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5534786">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">է</data>
+      <data key="dn11">true</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"է","context":"text/body/ab[87]","n":"է"},"M5969":{"lit":"է","line":{"facs":"#z104400848","resp":"#u2140","xml:id":"l104400848","n":"20"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"է"},"V31":{"lit":"է","line":{"facs":"#z104333337","resp":"#u2140","break":"no","xml:id":"l104333337","n":"16"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"է"},"M7993":{"lit":"է","line":{"facs":"#z104199906","resp":"#u2140","break":"no","xml:id":"l104199906","n":"24"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"է"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">22</data>
+      <data key="dn2">է</data>
+    </node>
+    <node id="5751590">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">ի</data>
+      <data key="dn11">true</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"ի","context":"text/body/ab[87]","n":"ի"},"M5969":{"lit":"ի","line":{"facs":"#z104400848","resp":"#u2140","xml:id":"l104400848","n":"20"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"ի"},"V31":{"lit":"ի","line":{"facs":"#z104333337","resp":"#u2140","break":"no","xml:id":"l104333337","n":"16"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ի"},"M7993":{"lit":"ի","line":{"facs":"#z104199906","resp":"#u2140","break":"no","xml:id":"l104199906","n":"24"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ի"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">23</data>
+      <data key="dn2">ի</data>
+    </node>
+    <node id="5473105">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">սահմանս</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"սահմանս","context":"text/body/ab[87]","n":"սահմանս"},"M5969":{"lit":"սահմանս","line":{"facs":"#z104400849","resp":"#u2140","xml:id":"l104400849","n":"21"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"սահմանս"},"V31":{"lit":"սահ&lt;lb xml:id=\"l104333338\" facs=\"#z104333338\" n=\"17\" resp=\"#u2140\" break=\"no\"/&gt;մանս","line":{"facs":"#z104333337","resp":"#u2140","break":"no","xml:id":"l104333337","n":"16"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"սահմանս"},"M7993":{"lit":"սահմանս","line":{"facs":"#z104199906","resp":"#u2140","break":"no","xml:id":"l104199906","n":"24"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"սահմանս"}}</data>
+      <data key="dn2">սահմանս</data>
+      <data key="dn8">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">24</data>
+      <data key="dn11">true</data>
+    </node>
+    <node id="5618170">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M5969":{"lit":"&lt;abbr&gt;նր&lt;\/abbr&gt;","line":{"facs":"#z104400849","resp":"#u2140","xml:id":"l104400849","n":"21"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"նր"},"V31":{"lit":"&lt;abbr&gt;նր&lt;\/abbr&gt;","line":{"facs":"#z104333338","resp":"#u2140","break":"no","xml:id":"l104333338","n":"17"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"նր"}}</data>
+      <data key="dn8">false</data>
+      <data key="dn11">false</data>
+      <data key="dn7">նորա</data>
+      <data key="dn9">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">25</data>
+      <data key="dn2">նր</data>
+      <data key="dn13">false</data>
+      <data key="dn12">նր</data>
+      <data key="dn14">false</data>
+    </node>
+    <node id="5467348">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"նորա","context":"text/body/ab[87]","n":"նորա"},"M7993":{"lit":"նորա","line":{"facs":"#z104199906","resp":"#u2140","break":"no","xml:id":"l104199906","n":"24"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"նորա"}}</data>
+      <data key="dn7">նորա</data>
+      <data key="dn2">նորա</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">25</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5651480">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"իժ","context":"text/body/ab[87]","n":"իժ"},"M5969":{"lit":"իժ","line":{"facs":"#z104400849","resp":"#u2140","xml:id":"l104400849","n":"21"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"իժ"},"V31":{"lit":"իժ","line":{"facs":"#z104333338","resp":"#u2140","break":"no","xml:id":"l104333338","n":"17"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"իժ"},"M7993":{"lit":"իժ","line":{"facs":"#z104199907","resp":"#u2140","xml:id":"l104199907","n":"25"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"իժ"}}</data>
+      <data key="dn7">իժ</data>
+      <data key="dn2">իժ</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">26</data>
+      <data key="dn11">true</data>
+    </node>
+    <node id="5708353">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"օձ","context":"text/body/ab[87]","n":"օձ"},"V31":{"lit":"օձ","line":{"facs":"#z104333338","resp":"#u2140","break":"no","xml:id":"l104333338","n":"17"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"օձ"},"M7993":{"lit":"օձ","line":{"facs":"#z104199907","resp":"#u2140","xml:id":"l104199907","n":"25"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"օձ"}}</data>
+      <data key="dn7">օձ</data>
+      <data key="dn2">օձ</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">27</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5460185">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M7993":{"lit":"բազում.","line":{"facs":"#z104199907","resp":"#u2140","xml:id":"l104199907","n":"25"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"բազում."}}</data>
+      <data key="dn11">false</data>
+      <data key="dn7">բազում:</data>
+      <data key="dn9">false</data>
+      <data key="dn2">բազում.</data>
+      <data key="dn8">false</data>
+      <data key="dn12">բազում.</data>
+      <data key="dn5">28</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+    </node>
+    <node id="5511769">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"եթէ","context":"text/body/ab[87]","n":"եթէ"},"M5969":{"lit":"եթէ","line":{"facs":"#z104400849","resp":"#u2140","xml:id":"l104400849","n":"21"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"եթէ"},"V31":{"lit":"եթէ","line":{"facs":"#z104333338","resp":"#u2140","break":"no","xml:id":"l104333338","n":"17"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"եթէ"},"M7993":{"lit":"եթէ","line":{"facs":"#z104199907","resp":"#u2140","xml:id":"l104199907","n":"25"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"եթէ"}}</data>
+      <data key="dn11">true</data>
+      <data key="dn2">եթէ</data>
+      <data key="dn7">Եթէ</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">29</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">եթէ</data>
+    </node>
+    <node id="5717618">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">զոք</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">30</data>
+      <data key="dn2">զոք</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"զոք","line":{"facs":"#z104400850","resp":"#u2140","xml:id":"l104400850","n":"22"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"զոք"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5678420">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"V31":{"lit":"ոք","line":{"facs":"#z104333338","resp":"#u2140","break":"no","xml:id":"l104333338","n":"17"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ոք"},"M7993":{"lit":"ոք","line":{"facs":"#z104199907","resp":"#u2140","xml:id":"l104199907","n":"25"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ոք"}}</data>
+      <data key="dn11">false</data>
+      <data key="dn2">ոք</data>
+      <data key="dn7">ոք</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">35</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">ոք</data>
+    </node>
+    <node id="5496385">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">ի</data>
+      <data key="dn11">true</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"ի","context":"text/body/ab[87]","n":"ի"},"M5969":{"lit":"ի","line":{"facs":"#z104400850","resp":"#u2140","xml:id":"l104400850","n":"22"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"ի"},"V31":{"lit":"ի","line":{"facs":"#z104333338","resp":"#u2140","break":"no","xml:id":"l104333338","n":"17"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ի"},"M7993":{"lit":"ի","line":{"facs":"#z104199907","resp":"#u2140","xml:id":"l104199907","n":"25"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ի"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">36</data>
+      <data key="dn2">ի</data>
+    </node>
+    <node id="5710238">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">շուքն</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">38</data>
+      <data key="dn2">շուքն</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"շո&lt;lb xml:id=\"l104400851\" facs=\"#z104400851\" n=\"23\" resp=\"#u2140\" break=\"no\"/&gt;ւքն","line":{"facs":"#z104400850","resp":"#u2140","xml:id":"l104400850","n":"22"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"շուքն"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5559434">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"ոչ","context":"text/body/ab[87]","n":"ոչ"},"M5969":{"lit":"ոչ","line":{"facs":"#z104400851","resp":"#u2140","break":"no","xml:id":"l104400851","n":"23"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"ոչ"}}</data>
+      <data key="dn7">ոչ</data>
+      <data key="dn2">ոչ</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">40</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5470551">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">խայթէ։</data>
+      <data key="dn11">false</data>
+      <data key="dn2">խայթէ</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"խայթէ","context":"text/body/ab[87]","n":"խայթէ"}}</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">41</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">խայթէ</data>
+    </node>
+    <node id="5753895">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"ապա","context":"text/body/ab[87]","n":"ապա"},"M5969":{"lit":"ապա","line":{"facs":"#z104400851","resp":"#u2140","break":"no","xml:id":"l104400851","n":"23"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"ապա"},"V31":{"lit":"ապա","line":{"facs":"#z104333339","resp":"#u2140","xml:id":"l104333339","n":"18"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ապա"},"M7993":{"lit":"ապա","line":{"facs":"#z104199908","resp":"#u2140","xml:id":"l104199908","n":"26"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ապա"}}</data>
+      <data key="dn11">true</data>
+      <data key="dn2">ապա</data>
+      <data key="dn7">Ապա</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">42</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">ապա</data>
+    </node>
+    <node id="5669960">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"թէ","context":"text/body/ab[87]","n":"թէ"},"M5969":{"lit":"թէ","line":{"facs":"#z104400851","resp":"#u2140","break":"no","xml:id":"l104400851","n":"23"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"թէ"},"V31":{"lit":"թէ","line":{"facs":"#z104333340","resp":"#u2140","xml:id":"l104333340","n":"19"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"թէ"},"M7993":{"lit":"թէ","line":{"facs":"#z104199908","resp":"#u2140","xml:id":"l104199908","n":"26"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"թէ"}}</data>
+      <data key="dn7">թէ</data>
+      <data key="dn2">թէ</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">43</data>
+      <data key="dn11">true</data>
+    </node>
+    <node id="5532682">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">ի</data>
+      <data key="dn11">true</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"ի","context":"text/body/ab[87]","n":"ի"},"M5969":{"lit":"ի","line":{"facs":"#z104400851","resp":"#u2140","break":"no","xml:id":"l104400851","n":"23"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"ի"},"V31":{"lit":"ի","line":{"facs":"#z104333340","resp":"#u2140","xml:id":"l104333340","n":"19"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ի"},"M7993":{"lit":"ի","line":{"facs":"#z104199908","resp":"#u2140","xml:id":"l104199908","n":"26"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ի"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">44</data>
+      <data key="dn2">ի</data>
+    </node>
+    <node id="5669619">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"զատ","context":"text/body/ab[87]","n":"զատ"},"V31":{"lit":"զատ","line":{"facs":"#z104333340","resp":"#u2140","xml:id":"l104333340","n":"19"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"զատ"},"M7993":{"lit":"զատ","line":{"facs":"#z104199908","resp":"#u2140","xml:id":"l104199908","n":"26"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"զատ"}}</data>
+      <data key="dn7">զատ</data>
+      <data key="dn2">զատ</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">45</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5462394">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"գտանէ","context":"text/body/ab[87]","n":"գտանէ"},"M5969":{"lit":"գտանէ","line":{"facs":"#z104400852","resp":"#u2140","xml:id":"l104400852","n":"24"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"գտանէ"},"V31":{"lit":"գտանէ","line":{"facs":"#z104333340","resp":"#u2140","xml:id":"l104333340","n":"19"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"գտանէ"},"M7993":{"lit":"գտանէ","line":{"facs":"#z104199908","resp":"#u2140","xml:id":"l104199908","n":"26"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"գտանէ"}}</data>
+      <data key="dn7">գտանէ</data>
+      <data key="dn2">գտանէ</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">46</data>
+      <data key="dn11">true</data>
+    </node>
+    <node id="5755431">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">ի</data>
+      <data key="dn11">false</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"ի","context":"text/body/ab[87]","n":"ի"},"V31":{"lit":"ի","line":{"facs":"#z104333340","resp":"#u2140","xml:id":"l104333340","n":"19"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ի"},"M7993":{"lit":"ի","line":{"facs":"#z104199908","resp":"#u2140","xml:id":"l104199908","n":"26"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ի"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">47</data>
+      <data key="dn2">ի</data>
+    </node>
+    <node id="5758296">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"ծառէն","context":"text/body/ab[87]","n":"ծառէն"},"V31":{"lit":"ծառէն","line":{"facs":"#z104333340","resp":"#u2140","xml:id":"l104333340","n":"19"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ծառէն"},"M7993":{"lit":"ծառէն","line":{"facs":"#z104199908","resp":"#u2140","xml:id":"l104199908","n":"26"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ծառէն"}}</data>
+      <data key="dn11">false</data>
+      <data key="dn2">ծառէն</data>
+      <data key="dn7">ծառէն,</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">48</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">ծառէն</data>
+    </node>
+    <node id="5633502">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"խայթէ:","context":"text/body/ab[87]","n":"խայթէ:"},"V31":{"lit":"խայթէ:","line":{"facs":"#z104333340","resp":"#u2140","xml:id":"l104333340","n":"19"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"խայթէ:"},"M7993":{"lit":"խայթէ:","line":{"facs":"#z104199908","resp":"#u2140","xml:id":"l104199908","n":"26"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"խայթէ:"}}</data>
+      <data key="dn7">խայթէ:</data>
+      <data key="dn2">խայթէ:</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">50</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5454728">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">Ցուցանէ։</data>
+      <data key="dn2">Ցուցանէ։</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">53</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M7993":{"lit":"Ցուցանէ։","line":{"facs":"#z104199908","resp":"#u2140","xml:id":"l104199908","n":"26"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"Ցուցանէ։"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5745736">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"ծառն","line":{"facs":"#z104400905","resp":"#u2140","xml:id":"l104400905","n":"1"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"ծառն"},"M7993":{"lit":"ծառն","line":{"facs":"#z104199977","resp":"#u2140","xml:id":"l104199977","n":"1"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"ծառն"}}</data>
+      <data key="dn11">false</data>
+      <data key="dn2">ծառն</data>
+      <data key="dn7">ծառն</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">55</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">ծառն</data>
+    </node>
+    <node id="5693977">
+      <data key="dn0">[READING]</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"և","context":"text/body/ab[87]","n":"և"},"M5969":{"lit":"և","line":{"facs":"#z104400906","resp":"#u2140","xml:id":"l104400906","n":"2"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"և"},"V31":{"lit":"և","line":{"facs":"#z104333341","resp":"#u2140","xml:id":"l104333341","n":"20"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"և"},"M7993":{"lit":"և","line":{"facs":"#z104199977","resp":"#u2140","xml:id":"l104199977","n":"1"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"և"}}</data>
+      <data key="dn11">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">60</data>
+      <data key="dn2">և</data>
+      <data key="dn7">և</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">և</data>
+      <data key="dn14">false</data>
+    </node>
+    <node id="5597074">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">շուքն՝</data>
+      <data key="dn11">true</data>
+      <data key="dn2">շուքն</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"շուքն","context":"text/body/ab[87]","n":"շուքն"},"M5969":{"lit":"շուքն","line":{"facs":"#z104400906","resp":"#u2140","xml:id":"l104400906","n":"2"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"շուքն"},"V31":{"lit":"շուքն","line":{"facs":"#z104333341","resp":"#u2140","xml:id":"l104333341","n":"20"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"շուքն"},"M7993":{"lit":"շուքն","line":{"facs":"#z104199977","resp":"#u2140","xml:id":"l104199977","n":"1"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"շուքն"}}</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">61</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">շուքն</data>
+    </node>
+    <node id="5631486">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">պատուիրանն</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"պատուիրանն","context":"text/body/ab[87]","n":"պատուիրանն"},"V31":{"lit":"պատուիրանն","line":{"facs":"#z104333341","resp":"#u2140","xml:id":"l104333341","n":"20"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"պատուիրանն"},"M7993":{"lit":"պատուիրանն","line":{"facs":"#z104199977","resp":"#u2140","xml:id":"l104199977","n":"1"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"պատուիրանն"}}</data>
+      <data key="dn2">պատուիրանն</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">62</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5663786">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M7993":{"lit":"աստուծոյ.","line":{"facs":"#z104199977","resp":"#u2140","xml:id":"l104199977","n":"1"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"աստուծոյ."}}</data>
+      <data key="dn11">false</data>
+      <data key="dn7">Աստուծոյ,</data>
+      <data key="dn9">false</data>
+      <data key="dn2">աստուծոյ.</data>
+      <data key="dn8">false</data>
+      <data key="dn12">աստուծոյ.</data>
+      <data key="dn5">63</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+    </node>
+    <node id="5671999">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">և</data>
+      <data key="dn11">true</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"և","context":"text/body/ab[87]","n":"և"},"M5969":{"lit":"և","line":{"facs":"#z104400906","resp":"#u2140","xml:id":"l104400906","n":"2"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"և"},"V31":{"lit":"և","line":{"facs":"#z104333342","resp":"#u2140","xml:id":"l104333342","n":"21"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"և"},"M7993":{"lit":"և","line":{"facs":"#z104199977","resp":"#u2140","xml:id":"l104199977","n":"1"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"և"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">65</data>
+      <data key="dn2">և</data>
+    </node>
+    <node id="5562225">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">աւձն</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">66</data>
+      <data key="dn2">աւձն</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"աւձն","line":{"facs":"#z104400906","resp":"#u2140","xml:id":"l104400906","n":"2"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"աւձն"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5512875">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"օձն","context":"text/body/ab[87]","n":"օձն"},"V31":{"lit":"օձն","line":{"facs":"#z104333342","resp":"#u2140","xml:id":"l104333342","n":"21"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"օձն"},"M7993":{"lit":"օձն","line":{"facs":"#z104199977","resp":"#u2140","xml:id":"l104199977","n":"1"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"օձն"}}</data>
+      <data key="dn11">false</data>
+      <data key="dn2">օձն</data>
+      <data key="dn7">օձն՝</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">66</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">օձն</data>
+    </node>
+    <node id="5487782">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">սատանայ</data>
+      <data key="dn2">սատանայ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">67</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"սատանայ","context":"text/body/ab[87]","n":"սատանայ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5638765">
+      <data key="dn0">[READING]</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">68</data>
+      <data key="dn2">է.</data>
+      <data key="dn7">է.</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"է.","context":"text/body/ab[87]","n":"է."}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5691829">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"եթէ","context":"text/body/ab[87]","n":"եթէ"},"M5969":{"lit":"եթէ","line":{"facs":"#z104400907","resp":"#u2140","break":"no","xml:id":"l104400907","n":"3"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"եթէ"},"V31":{"lit":"եթէ","line":{"facs":"#z104333342","resp":"#u2140","xml:id":"l104333342","n":"21"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"եթէ"},"M7993":{"lit":"եթէ","line":{"facs":"#z104199977","resp":"#u2140","xml:id":"l104199977","n":"1"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"եթէ"}}</data>
+      <data key="dn11">true</data>
+      <data key="dn2">եթէ</data>
+      <data key="dn7">Եթէ</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">69</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">եթէ</data>
+    </node>
+    <node id="5607152">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"զոք","context":"text/body/ab[87]","n":"զոք"},"V31":{"lit":"զոք","line":{"facs":"#z104333342","resp":"#u2140","xml:id":"l104333342","n":"21"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"զոք"},"M7993":{"lit":"զոք","line":{"facs":"#z104199980","resp":"#u2140","xml:id":"l104199980","n":"2"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"զոք"}}</data>
+      <data key="dn7">զոք</data>
+      <data key="dn2">զոք</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">70</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5757743">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"գտանէ","context":"text/body/ab[87]","n":"գտանէ"},"V31":{"lit":"գտանէ","line":{"facs":"#z104333342","resp":"#u2140","xml:id":"l104333342","n":"21"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"գտանէ"},"M7993":{"lit":"գտանէ","line":{"facs":"#z104199980","resp":"#u2140","xml:id":"l104199980","n":"2"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"գտանէ"}}</data>
+      <data key="dn7">գտանէ</data>
+      <data key="dn2">գտանէ</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">71</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5597334">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">ի</data>
+      <data key="dn11">true</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"ի","context":"text/body/ab[87]","n":"ի"},"M5969":{"lit":"ի","line":{"facs":"#z104400907","resp":"#u2140","break":"no","xml:id":"l104400907","n":"3"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"ի"},"V31":{"lit":"ի","line":{"facs":"#z104333342","resp":"#u2140","xml:id":"l104333342","n":"21"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ի"},"M7993":{"lit":"ի","line":{"facs":"#z104199980","resp":"#u2140","xml:id":"l104199980","n":"2"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"ի"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">72</data>
+      <data key="dn2">ի</data>
+    </node>
+    <node id="5642868">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">պատուիրանքն</data>
+      <data key="dn2">պատուիրանքն</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">73</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"պատուիրանքն","line":{"facs":"#z104400907","resp":"#u2140","break":"no","xml:id":"l104400907","n":"3"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"պատուիրանքն"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5533005">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"&lt;abbr&gt;այ&lt;\/abbr&gt;","line":{"facs":"#z104400907","resp":"#u2140","break":"no","xml:id":"l104400907","n":"3"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"այ"}}</data>
+      <data key="dn8">false</data>
+      <data key="dn11">false</data>
+      <data key="dn7">աստուծոյ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">74</data>
+      <data key="dn2">այ</data>
+      <data key="dn13">false</data>
+      <data key="dn12">այ</data>
+      <data key="dn14">false</data>
+    </node>
+    <node id="5587574">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">կենան.</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">75</data>
+      <data key="dn2">կենան.</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"կեն&lt;lb xml:id=\"l104400908\" facs=\"#z104400908\" n=\"4\" resp=\"#u2140\" break=\"no\"/&gt;ան.","line":{"facs":"#z104400907","resp":"#u2140","break":"no","xml:id":"l104400907","n":"3"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"կենան."}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5735680">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">նայ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">76</data>
+      <data key="dn2">նայ</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"նայ","line":{"facs":"#z104400908","resp":"#u2140","break":"no","xml:id":"l104400908","n":"4"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"նայ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5555393">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">ոչ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">77</data>
+      <data key="dn2">ոչ</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"ոչ","line":{"facs":"#z104400908","resp":"#u2140","break":"no","xml:id":"l104400908","n":"4"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"ոչ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5561232">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">խայթէ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">78</data>
+      <data key="dn2">խայթէ</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"խայթէ","line":{"facs":"#z104400908","resp":"#u2140","break":"no","xml:id":"l104400908","n":"4"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"խայթէ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5522771">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">աւձն</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">79</data>
+      <data key="dn2">աւձն</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"աւձն","line":{"facs":"#z104400908","resp":"#u2140","break":"no","xml:id":"l104400908","n":"4"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"աւձն"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5746198">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">այսինքն.</data>
+      <data key="dn2">այսինքն.</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">80</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"այսինքն.","line":{"facs":"#z104400908","resp":"#u2140","break":"no","xml:id":"l104400908","n":"4"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"այսինքն."}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5718279">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">սատանայ</data>
+      <data key="dn2">սատանայ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">81</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"սատանայ","line":{"facs":"#z104400908","resp":"#u2140","break":"no","xml:id":"l104400908","n":"4"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"սատանայ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5662377">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">ապա</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">82</data>
+      <data key="dn2">ապա</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"ա&lt;lb xml:id=\"l104400909\" facs=\"#z104400909\" n=\"5\" resp=\"#u2140\" break=\"no\"/&gt;պա","line":{"facs":"#z104400908","resp":"#u2140","break":"no","xml:id":"l104400908","n":"4"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"ապա"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5492087">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">թէ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">83</data>
+      <data key="dn2">թէ</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"թէ","line":{"facs":"#z104400909","resp":"#u2140","break":"no","xml:id":"l104400909","n":"5"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"թէ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5578764">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">ի</data>
+      <data key="dn11">false</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"ի","line":{"facs":"#z104400909","resp":"#u2140","break":"no","xml:id":"l104400909","n":"5"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"ի"},"V31":{"lit":"ի","line":{"facs":"#z104333366","resp":"#u2140","xml:id":"l104333366","n":"1"},"context":"text/body/ab","page":{"n":"20180813_132950 copy"},"n":"ի"},"M7993":{"lit":"ի","line":{"facs":"#z104199980","resp":"#u2140","xml:id":"l104199980","n":"2"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"ի"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">84</data>
+      <data key="dn2">ի</data>
+    </node>
+    <node id="5623174">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">դուրս</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">85</data>
+      <data key="dn2">դուրս</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"դուրս","line":{"facs":"#z104400909","resp":"#u2140","break":"no","xml:id":"l104400909","n":"5"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"դուրս"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5615171">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">գտանէ.</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">86</data>
+      <data key="dn2">գտանէ.</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"գտանէ.","line":{"facs":"#z104400909","resp":"#u2140","break":"no","xml:id":"l104400909","n":"5"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"գտանէ."}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5498891">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">նայ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">87</data>
+      <data key="dn2">նայ</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"նայ","line":{"facs":"#z104400909","resp":"#u2140","break":"no","xml:id":"l104400909","n":"5"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"նայ"},"V31":{"lit":"նայ","line":{"facs":"#z104333366","resp":"#u2140","xml:id":"l104333366","n":"1"},"context":"text/body/ab","page":{"n":"20180813_132950 copy"},"n":"նայ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5715864">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"խայթէ","context":"text/body/ab[87]","n":"խայթէ"},"M5969":{"lit":"խայթէ","line":{"facs":"#z104400909","resp":"#u2140","break":"no","xml:id":"l104400909","n":"5"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"խայթէ"},"V31":{"lit":"խայթէ","line":{"facs":"#z104333366","resp":"#u2140","xml:id":"l104333366","n":"1"},"context":"text/body/ab","page":{"n":"20180813_132950 copy"},"n":"խայթէ"},"M7993":{"lit":"խայթէ","line":{"facs":"#z104199980","resp":"#u2140","xml:id":"l104199980","n":"2"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"խայթէ"}}</data>
+      <data key="dn7">խայթէ</data>
+      <data key="dn2">խայթէ</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">88</data>
+      <data key="dn11">true</data>
+    </node>
+    <node id="5686170">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">սատանայ</data>
+      <data key="dn2">սատանայ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">89</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"սատան&lt;lb xml:id=\"l104400910\" facs=\"#z104400910\" n=\"6\" resp=\"#u2140\" break=\"no\"/&gt;այ","line":{"facs":"#z104400909","resp":"#u2140","break":"no","xml:id":"l104400909","n":"5"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"սատանայ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5530651">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"որպէս","context":"text/body/ab[87]","n":"որպէս"},"M5969":{"lit":"որպէս","line":{"facs":"#z104400910","resp":"#u2140","break":"no","xml:id":"l104400910","n":"6"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"որպէս"},"M7993":{"lit":"որ&lt;lb xml:id=\"l104199981\" facs=\"#z104199981\" n=\"3\" resp=\"#u2140\" break=\"no\"/&gt;պէս","line":{"facs":"#z104199980","resp":"#u2140","xml:id":"l104199980","n":"2"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"որպէս"}}</data>
+      <data key="dn7">որպէս</data>
+      <data key="dn2">որպէս</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">92</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5635565">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">աւձն</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">93</data>
+      <data key="dn2">աւձն</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"աւձն","line":{"facs":"#z104400910","resp":"#u2140","break":"no","xml:id":"l104400910","n":"6"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"աւձն"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5497329">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M5969":{"lit":"այն։","line":{"facs":"#z104400910","resp":"#u2140","break":"no","xml:id":"l104400910","n":"6"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"այն։"},"V31":{"lit":"այն։","line":{"facs":"#z104333366","resp":"#u2140","xml:id":"l104333366","n":"1"},"context":"text/body/ab","page":{"n":"20180813_132950 copy"},"n":"այն։"},"M7993":{"lit":"այն։","line":{"facs":"#z104199981","resp":"#u2140","break":"no","xml:id":"l104199981","n":"3"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"այն։"}}</data>
+      <data key="dn7">այն։</data>
+      <data key="dn2">այն։</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">94</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5487694">
+      <data key="dn0">[READING]</data>
+      <data key="dn2">#END#</data>
+      <data key="dn15">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">95</data>
+    </node>
+    <node id="5635485">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"V31":{"lit":"օձն","line":{"facs":"#z104333366","resp":"#u2140","xml:id":"l104333366","n":"1"},"context":"text/body/ab","page":{"n":"20180813_132950 copy"},"n":"օձն"},"M7993":{"lit":"օձն","line":{"facs":"#z104199981","resp":"#u2140","break":"no","xml:id":"l104199981","n":"3"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"օձն"}}</data>
+      <data key="dn7">օձն</data>
+      <data key="dn2">օձն</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">93</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5455154">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">օձ:</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">93</data>
+      <data key="dn2">օձ:</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"օձ:","context":"text/body/ab[87]","n":"օձ:"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5633734">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"իւր","context":"text/body/ab[87]","n":"իւր"}}</data>
+      <data key="dn11">false</data>
+      <data key="dn2">իւր</data>
+      <data key="dn7">իւր</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">89</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">իւր</data>
+    </node>
+    <node id="5640047">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"չար","context":"text/body/ab[87]","n":"չար"}}</data>
+      <data key="dn11">false</data>
+      <data key="dn2">չար</data>
+      <data key="dn7">չար</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">90</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">չար</data>
+    </node>
+    <node id="5478438">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"հնարիւք","context":"text/body/ab[87]","n":"հնարիւք"}}</data>
+      <data key="dn11">false</data>
+      <data key="dn7">հնարիւք,</data>
+      <data key="dn9">false</data>
+      <data key="dn2">հնարիւք</data>
+      <data key="dn8">false</data>
+      <data key="dn12">հնարիւք</data>
+      <data key="dn5">91</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+    </node>
+    <node id="5605264">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"V31":{"lit":"&lt;abbr&gt;ոպ&lt;\/abbr&gt;","line":{"facs":"#z104333366","resp":"#u2140","xml:id":"l104333366","n":"1"},"context":"text/body/ab","page":{"n":"20180813_132950 copy"},"n":"ոպ"}}</data>
+      <data key="dn8">false</data>
+      <data key="dn11">false</data>
+      <data key="dn7">որպէս</data>
+      <data key="dn9">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">92</data>
+      <data key="dn2">ոպ</data>
+      <data key="dn13">false</data>
+      <data key="dn12">ոպ</data>
+      <data key="dn14">false</data>
+    </node>
+    <node id="5640584">
+      <data key="dn0">[READING]</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">89</data>
+      <data key="dn2">և</data>
+      <data key="dn7">և</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M7993":{"lit":"և","line":{"facs":"#z104199980","resp":"#u2140","xml:id":"l104199980","n":"2"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"և"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5711829">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">սպանէ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">90</data>
+      <data key="dn2">սպանէ</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M7993":{"lit":"սպանէ","line":{"facs":"#z104199980","resp":"#u2140","xml:id":"l104199980","n":"2"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"սպանէ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5721577">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">պատուիրանէն</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"պատուիրանէն","context":"text/body/ab[87]","n":"պատուիրանէն"},"V31":{"lit":"պատուիրանէն","line":{"facs":"#z104333366","resp":"#u2140","xml:id":"l104333366","n":"1"},"context":"text/body/ab","page":{"n":"20180813_132950 copy"},"n":"պատուիրանէն"},"M7993":{"lit":"պատուիրանէն","line":{"facs":"#z104199980","resp":"#u2140","xml:id":"l104199980","n":"2"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"պատուիրանէն"}}</data>
+      <data key="dn2">պատուիրանէն</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">85</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5697230">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"V31":{"lit":"&lt;abbr&gt;այ&lt;\/abbr&gt;.","line":{"facs":"#z104333366","resp":"#u2140","xml:id":"l104333366","n":"1"},"context":"text/body/ab","page":{"n":"20180813_132950 copy"},"n":"այ."}}</data>
+      <data key="dn8">false</data>
+      <data key="dn11">false</data>
+      <data key="dn7">աստուծոյ.</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">86</data>
+      <data key="dn2">այ.</data>
+      <data key="dn13">false</data>
+      <data key="dn12">այ.</data>
+      <data key="dn14">false</data>
+    </node>
+    <node id="5708772">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"աստուծոյ.","context":"text/body/ab[87]","n":"աստուծոյ."},"M7993":{"lit":"աստուծոյ.","line":{"facs":"#z104199980","resp":"#u2140","xml:id":"l104199980","n":"2"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"աստուծոյ."}}</data>
+      <data key="dn11">false</data>
+      <data key="dn7">Աստուծոյ,</data>
+      <data key="dn9">false</data>
+      <data key="dn2">աստուծոյ.</data>
+      <data key="dn8">false</data>
+      <data key="dn12">աստուծոյ.</data>
+      <data key="dn5">86</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+    </node>
+    <node id="5613292">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"նա","context":"text/body/ab[87]","n":"նա"},"M7993":{"lit":"նա","line":{"facs":"#z104199980","resp":"#u2140","xml:id":"l104199980","n":"2"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"նա"}}</data>
+      <data key="dn11">false</data>
+      <data key="dn2">նա</data>
+      <data key="dn7">նա</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">87</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">նա</data>
+    </node>
+    <node id="5583359">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"դուրս","context":"text/body/ab[87]","n":"դուրս"},"V31":{"lit":"դուրս","line":{"facs":"#z104333342","resp":"#u2140","xml:id":"l104333342","n":"21"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"դուրս"},"M7993":{"lit":"դուրս","line":{"facs":"#z104199980","resp":"#u2140","xml:id":"l104199980","n":"2"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"դուրս"}}</data>
+      <data key="dn7">դուրս</data>
+      <data key="dn2">դուրս</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">73</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5503925">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">մարդիք</data>
+      <data key="dn2">մարդիք</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">70</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"մարդիք","line":{"facs":"#z104400907","resp":"#u2140","break":"no","xml:id":"l104400907","n":"3"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"մարդիք"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5480376">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M5969":{"lit":"սատ&lt;lb xml:id=\"l104400907\" facs=\"#z104400907\" n=\"3\" resp=\"#u2140\" break=\"no\"/&gt;անայ.","line":{"facs":"#z104400906","resp":"#u2140","xml:id":"l104400906","n":"2"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"սատանայ."},"V31":{"lit":"սատանայ.","line":{"facs":"#z104333342","resp":"#u2140","xml:id":"l104333342","n":"21"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"սատանայ."},"M7993":{"lit":"սատանայ.","line":{"facs":"#z104199977","resp":"#u2140","xml:id":"l104199977","n":"1"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"սատանայ."}}</data>
+      <data key="dn11">false</data>
+      <data key="dn7">սատանայ:</data>
+      <data key="dn9">false</data>
+      <data key="dn2">սատանայ.</data>
+      <data key="dn8">false</data>
+      <data key="dn12">սատանայ.</data>
+      <data key="dn5">67</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+    </node>
+    <node id="5601581">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">աստուծոյ</data>
+      <data key="dn2">աստուծոյ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">63</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"աստուծոյ","context":"text/body/ab[87]","n":"աստուծոյ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5468379">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"V31":{"lit":"&lt;abbr&gt;այ&lt;\/abbr&gt;.","line":{"facs":"#z104333342","resp":"#u2140","xml:id":"l104333342","n":"21"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"այ."}}</data>
+      <data key="dn8">false</data>
+      <data key="dn11">false</data>
+      <data key="dn7">աստուծոյ.</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">63</data>
+      <data key="dn2">այ.</data>
+      <data key="dn13">false</data>
+      <data key="dn12">այ.</data>
+      <data key="dn14">false</data>
+    </node>
+    <node id="5482585">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">պատուիրանքն</data>
+      <data key="dn2">պատուիրանքն</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">62</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"պատուիրանքն","line":{"facs":"#z104400906","resp":"#u2140","xml:id":"l104400906","n":"2"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"պատուիրանքն"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5688600">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"&lt;abbr&gt;այ&lt;\/abbr&gt;","line":{"facs":"#z104400906","resp":"#u2140","xml:id":"l104400906","n":"2"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"այ"}}</data>
+      <data key="dn8">false</data>
+      <data key="dn11">false</data>
+      <data key="dn7">աստուծոյ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">63</data>
+      <data key="dn2">այ</data>
+      <data key="dn13">false</data>
+      <data key="dn12">այ</data>
+      <data key="dn14">false</data>
+    </node>
+    <node id="5459063">
+      <data key="dn0">[READING]</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">64</data>
+      <data key="dn2">է</data>
+      <data key="dn7">է</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"է","line":{"facs":"#z104400906","resp":"#u2140","xml:id":"l104400906","n":"2"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"է"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5761793">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M7993":{"lit":"աստուած.","line":{"facs":"#z104199977","resp":"#u2140","xml:id":"l104199977","n":"1"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"աստուած."}}</data>
+      <data key="dn11">false</data>
+      <data key="dn7">Աստուած</data>
+      <data key="dn9">false</data>
+      <data key="dn2">աստուած.</data>
+      <data key="dn8">false</data>
+      <data key="dn12">աստուած.</data>
+      <data key="dn5">56</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+    </node>
+    <node id="5525897">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">և</data>
+      <data key="dn11">false</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"և","context":"text/body/ab[87]","n":"և"},"V31":{"lit":"և","line":{"facs":"#z104333341","resp":"#u2140","xml:id":"l104333341","n":"20"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"և"},"M7993":{"lit":"և","line":{"facs":"#z104199977","resp":"#u2140","xml:id":"l104199977","n":"1"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"և"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">58</data>
+      <data key="dn2">և</data>
+    </node>
+    <node id="5510211">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">պտուղն</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"պտուղն","context":"text/body/ab[87]","n":"պտուղն"},"V31":{"lit":"պտուղն","line":{"facs":"#z104333341","resp":"#u2140","xml:id":"l104333341","n":"20"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"պտուղն"},"M7993":{"lit":"պտուղն","line":{"facs":"#z104199977","resp":"#u2140","xml:id":"l104199977","n":"1"},"context":"text/body/ab","page":{"n":"7993.0237"},"n":"պտուղն"}}</data>
+      <data key="dn2">պտուղն</data>
+      <data key="dn8">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">59</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5520706">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"Ցուցանէ.","context":"text/body/ab[87]","n":"Ցուցանէ."},"V31":{"lit":"Ցուցանէ.","line":{"facs":"#z104333340","resp":"#u2140","xml:id":"l104333340","n":"19"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"Ցուցանէ."}}</data>
+      <data key="dn11">false</data>
+      <data key="dn7">Ցուցանէ,</data>
+      <data key="dn9">false</data>
+      <data key="dn2">Ցուցանէ.</data>
+      <data key="dn8">false</data>
+      <data key="dn12">Ցուցանէ.</data>
+      <data key="dn5">53</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+    </node>
+    <node id="5578408">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"թէ","context":"text/body/ab[87]","n":"թէ"},"M5969":{"lit":"թէ","line":{"facs":"#z104400905","resp":"#u2140","xml:id":"l104400905","n":"1"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"թէ"}}</data>
+      <data key="dn7">թէ</data>
+      <data key="dn2">թէ</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">54</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5523207">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">աստուած</data>
+      <data key="dn2">աստուած</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">56</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"աստուած","context":"text/body/ab[87]","n":"աստուած"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5492491">
+      <data key="dn0">[READING]</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"է","context":"text/body/ab[87]","n":"է"}}</data>
+      <data key="dn11">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">57</data>
+      <data key="dn2">է</data>
+      <data key="dn7">է,</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">է</data>
+      <data key="dn14">false</data>
+    </node>
+    <node id="5640905">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">Ծառն</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">55</data>
+      <data key="dn2">Ծառն</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"V31":{"lit":"Ծառն","line":{"facs":"#z104333341","resp":"#u2140","xml:id":"l104333341","n":"20"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"Ծառն"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5588881">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"V31":{"lit":"&lt;abbr&gt;ած&lt;\/abbr&gt;.","line":{"facs":"#z104333341","resp":"#u2140","xml:id":"l104333341","n":"20"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ած."}}</data>
+      <data key="dn8">false</data>
+      <data key="dn11">false</data>
+      <data key="dn7">աստուած.</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">56</data>
+      <data key="dn2">ած.</data>
+      <data key="dn13">false</data>
+      <data key="dn12">ած.</data>
+      <data key="dn14">false</data>
+    </node>
+    <node id="5658621">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">նա</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">49</data>
+      <data key="dn2">նա</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"նա","context":"text/body/ab[87]","n":"նա"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5487971">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">քան</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">47</data>
+      <data key="dn2">քան</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"քան","line":{"facs":"#z104400852","resp":"#u2140","xml:id":"l104400852","n":"24"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"քան"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5762299">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">զշուքն</data>
+      <data key="dn2">զշուքն</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">48</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"զշուքն","line":{"facs":"#z104400852","resp":"#u2140","xml:id":"l104400852","n":"24"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"զշուքն"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5625353">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">խայթէ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">50</data>
+      <data key="dn2">խայթէ</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"խայթէ","line":{"facs":"#z104400905","resp":"#u2140","xml:id":"l104400905","n":"1"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"խայթէ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5463742">
+      <data key="dn0">[READING]</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">51</data>
+      <data key="dn2">և</data>
+      <data key="dn7">և</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"և","line":{"facs":"#z104400905","resp":"#u2140","xml:id":"l104400905","n":"1"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"և"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5708209">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">մեռանի։</data>
+      <data key="dn2">մեռանի։</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">52</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"մեռանի։","line":{"facs":"#z104400905","resp":"#u2140","xml:id":"l104400905","n":"1"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"մեռանի։"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5763923">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">Ցուցանէ</data>
+      <data key="dn2">Ցուցանէ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">53</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"Ցուցանէ","line":{"facs":"#z104400905","resp":"#u2140","xml:id":"l104400905","n":"1"},"context":"text/body/ab","page":{"n":"5969-031a"},"n":"Ցուցանէ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5685692">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">դուրս</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">45</data>
+      <data key="dn2">դուրս</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"դուրս","line":{"facs":"#z104400851","resp":"#u2140","break":"no","xml:id":"l104400851","n":"23"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"դուրս"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5526681">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">խաբէ.</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">41</data>
+      <data key="dn2">խաբէ.</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"խաբէ.","line":{"facs":"#z104400851","resp":"#u2140","break":"no","xml:id":"l104400851","n":"23"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"խաբէ."}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5485728">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"տակն","context":"text/body/ab[87]","n":"տակն"},"V31":{"lit":"տակն","line":{"facs":"#z104333339","resp":"#u2140","xml:id":"l104333339","n":"18"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"տակն"},"M7993":{"lit":"տակն","line":{"facs":"#z104199907","resp":"#u2140","xml:id":"l104199907","n":"25"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"տակն"}}</data>
+      <data key="dn7">տակն</data>
+      <data key="dn2">տակն</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">38</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5636685">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"գտանէ.","context":"text/body/ab[87]","n":"գտանէ."},"V31":{"lit":"գտանէ.","line":{"facs":"#z104333339","resp":"#u2140","xml:id":"l104333339","n":"18"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"գտանէ."},"M7993":{"lit":"գտանէ.","line":{"facs":"#z104199907","resp":"#u2140","xml:id":"l104199907","n":"25"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"գտանէ."}}</data>
+      <data key="dn11">false</data>
+      <data key="dn2">գտանէ.</data>
+      <data key="dn7">գտանէ,</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">39</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">գտանէ.</data>
+    </node>
+    <node id="5661851">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">չխայթէ.</data>
+      <data key="dn2">չխայթէ.</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">41</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"V31":{"lit":"չխայթէ.","line":{"facs":"#z104333339","resp":"#u2140","xml:id":"l104333339","n":"18"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"չխայթէ."},"M7993":{"lit":"չխայթէ.","line":{"facs":"#z104199908","resp":"#u2140","xml:id":"l104199908","n":"26"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"չխայթէ."}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5659918">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"ծառին","context":"text/body/ab[87]","n":"ծառին"},"V31":{"lit":"ծառին","line":{"facs":"#z104333339","resp":"#u2140","xml:id":"l104333339","n":"18"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ծառին"},"M7993":{"lit":"ծառին","line":{"facs":"#z104199907","resp":"#u2140","xml:id":"l104199907","n":"25"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ծառին"}}</data>
+      <data key="dn11">false</data>
+      <data key="dn2">ծառին</data>
+      <data key="dn7">ծառին</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">37</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">ծառին</data>
+    </node>
+    <node id="5532134">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">գտանէ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">31</data>
+      <data key="dn2">գտանէ</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"գտանէ","line":{"facs":"#z104400850","resp":"#u2140","xml:id":"l104400850","n":"22"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"գտանէ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5719324">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">աւձն</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">32</data>
+      <data key="dn2">աւձն</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"աւձն","line":{"facs":"#z104400850","resp":"#u2140","xml:id":"l104400850","n":"22"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"աւձն"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5573191">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">ի</data>
+      <data key="dn11">true</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"ի","context":"text/body/ab[87]","n":"ի"},"M5969":{"lit":"ի","line":{"facs":"#z104400850","resp":"#u2140","xml:id":"l104400850","n":"22"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"ի"},"V31":{"lit":"ի","line":{"facs":"#z104333338","resp":"#u2140","break":"no","xml:id":"l104333338","n":"17"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ի"},"M7993":{"lit":"ի","line":{"facs":"#z104199907","resp":"#u2140","xml:id":"l104199907","n":"25"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ի"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">33</data>
+      <data key="dn2">ի</data>
+    </node>
+    <node id="5471372">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">մարդկանէ</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"մարդկանէ","line":{"facs":"#z104400850","resp":"#u2140","xml:id":"l104400850","n":"22"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"մարդկանէ"},"V31":{"lit":"մարդկանէ","line":{"facs":"#z104333338","resp":"#u2140","break":"no","xml:id":"l104333338","n":"17"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"մարդկանէ"},"M7993":{"lit":"մարդկանէ","line":{"facs":"#z104199907","resp":"#u2140","xml:id":"l104199907","n":"25"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"մարդկանէ"}}</data>
+      <data key="dn2">մարդկանէ</data>
+      <data key="dn8">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">34</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5575986">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">մարդկային</data>
+      <data key="dn2">մարդկային</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">34</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"մարդկային","context":"text/body/ab[87]","n":"մարդկային"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5704902">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">ազգէ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">35</data>
+      <data key="dn2">ազգէ</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"ազգէ","context":"text/body/ab[87]","n":"ազգէ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5447356">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"V31":{"lit":"օձն","line":{"facs":"#z104333338","resp":"#u2140","break":"no","xml:id":"l104333338","n":"17"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"օձն"},"M7993":{"lit":"օձն","line":{"facs":"#z104199907","resp":"#u2140","xml:id":"l104199907","n":"25"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"օձն"}}</data>
+      <data key="dn11">false</data>
+      <data key="dn2">օձն</data>
+      <data key="dn7">օձն</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">32</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">օձն</data>
+    </node>
+    <node id="5545574">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">մի</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">28</data>
+      <data key="dn2">մի</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"մի","context":"text/body/ab[87]","n":"մի"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5476697">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"V31":{"lit":"բ&lt;abbr&gt;զ&lt;\/abbr&gt;մ.","line":{"facs":"#z104333338","resp":"#u2140","break":"no","xml:id":"l104333338","n":"17"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"բզմ."}}</data>
+      <data key="dn8">false</data>
+      <data key="dn11">false</data>
+      <data key="dn7">բազում.</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">28</data>
+      <data key="dn2">բզմ.</data>
+      <data key="dn13">false</data>
+      <data key="dn12">բզմ.</data>
+      <data key="dn14">false</data>
+    </node>
+    <node id="5614022">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">բազում</data>
+      <data key="dn2">բազում</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">28</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"բազում","line":{"facs":"#z104400849","resp":"#u2140","xml:id":"l104400849","n":"21"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"բազում"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5740116">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">աւձ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">27</data>
+      <data key="dn2">աւձ</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"աւձ","line":{"facs":"#z104400849","resp":"#u2140","xml:id":"l104400849","n":"21"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"աւձ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5545235">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"V31":{"lit":"Եւ","line":{"facs":"#z104333337","resp":"#u2140","break":"no","xml:id":"l104333337","n":"16"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"Եւ"},"M7993":{"lit":"Եւ","line":{"facs":"#z104199906","resp":"#u2140","break":"no","xml:id":"l104199906","n":"24"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"Եւ"}}</data>
+      <data key="dn7">Եւ</data>
+      <data key="dn2">Եւ</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">21</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5683095">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">գեղեցիկ։</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"V31":{"lit":"գեղեցիկ։","line":{"facs":"#z104333337","resp":"#u2140","break":"no","xml:id":"l104333337","n":"16"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"գեղեցիկ։"},"M7993":{"lit":"գեղեցիկ։","line":{"facs":"#z104199906","resp":"#u2140","break":"no","xml:id":"l104199906","n":"24"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"գեղեցիկ։"}}</data>
+      <data key="dn2">գեղեցիկ։</data>
+      <data key="dn8">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">20</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5452436">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">և</data>
+      <data key="dn11">false</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"և","context":"text/body/ab[87]","n":"և"},"V31":{"lit":"և","line":{"facs":"#z104333336","resp":"#u2140","xml:id":"l104333336","n":"15"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"և"},"M7993":{"lit":"և","line":{"facs":"#z104199905","resp":"#u2140","xml:id":"l104199905","n":"23"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"և"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">12</data>
+      <data key="dn2">և</data>
+    </node>
+    <node id="5702531">
+      <data key="dn0">[READING]</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"քաղցր","context":"text/body/ab[87]","n":"քաղցր"}}</data>
+      <data key="dn11">false</data>
+      <data key="dn2">քաղցր</data>
+      <data key="dn7">քաղցր</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">13</data>
+      <data key="dn8">false</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn12">քաղցր</data>
+    </node>
+    <node id="5690361">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">և</data>
+      <data key="dn11">false</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"և","context":"text/body/ab[87]","n":"և"},"V31":{"lit":"և","line":{"facs":"#z104333336","resp":"#u2140","xml:id":"l104333336","n":"15"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"և"},"M7993":{"lit":"և","line":{"facs":"#z104199906","resp":"#u2140","break":"no","xml:id":"l104199906","n":"24"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"և"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">14</data>
+      <data key="dn2">և</data>
+    </node>
+    <node id="5513289">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">տերևալի</data>
+      <data key="dn2">տերևալի</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">16</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"տերևալի","context":"text/body/ab[87]","n":"տերևալի"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5486157">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">և</data>
+      <data key="dn11">false</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M36":{"lit":"և","context":"text/body/ab[87]","n":"և"},"V31":{"lit":"և","line":{"facs":"#z104333337","resp":"#u2140","break":"no","xml:id":"l104333337","n":"16"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"և"},"M7993":{"lit":"և","line":{"facs":"#z104199906","resp":"#u2140","break":"no","xml:id":"l104199906","n":"24"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"և"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">17</data>
+      <data key="dn2">և</data>
+    </node>
+    <node id="5713640">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"ունի","context":"text/body/ab[87]","n":"ունի"},"V31":{"lit":"ունի","line":{"facs":"#z104333337","resp":"#u2140","break":"no","xml:id":"l104333337","n":"16"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ունի"},"M7993":{"lit":"ունի","line":{"facs":"#z104199906","resp":"#u2140","break":"no","xml:id":"l104199906","n":"24"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ունի"}}</data>
+      <data key="dn7">ունի</data>
+      <data key="dn2">ունի</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">18</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5656128">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"V31":{"lit":"տերև&lt;lb xml:id=\"l104333337\" facs=\"#z104333337\" n=\"16\" resp=\"#u2140\" break=\"no\"/&gt;ալից.","line":{"facs":"#z104333336","resp":"#u2140","xml:id":"l104333336","n":"15"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"տերևալից."},"M7993":{"lit":"տերևալից.","line":{"facs":"#z104199906","resp":"#u2140","break":"no","xml:id":"l104199906","n":"24"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"տերևալից."}}</data>
+      <data key="dn11">false</data>
+      <data key="dn7">տերևալից</data>
+      <data key="dn9">false</data>
+      <data key="dn2">տերևալից.</data>
+      <data key="dn8">false</data>
+      <data key="dn12">տերևալից.</data>
+      <data key="dn5">16</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+    </node>
+    <node id="5664428">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">է</data>
+      <data key="dn11">false</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"V31":{"lit":"է","line":{"facs":"#z104333336","resp":"#u2140","xml:id":"l104333336","n":"15"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"է"},"M7993":{"lit":"է","line":{"facs":"#z104199906","resp":"#u2140","break":"no","xml:id":"l104199906","n":"24"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"է"}}</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">15</data>
+      <data key="dn2">է</data>
+    </node>
+    <node id="5611951">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"V31":{"lit":"քաղցր.","line":{"facs":"#z104333336","resp":"#u2140","xml:id":"l104333336","n":"15"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"քաղցր."},"M7993":{"lit":"քաղ&lt;lb xml:id=\"l104199906\" facs=\"#z104199906\" n=\"24\" resp=\"#u2140\" break=\"no\"/&gt;ցր.","line":{"facs":"#z104199905","resp":"#u2140","xml:id":"l104199905","n":"23"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"քաղցր."}}</data>
+      <data key="dn8">false</data>
+      <data key="dn11">false</data>
+      <data key="dn7">քաղցր.</data>
+      <data key="dn9">false</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">13</data>
+      <data key="dn2">քաղցր.</data>
+      <data key="dn13">false</data>
+      <data key="dn12">քաղցր.</data>
+      <data key="dn14">false</data>
+    </node>
+    <node id="5454165">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"պտուղ","context":"text/body/ab[87]","n":"պտուղ"},"V31":{"lit":"պտուղ","line":{"facs":"#z104333336","resp":"#u2140","xml:id":"l104333336","n":"15"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"պտուղ"},"M7993":{"lit":"պտուղ","line":{"facs":"#z104199905","resp":"#u2140","xml:id":"l104199905","n":"23"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"պտուղ"}}</data>
+      <data key="dn7">պտուղ</data>
+      <data key="dn2">պտուղ</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">10</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5671583">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"V31":{"lit":"&lt;g ref=\"#asxarh\"&gt;աշխարհ&lt;\/g&gt;ն.","line":{"facs":"#z104333335","resp":"#u2140","xml:id":"l104333335","n":"14"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"աշխարհն."},"M7993":{"lit":"աշխարհն.","line":{"facs":"#z104199905","resp":"#u2140","xml:id":"l104199905","n":"23"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"աշխարհն."}}</data>
+      <data key="dn11">false</data>
+      <data key="dn7">աշխարհն,</data>
+      <data key="dn9">false</data>
+      <data key="dn2">աշխարհն.</data>
+      <data key="dn8">false</data>
+      <data key="dn12">աշխարհն.</data>
+      <data key="dn5">7</data>
+      <data key="dn13">false</data>
+      <data key="dn10">true</data>
+      <data key="dn14">false</data>
+      <data key="dn4">5770006</data>
+    </node>
+    <node id="5734940">
+      <data key="dn0">[READING]</data>
+      <data key="dn6">{"M36":{"lit":"կայր","context":"text/body/ab[87]","n":"կայր"}}</data>
+      <data key="dn7">կայր</data>
+      <data key="dn2">կայր</data>
+      <data key="dn8">false</data>
+      <data key="dn9">false</data>
+      <data key="dn10">true</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">4</data>
+      <data key="dn11">false</data>
+    </node>
+    <node id="5533831">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">կայ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">4</data>
+      <data key="dn2">կայ</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"M5969":{"lit":"կայ","line":{"facs":"#z104400847","resp":"#u2140","xml:id":"l104400847","n":"19"},"context":"text/body/ab","page":{"n":"5969-030b"},"n":"կայ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5445208">
+      <data key="dn0">[READING]</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">1</data>
+      <data key="dn2">Է</data>
+      <data key="dn7">Է</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"V31":{"lit":"Է","line":{"facs":"#z104333335","resp":"#u2140","xml:id":"l104333335","n":"14"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"Է"},"M7993":{"lit":"Է","line":{"facs":"#z104199905","resp":"#u2140","xml:id":"l104199905","n":"23"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"Է"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <node id="5657837">
+      <data key="dn0">[READING]</data>
+      <data key="dn7">ծառ</data>
+      <data key="dn4">5770006</data>
+      <data key="dn5">2</data>
+      <data key="dn2">ծառ</data>
+      <data key="dn11">false</data>
+      <data key="dn9">false</data>
+      <data key="dn6">{"V31":{"lit":"ծառ","line":{"facs":"#z104333335","resp":"#u2140","xml:id":"l104333335","n":"14"},"context":"text/body/ab","page":{"n":"20180813_132936"},"n":"ծառ"},"M7993":{"lit":"ծառ","line":{"facs":"#z104199905","resp":"#u2140","xml:id":"l104199905","n":"23"},"context":"text/body/ab","page":{"n":"7993.0236"},"n":"ծառ"}}</data>
+      <data key="dn8">false</data>
+    </node>
+    <edge id="13483202" source="5770006" target="5544046">
+      <data key="de0">COLLATION</data>
+    </edge>
+    <edge id="13461147" source="5544046" target="5709595">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M5969]</data>
+    </edge>
+    <edge id="13624130" source="5709595" target="5750331">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M5969]</data>
+    </edge>
+    <edge id="13645809" source="5750331" target="5521318">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13703332" source="5521318" target="5567650">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M5969, V31, M7993]</data>
+    </edge>
+    <edge id="13587083" source="5567650" target="5499398">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M5969]</data>
+    </edge>
+    <edge id="13494336" source="5499398" target="5603835">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M5969]</data>
+    </edge>
+    <edge id="13723780" source="5603835" target="5743849">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M5969, V31, M7993]</data>
+    </edge>
+    <edge id="13694789" source="5743849" target="5542604">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13650483" source="5542604" target="5728620">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13507833" source="5728620" target="5690357">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13613023" source="5690357" target="5532410">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13689967" source="5532410" target="5722510">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13461946" source="5722510" target="5534786">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M5969]</data>
+    </edge>
+    <edge id="13636432" source="5534786" target="5751590">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M5969, V31, M7993]</data>
+    </edge>
+    <edge id="13635829" source="5751590" target="5473105">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M5969, V31, M7993]</data>
+    </edge>
+    <edge id="13595590" source="5473105" target="5618170">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969, V31]</data>
+    </edge>
+    <edge id="13535616" source="5618170" target="5467348">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de3"></data>
+      <data key="de4">նորա</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">նր</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13728836" source="5467348" target="5651480">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M7993]</data>
+    </edge>
+    <edge id="13684260" source="5651480" target="5708353">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13494743" source="5708353" target="5460185">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M7993]</data>
+    </edge>
+    <edge id="13436128" source="5460185" target="5511769">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M7993]</data>
+    </edge>
+    <edge id="13561700" source="5511769" target="5717618">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13594971" source="5717618" target="5678420">
+      <data key="de0">RELATED</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">ոք</data>
+      <data key="de2">transposition</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">զոք</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13535727" source="5678420" target="5496385">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13584814" source="5496385" target="5710238">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13569771" source="5710238" target="5559434">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13631849" source="5559434" target="5470551">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13442399" source="5470551" target="5753895">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13428986" source="5753895" target="5669960">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M5969, V31, M7993]</data>
+    </edge>
+    <edge id="13518797" source="5669960" target="5532682">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M5969, V31, M7993]</data>
+    </edge>
+    <edge id="13470088" source="5532682" target="5669619">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13617650" source="5669619" target="5462394">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13494766" source="5462394" target="5755431">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13624514" source="5755431" target="5758296">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13497257" source="5758296" target="5633502">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13478278" source="5633502" target="5454728">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M7993]</data>
+    </edge>
+    <edge id="13615121" source="5454728" target="5745736">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M7993]</data>
+    </edge>
+    <edge id="13644159" source="5745736" target="5693977">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13657428" source="5693977" target="5597074">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M5969, V31, M7993]</data>
+    </edge>
+    <edge id="13563373" source="5597074" target="5631486">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13623979" source="5631486" target="5663786">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M7993]</data>
+    </edge>
+    <edge id="13438202" source="5663786" target="5671999">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M7993]</data>
+    </edge>
+    <edge id="13438083" source="5671999" target="5562225">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13719812" source="5562225" target="5512875">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de3"></data>
+      <data key="de4">օձն</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">աւձն</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13635665" source="5512875" target="5487782">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13478307" source="5487782" target="5638765">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13561894" source="5638765" target="5691829">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13567363" source="5691829" target="5607152">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13541103" source="5607152" target="5757743">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13458385" source="5757743" target="5597334">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13708464" source="5597334" target="5642868">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13585023" source="5642868" target="5533005">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13626109" source="5533005" target="5587574">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13612649" source="5587574" target="5735680">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13599731" source="5735680" target="5555393">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13669834" source="5555393" target="5561232">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13505790" source="5561232" target="5522771">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13449922" source="5522771" target="5746198">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13670178" source="5746198" target="5718279">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13534320" source="5718279" target="5662377">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13679439" source="5662377" target="5492087">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13462754" source="5492087" target="5578764">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13674157" source="5578764" target="5623174">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13587158" source="5623174" target="5615171">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13711332" source="5615171" target="5498891">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13451033" source="5498891" target="5715864">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969, V31]</data>
+    </edge>
+    <edge id="13487277" source="5715864" target="5686170">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13492740" source="5686170" target="5530651">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13697325" source="5530651" target="5635565">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13641087" source="5635565" target="5497329">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13571907" source="5497329" target="5487694">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969, V31, M7993]</data>
+    </edge>
+    <edge id="13542693" source="5635565" target="5635485">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de3"></data>
+      <data key="de4">օձն</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">աւձն</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13674772" source="5635485" target="5497329">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13677279" source="5530651" target="5455154">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13662520" source="5455154" target="5635565">
+      <data key="de0">RELATED</data>
+      <data key="de2">grammatical</data>
+      <data key="de3"></data>
+      <data key="de4">աւձն</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">օձ:</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13454852" source="5455154" target="5635485">
+      <data key="de0">RELATED</data>
+      <data key="de2">grammatical</data>
+      <data key="de3"></data>
+      <data key="de4">օձն</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">օձ:</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13587658" source="5455154" target="5487694">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13597531" source="5530651" target="5635485">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M7993]</data>
+    </edge>
+    <edge id="13713302" source="5715864" target="5633734">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13730282" source="5633734" target="5640047">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13739039" source="5640047" target="5478438">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13539792" source="5478438" target="5530651">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13629210" source="5715864" target="5605264">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31]</data>
+    </edge>
+    <edge id="13655494" source="5605264" target="5635485">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31]</data>
+    </edge>
+    <edge id="13573472" source="5605264" target="5530651">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de3"></data>
+      <data key="de4">որպէս</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">ոպ</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13733151" source="5715864" target="5640584">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M7993]</data>
+    </edge>
+    <edge id="13484241" source="5640584" target="5711829">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M7993]</data>
+    </edge>
+    <edge id="13590419" source="5711829" target="5530651">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M7993]</data>
+    </edge>
+    <edge id="13630279" source="5578764" target="5721577">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13658225" source="5721577" target="5697230">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31]</data>
+    </edge>
+    <edge id="13572109" source="5697230" target="5498891">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31]</data>
+    </edge>
+    <edge id="13429615" source="5697230" target="5708772">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">աստուծոյ.</data>
+      <data key="de5">true</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">այ.</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13706103" source="5708772" target="5613292">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M7993]</data>
+    </edge>
+    <edge id="13483589" source="5613292" target="5715864">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M7993]</data>
+    </edge>
+    <edge id="13427002" source="5613292" target="5498891">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de3"></data>
+      <data key="de4">նայ</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">նա</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13665860" source="5721577" target="5708772">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M7993]</data>
+    </edge>
+    <edge id="13652144" source="5597334" target="5583359">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13519964" source="5583359" target="5721577">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13453526" source="5583359" target="5578764">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13658629" source="5691829" target="5503925">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13465609" source="5503925" target="5607152">
+      <data key="de0">RELATED</data>
+      <data key="de2">lexical</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de9">մարդիք</data>
+      <data key="de5">true</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de4">զոք</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13427156" source="5503925" target="5597334">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13488434" source="5487782" target="5480376">
+      <data key="de0">RELATED</data>
+      <data key="de2">punctuation</data>
+      <data key="de4">սատանայ.</data>
+      <data key="de9">սատանայ</data>
+      <data key="de3"></data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13702639" source="5480376" target="5691829">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969, V31, M7993]</data>
+    </edge>
+    <edge id="13601698" source="5512875" target="5480376">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13424676" source="5562225" target="5480376">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13488532" source="5671999" target="5512875">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13653074" source="5631486" target="5601581">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13651846" source="5601581" target="5663786">
+      <data key="de0">RELATED</data>
+      <data key="de2">punctuation</data>
+      <data key="de4">աստուծոյ.</data>
+      <data key="de9">աստուծոյ</data>
+      <data key="de3"></data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13552305" source="5601581" target="5671999">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13622289" source="5631486" target="5468379">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31]</data>
+    </edge>
+    <edge id="13472706" source="5468379" target="5671999">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31]</data>
+    </edge>
+    <edge id="13439239" source="5468379" target="5601581">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">աստուծոյ</data>
+      <data key="de5">true</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">այ.</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13535774" source="5468379" target="5663786">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">աստուծոյ.</data>
+      <data key="de5">true</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">այ.</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13480773" source="5597074" target="5482585">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13578280" source="5482585" target="5688600">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13426060" source="5688600" target="5601581">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">աստուծոյ</data>
+      <data key="de5">true</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">այ</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13561665" source="5688600" target="5663786">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">աստուծոյ.</data>
+      <data key="de5">true</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">այ</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13525328" source="5688600" target="5459063">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13531402" source="5459063" target="5671999">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13735541" source="5688600" target="5468379">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de3"></data>
+      <data key="de4">այ.</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">այ</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13439656" source="5482585" target="5631486">
+      <data key="de0">RELATED</data>
+      <data key="de2">grammatical</data>
+      <data key="de3"></data>
+      <data key="de4">պատուիրանն</data>
+      <data key="de9">պատուիրանքն</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13600274" source="5745736" target="5761793">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M7993]</data>
+    </edge>
+    <edge id="13480877" source="5761793" target="5525897">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M7993]</data>
+    </edge>
+    <edge id="13462197" source="5525897" target="5510211">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13524090" source="5510211" target="5693977">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13449496" source="5454728" target="5520706">
+      <data key="de0">RELATED</data>
+      <data key="de2">punctuation</data>
+      <data key="de4">Ցուցանէ.</data>
+      <data key="de9">Ցուցանէ։</data>
+      <data key="de3"></data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13682384" source="5520706" target="5578408">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13641596" source="5578408" target="5745736">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13646417" source="5578408" target="5523207">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13740332" source="5523207" target="5492491">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13468403" source="5492491" target="5525897">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13596668" source="5523207" target="5761793">
+      <data key="de0">RELATED</data>
+      <data key="de2">punctuation</data>
+      <data key="de4">աստուած.</data>
+      <data key="de9">աստուած</data>
+      <data key="de3"></data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13567500" source="5520706" target="5640905">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31]</data>
+    </edge>
+    <edge id="13613452" source="5640905" target="5745736">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de3"></data>
+      <data key="de4">ծառն</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">Ծառն</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13481005" source="5640905" target="5588881">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31]</data>
+    </edge>
+    <edge id="13469376" source="5588881" target="5523207">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">աստուած</data>
+      <data key="de5">true</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">ած.</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13684338" source="5588881" target="5525897">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31]</data>
+    </edge>
+    <edge id="13672528" source="5588881" target="5761793">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">աստուած.</data>
+      <data key="de5">true</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">ած.</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13485037" source="5633502" target="5520706">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31]</data>
+    </edge>
+    <edge id="13502804" source="5758296" target="5658621">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13523600" source="5658621" target="5633502">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13611062" source="5462394" target="5487971">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13592235" source="5487971" target="5762299">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13611273" source="5762299" target="5625353">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13611282" source="5625353" target="5633502">
+      <data key="de0">RELATED</data>
+      <data key="de2">punctuation</data>
+      <data key="de3"></data>
+      <data key="de4">խայթէ:</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">խայթէ</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13679610" source="5625353" target="5463742">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13539846" source="5463742" target="5708209">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13646357" source="5708209" target="5763923">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13726250" source="5763923" target="5454728">
+      <data key="de0">RELATED</data>
+      <data key="de2">punctuation</data>
+      <data key="de4">Ցուցանէ։</data>
+      <data key="de9">Ցուցանէ</data>
+      <data key="de3"></data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13445872" source="5763923" target="5520706">
+      <data key="de0">RELATED</data>
+      <data key="de2">punctuation</data>
+      <data key="de4">Ցուցանէ.</data>
+      <data key="de9">Ցուցանէ</data>
+      <data key="de3"></data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13636853" source="5763923" target="5578408">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13701332" source="5532682" target="5685692">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13488589" source="5685692" target="5462394">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13526233" source="5685692" target="5669619">
+      <data key="de0">RELATED</data>
+      <data key="de2">lexical</data>
+      <data key="de3"></data>
+      <data key="de4">զատ</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">դուրս</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13603072" source="5559434" target="5526681">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13547104" source="5526681" target="5470551">
+      <data key="de0">RELATED</data>
+      <data key="de2">lexical</data>
+      <data key="de3"></data>
+      <data key="de4">խայթէ</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">խաբէ.</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13427042" source="5526681" target="5753895">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13653073" source="5710238" target="5485728">
+      <data key="de0">RELATED</data>
+      <data key="de2">lexical</data>
+      <data key="de3"></data>
+      <data key="de4">տակն</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">շուքն</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13711925" source="5485728" target="5636685">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13456828" source="5636685" target="5559434">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13636856" source="5636685" target="5661851">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13564950" source="5661851" target="5753895">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13560157" source="5661851" target="5526681">
+      <data key="de0">RELATED</data>
+      <data key="de2">lexical</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de9">չխայթէ.</data>
+      <data key="de5">true</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de4">խաբէ.</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13560848" source="5661851" target="5470551">
+      <data key="de0">RELATED</data>
+      <data key="de2">lexical</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de9">չխայթէ.</data>
+      <data key="de5">true</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de4">խայթէ</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13641338" source="5496385" target="5659918">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13455687" source="5659918" target="5485728">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13587348" source="5717618" target="5532134">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13476445" source="5532134" target="5636685">
+      <data key="de0">RELATED</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">գտանէ.</data>
+      <data key="de2">transposition</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">գտանէ</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13659293" source="5532134" target="5719324">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13607282" source="5719324" target="5573191">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13449617" source="5573191" target="5471372">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969, V31, M7993]</data>
+    </edge>
+    <edge id="13630468" source="5471372" target="5678420">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13526247" source="5471372" target="5496385">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13616953" source="5573191" target="5575986">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13489642" source="5575986" target="5471372">
+      <data key="de0">RELATED</data>
+      <data key="de2">lexical</data>
+      <data key="de4">մարդկանէ</data>
+      <data key="de9">մարդկային</data>
+      <data key="de3"></data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13612011" source="5575986" target="5704902">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13498152" source="5704902" target="5717618">
+      <data key="de0">RELATED</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">զոք</data>
+      <data key="de2">transposition</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">ազգէ</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13438012" source="5704902" target="5678420">
+      <data key="de0">RELATED</data>
+      <data key="de2">lexical</data>
+      <data key="de3"></data>
+      <data key="de4">ոք</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">ազգէ</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13643403" source="5704902" target="5496385">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13597209" source="5719324" target="5447356">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de3"></data>
+      <data key="de4">օձն</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">աւձն</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13510466" source="5447356" target="5573191">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13620017" source="5511769" target="5447356">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13743004" source="5511769" target="5573191">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13579527" source="5708353" target="5545574">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13658489" source="5545574" target="5511769">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13652934" source="5708353" target="5476697">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31]</data>
+    </edge>
+    <edge id="13643934" source="5476697" target="5511769">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31]</data>
+    </edge>
+    <edge id="13715579" source="5476697" target="5614022">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">բազում</data>
+      <data key="de5">true</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">բզմ.</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13468614" source="5614022" target="5511769">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13624178" source="5614022" target="5460185">
+      <data key="de0">RELATED</data>
+      <data key="de2">punctuation</data>
+      <data key="de4">բազում.</data>
+      <data key="de9">բազում</data>
+      <data key="de3"></data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13707004" source="5476697" target="5460185">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">բազում.</data>
+      <data key="de5">true</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">բզմ.</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13562541" source="5651480" target="5740116">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13595180" source="5740116" target="5708353">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de3"></data>
+      <data key="de4">օձ</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">աւձ</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13557403" source="5740116" target="5614022">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13680653" source="5618170" target="5651480">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969, V31]</data>
+    </edge>
+    <edge id="13444668" source="5473105" target="5467348">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, M7993]</data>
+    </edge>
+    <edge id="13421575" source="5722510" target="5545235">
+      <data key="de0">RELATED</data>
+      <data key="de6">local</data>
+      <data key="de3"></data>
+      <data key="de4">Եւ</data>
+      <data key="de2">spelling</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">և</data>
+      <data key="de5">true</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13482439" source="5545235" target="5534786">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13717436" source="5532410" target="5683095">
+      <data key="de0">RELATED</data>
+      <data key="de2">punctuation</data>
+      <data key="de4">գեղեցիկ։</data>
+      <data key="de9">գեղեցիկ</data>
+      <data key="de3"></data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13532184" source="5683095" target="5545235">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13699733" source="5690357" target="5722510">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13599577" source="5690357" target="5683095">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13449603" source="5728620" target="5452436">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13549159" source="5452436" target="5702531">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13595466" source="5702531" target="5690361">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13467769" source="5690361" target="5513289">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13741778" source="5513289" target="5486157">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13561692" source="5486157" target="5713640">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13655882" source="5713640" target="5690357">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13437869" source="5513289" target="5656128">
+      <data key="de0">RELATED</data>
+      <data key="de2">lexical</data>
+      <data key="de4">տերևալից.</data>
+      <data key="de9">տերևալի</data>
+      <data key="de3"></data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13565808" source="5656128" target="5486157">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13434634" source="5690361" target="5664428">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13710570" source="5664428" target="5656128">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13567761" source="5452436" target="5611951">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13635923" source="5611951" target="5702531">
+      <data key="de0">RELATED</data>
+      <data key="de2">punctuation</data>
+      <data key="de3"></data>
+      <data key="de4">քաղցր</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">քաղցր.</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13675628" source="5611951" target="5690361">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13726431" source="5542604" target="5454165">
+      <data key="de0">RELATED</data>
+      <data key="de2">lexical</data>
+      <data key="de3"></data>
+      <data key="de4">պտուղ</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">տերև</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13464453" source="5454165" target="5728620">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13427443" source="5743849" target="5454165">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36, V31, M7993]</data>
+    </edge>
+    <edge id="13501765" source="5567650" target="5671583">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13546553" source="5671583" target="5603835">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13517067" source="5671583" target="5499398">
+      <data key="de0">RELATED</data>
+      <data key="de2">punctuation</data>
+      <data key="de4">աշխարհն</data>
+      <data key="de9">աշխարհն.</data>
+      <data key="de3"></data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13431100" source="5750331" target="5734940">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13645140" source="5734940" target="5521318">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M36]</data>
+    </edge>
+    <edge id="13443779" source="5750331" target="5533831">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13542927" source="5533831" target="5734940">
+      <data key="de0">RELATED</data>
+      <data key="de2">grammatical</data>
+      <data key="de3"></data>
+      <data key="de4">կայր</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">կայ</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13738529" source="5533831" target="5521318">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[M5969]</data>
+    </edge>
+    <edge id="13585767" source="5544046" target="5445208">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13692198" source="5445208" target="5657837">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13576195" source="5657837" target="5750331">
+      <data key="de0">SEQUENCE</data>
+      <data key="de1">[V31, M7993]</data>
+    </edge>
+    <edge id="13547834" source="5657837" target="5709595">
+      <data key="de0">RELATED</data>
+      <data key="de2">spelling</data>
+      <data key="de3"></data>
+      <data key="de4">Ծառ</data>
+      <data key="de5">true</data>
+      <data key="de6">local</data>
+      <data key="de7">yes</data>
+      <data key="de8">false</data>
+      <data key="de9">ծառ</data>
+      <data key="de10"></data>
+      <data key="de11">false</data>
+      <data key="de12">false</data>
+      <data key="de13">0</data>
+    </edge>
+    <edge id="13443146" source="5770006" target="5487694">
+      <data key="de0">HAS_END</data>
+    </edge>
+  </graph>
+</graphml>

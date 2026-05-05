@@ -3,555 +3,1923 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gourmet Admin Page</title>
+  <title>Aghvesagirk Admin</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="shortcut icon" href="Admin_logo.png">
-  
+
   <style>
+    :root {
+      --page-bg: #f4f6f2;
+      --surface: #ffffff;
+      --surface-soft: #fbfaf6;
+      --text: #1f261f;
+      --muted: #687066;
+      --border: #dfe4da;
+      --brand: #2f6f4e;
+      --brand-dark: #25563d;
+      --brand-soft: #e7f1eb;
+      --danger: #a33535;
+      --warning: #8a6508;
+      --shadow: 0 10px 30px rgba(31, 38, 31, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: "Times New Roman", Georgia, Serif;
-      background-color: #f5f5f5;
+      margin: 0;
+      padding-top: 72px;
+      background: var(--page-bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
     }
-    h1, h2, h3, h4, h5, h6 {
-      font-family: "Playfair Display", serif;
-      letter-spacing: 5px;
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
     }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: 0;
+      color: var(--text);
+    }
+
+    a {
+      color: var(--brand);
+    }
+
     .w3-top {
-      background-color: #4CAF50;
-      color: white;
+      z-index: 10;
     }
-    .w3-bar .w3-button {
-      color: white;
+
+    .admin-nav {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 64px;
+      overflow: visible;
+      border-bottom: 1px solid rgba(47, 111, 78, 0.16);
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(12px);
     }
-    .w3-header {
-      background: url('header.jpg') no-repeat center center;
-      background-size: cover;
-      color: white;
-      padding: 60px;
-      text-align: center;
+
+    .admin-nav-title {
+      flex: 0 0 auto;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--brand-dark) !important;
     }
-    .w3-header h1 {
-      font-size: 50px;
+
+    .admin-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+      flex: 0 0 auto;
     }
+
+    .admin-nav .w3-button {
+      border-radius: 6px;
+      color: var(--text) !important;
+    }
+
+    .admin-nav .w3-button:hover {
+      background: var(--brand-soft) !important;
+      color: var(--brand-dark) !important;
+    }
+
+    .tag-counts-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 36px;
+      flex-wrap: wrap;
+    }
+
+    .tag-count-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      height: 30px;
+      padding: 0 8px;
+      border: 0;
+      border-radius: 6px;
+      background: var(--tag-color, #8b9388);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .tag-count-button:hover,
+    .tag-count-button:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      outline: none;
+    }
+
+    .admin-shell {
+      width: min(1240px, calc(100% - 32px));
+      max-width: none !important;
+      margin: 0 auto;
+      padding-bottom: 48px;
+    }
+
+    .top-summary {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: center;
+      padding: 26px 0 20px;
+    }
+
+    .top-summary h1 {
+      margin-bottom: 6px;
+      font-size: 42px;
+      line-height: 1.08;
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--brand-dark);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .section-subtitle {
+      max-width: 680px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .quick-stats {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+      max-width: 520px;
+    }
+
+    .stat-chip {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px;
+      align-items: center;
+      min-width: 132px;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--tag-color, #8b9388);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text);
+      text-align: left;
+      box-shadow: 0 2px 10px rgba(31, 38, 31, 0.04);
+      cursor: pointer;
+    }
+
+    .stat-count {
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.2;
+    }
+
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: minmax(320px, 0.9fr) minmax(420px, 1.1fr);
+      gap: 24px;
+      align-items: start;
+      padding: 14px 0 48px;
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .action-panel {
+      padding: 18px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 14px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .action-mode-switch {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: flex-end;
+      margin-left: auto;
+    }
+
+    .action-mode-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--brand-dark);
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .action-mode-button:hover,
+    .action-mode-button:focus-visible {
+      background: var(--brand-soft);
+      outline: none;
+    }
+
+    .action-mode-button.is-active {
+      border-color: var(--brand);
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .action-tab-panel[hidden] {
+      display: none;
+    }
+
+    .form-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .selection-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface-soft);
+    }
+
+    .selection-panel.has-selection {
+      border-color: rgba(47, 111, 78, 0.45);
+      background: var(--brand-soft);
+    }
+
+    .selection-preview {
+      max-height: 88px;
+      margin: 2px 0 0;
+      overflow: auto;
+      color: var(--muted);
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .selection-panel.has-selection .selection-preview {
+      color: var(--text);
+    }
+
+    .section-title-panel {
+      grid-template-columns: 1fr;
+      min-height: 75px;
+    }
+
+    .section-title-preview {
+      margin: 0;
+      color: var(--text);
+      font-size: 200%;
+      font-weight: 700;
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .selection-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
     .action-container {
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+      margin: 0;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
     }
+
+    .action-container h3 {
+      margin-bottom: 14px;
+      font-size: 20px;
+    }
+
+    .field-group {
+      margin-bottom: 12px;
+    }
+
+    .field-label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: stretch;
+    }
+
     .action-container input,
     .action-container select,
-    .action-container textarea {
+    .action-container textarea,
+    .saved-controls input,
+    .saved-controls select,
+    #dropdown {
       width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      min-height: 42px;
+      padding: 9px 11px;
+      border: 1px solid #bfc8ba;
+      border-radius: 6px;
+      background: #fff;
+      color: var(--text);
     }
+
+    .action-container input:focus,
+    .action-container select:focus,
+    .action-container textarea:focus,
+    .saved-controls input:focus,
+    .saved-controls select:focus,
+    #dropdown:focus {
+      border-color: var(--brand);
+      outline: 3px solid rgba(47, 111, 78, 0.18);
+    }
+
     .action-container textarea {
-      height: 100px;
+      min-height: 108px;
       resize: vertical;
     }
-    .action-container button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
+
+    #tagCategory {
+      --selected-tag-color: var(--brand);
+      border-color: var(--selected-tag-color);
+      box-shadow: inset 7px 0 0 var(--selected-tag-color);
+      padding-left: 18px;
+      background:
+        linear-gradient(90deg, color-mix(in srgb, var(--selected-tag-color) 10%, #fff), #fff 42%);
+    }
+
+    .primary-button,
+    .secondary-button,
+    .text-nav-button,
+    .mini-button {
+      border: 0;
+      border-radius: 6px;
+      font-weight: 700;
       cursor: pointer;
-      width: 100%;
+      transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
     }
-    .action-container button:hover {
-      background-color: #45a049;
-    }
-    #innerAside {
+
+    .primary-button {
       width: 100%;
-      background-color: white;
+      min-height: 44px;
+      padding: 10px 14px;
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .primary-button:hover,
+    .primary-button:focus-visible {
+      background: var(--brand-dark);
+      outline: none;
+    }
+
+    .primary-button[disabled] {
+      background: #8b9388;
+      cursor: wait;
+    }
+
+    .secondary-button,
+    .mini-button {
+      min-height: 42px;
+      padding: 8px 11px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--brand-dark);
+    }
+
+    .secondary-button:hover,
+    .secondary-button:focus-visible,
+    .mini-button:hover,
+    .mini-button:focus-visible {
+      background: var(--brand-soft);
+      outline: none;
+    }
+
+    .delete-button {
+      color: var(--danger);
+    }
+
+    .delete-button:hover,
+    .delete-button:focus-visible {
+      background: #fff1f1;
+    }
+
+    .reader-panel {
+      position: sticky;
+      top: 84px;
+      padding: 16px;
+    }
+
+    .reader-toolbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: end;
+      margin-bottom: 12px;
+    }
+
+    .reader-position {
+      min-width: 112px;
+      padding-bottom: 9px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    #headerText {
+      height: clamp(380px, 58vh, 700px);
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fffdf8;
+      font-size: 18px;
+      line-height: 1.75;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+
+    #selectedTextTitle {
+      margin: 0 0 12px;
+      padding: 0 0 12px;
+      border-bottom: 1px solid #ede8da;
+      background: #fffdf8;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    #lemmaText {
+      margin: 0;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .reader-footer {
+      margin-top: 12px;
+      padding: 0;
+      background: transparent;
+    }
+
+    .text-nav {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .text-nav-button {
+      min-height: 42px;
+      padding: 9px 12px;
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .text-nav-button:hover,
+    .text-nav-button:focus-visible {
+      background: var(--brand-dark);
+      outline: none;
+    }
+
+    .highlight-tags-button {
+      min-width: 154px;
+      border: 1px solid var(--border);
+      background: #fff !important;
+      color: var(--text) !important;
+    }
+
+    .highlight-tags-button.is-active {
+      border-color: #303530;
+      background: #303530 !important;
+      color: #fff !important;
+    }
+
+    .tag-highlight {
+      padding: 0 3px;
+      border-radius: 3px;
+      color: #111;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .saved-panel {
+      margin-bottom: 28px;
+      padding: 18px;
+    }
+
+    .saved-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    .saved-header h2 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .saved-controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(150px, 0.45fr);
+      gap: 10px;
+    }
+
+    .tag-table-space {
+      display: grid;
+      gap: 18px;
+    }
+
+    .tag-category {
+      border: 1px solid var(--border);
+      border-left: 7px solid var(--tag-color, #8b9388);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .tag-category-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 14px;
+      background: var(--surface-soft);
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .tag-category-header h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .category-count {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+      font-size: 21px;
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+
+    table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .tag-row td:first-child {
+      box-shadow: inset 4px 0 0 color-mix(in srgb, var(--tag-color, #8b9388) 45%, transparent);
+      background: color-mix(in srgb, var(--tag-color, #8b9388) 6%, #fff);
+    }
+
+    .table-action-cell {
+      width: 112px;
+      text-align: right;
+    }
+
+    .empty-state {
+      margin: 0;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+      border: 1px dashed #bcc6b7;
+      border-radius: 8px;
+      background: var(--surface-soft);
+      color: var(--muted);
+      text-align: center;
     }
-    .Gabriel-button {
-            color: black !important;
-        }
-        
+
+    .status-message {
+      position: fixed;
+      top: 82px;
+      right: 20px;
+      z-index: 20;
+      max-width: min(420px, calc(100% - 32px));
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+
+    .status-message.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .status-message.is-success {
+      border-color: rgba(47, 111, 78, 0.34);
+      background: #edf7f1;
+    }
+
+    .status-message.is-error {
+      border-color: rgba(163, 53, 53, 0.34);
+      background: #fff1f1;
+      color: var(--danger);
+    }
+
+    .status-message.is-warning {
+      border-color: rgba(138, 101, 8, 0.35);
+      background: #fff8df;
+      color: var(--warning);
+    }
+
     .G-name {
-            font-weight: bold;
-            text-decoration: none;
-            color: #000;
-            position: relative;
-        }
+      position: relative;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
-        .G-name::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #8A2BE2, #00CED1, #FF007F);
-            transform: scaleX(0);
-            animation: underline 2s infinite;
-        }
+    .G-name::after {
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #8a2be2, #00ced1, #ff007f);
+      content: "";
+      transform: scaleX(0);
+      animation: underline 2s infinite;
+    }
 
-        @keyframes underline {
-            0%, 100% { transform: scaleX(0); }
-            50% { transform: scaleX(1); }
-        }
-table {
-  width: 80%;
-  max-width: 80%;
-  margin: 0 auto; /* centers the table */
-  border-collapse: collapse;
-  table-layout: fixed; /* forces equal column widths */
-}
+    @keyframes underline {
+      0%,
+      100% {
+        transform: scaleX(0);
+      }
 
-table th, table td {
-  border: 1px solid #000;
-  padding: 8px;
-  box-sizing: border-box;
-  word-wrap: break-word; /* ensures content wraps within cells */
-}
+      50% {
+        transform: scaleX(1);
+      }
+    }
 
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
 
-    
+    @media (max-width: 980px) {
+      body {
+        padding-top: 116px;
+      }
+
+      .admin-nav {
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .admin-nav-links {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .top-summary,
+      .workspace-grid,
+      .saved-header {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-stats {
+        justify-content: flex-start;
+        max-width: none;
+      }
+
+      .reader-panel {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding-top: 132px;
+      }
+
+      .top-summary h1 {
+        font-size: 32px;
+      }
+
+      .admin-shell {
+        width: min(100% - 20px, 1240px);
+      }
+
+      .top-summary {
+        padding-top: 18px;
+      }
+
+      .action-panel,
+      .reader-panel,
+      .saved-panel {
+        padding: 12px;
+      }
+
+      .selection-panel,
+      .reader-toolbar,
+      .saved-controls,
+      .input-row {
+        grid-template-columns: 1fr;
+      }
+
+      .selection-actions {
+        justify-content: stretch;
+      }
+
+      .selection-actions button {
+        width: 100%;
+      }
+
+      #headerText {
+        height: 58vh;
+        font-size: 17px;
+      }
+
+      .text-nav {
+        grid-template-columns: 1fr;
+      }
+
+      .highlight-tags-button {
+        min-width: 0;
+      }
+
+      .reader-position {
+        min-width: 0;
+        padding-bottom: 0;
+        text-align: left;
+      }
+
+      .table-action-cell {
+        width: 88px;
+      }
+
+      .status-message {
+        top: 138px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+      }
+    }
   </style>
-  
-  <script>
-    // Helper function to send a POST request to update_tags.php.
-    function updateTag(group, node) {
-      fetch('update_tags.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ group, node })
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.error) {
-          console.error("Error:", data.error);
-          alert("Error: " + data.error);
-        } else {
-          console.log("Update successful:", data);
-        }
-      })
-      .catch(err => {
-        console.error("Fetch error:", err);
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const containers = document.querySelectorAll(".action-container");
-
-      /* --- 1. Create a reference link --- */
-      const createLinkContainer = containers[0];
-      const createLinkInputs = createLinkContainer.querySelectorAll("input");
-      const createLinkButton = createLinkContainer.querySelector("button");
-
-      createLinkButton.addEventListener("click", function () {
-        const text = createLinkInputs[0].value.trim();
-        const refLink = createLinkInputs[1].value.trim();
-        if (text && refLink) {
-          updateTag("References", { text: text, value: refLink });
-        } else {
-          alert("Please fill out both fields for the reference link.");
-        }
-      });
-
-      /* --- 2. Tag a text --- */
-      const tagTextContainer = containers[1];
-      const tagTextInput = tagTextContainer.querySelector("input[type='text']");
-      const tagSelect = tagTextContainer.querySelector("select");
-      const tagTextButton = tagTextContainer.querySelector("button");
-
-      // Map option text to JSON keys.
-      const tagMapping = {
-        "Person": "Individuals",
-        "Animal": "Animals",
-        "Location": "Locations",
-        "Date": "Dates"
-      };
-
-      tagTextButton.addEventListener("click", function () {
-        const text = tagTextInput.value.trim();
-        const selectedOptionText = tagSelect.options[tagSelect.selectedIndex].text;
-        const group = tagMapping[selectedOptionText];
-        if (text && group) {
-          updateTag(group, { text: text });
-        } else {
-          alert("Please enter text and select a valid tag type.");
-        }
-      });
-
-      /* --- 3. Add a description --- */
-      const addDescContainer = containers[2];
-      const addDescInput = addDescContainer.querySelector("input[type='text']");
-      const descriptionTextarea = addDescContainer.querySelector("textarea");
-      const addDescButton = addDescContainer.querySelector("button");
-
-      addDescButton.addEventListener("click", function () {
-        const text = addDescInput.value.trim();
-        const description = descriptionTextarea.value.trim();
-        if (text && description) {
-          updateTag("Footnotes", { text: text, value: description });
-        } else {
-          alert("Please enter both text and description.");
-        }
-      });
-
-      // You can add similar event listeners for additional buttons (e.g., Button 4) if needed.
-    });
-    
-    // display tagTable
-document.addEventListener("DOMContentLoaded", function () {
-  fetch("tags.json")
-    .then(response => response.json())
-    .then(data => {
-      displayTags(data);
-      displayTagCounts(data);
-    })
-    .catch(error => console.error("Error loading JSON:", error));
-
-  function displayTags(data) {
-    const container = document.getElementById("tagTable");
-    container.innerHTML = ""; 
-
-    const categoryColors = {
-      "Locations": "#FF5733",
-      "Individuals": "#33A1FF",
-      "Animals": "#4CAF50",
-      "Dates": "#FFC300",
-      "References": "#9C27B0",
-      "Footnotes": "#FF9800"
-    };
-
-    let colorIndex = 0;
-    const defaultColors = ["#E57373", "#64B5F6", "#81C784", "#FFD54F", "#BA68C8", "#F06292"];
-
-    for (const [category, items] of Object.entries(data)) {
-      if (items.length === 0) continue; 
-
-      const bgColor = categoryColors[category] || defaultColors[colorIndex % defaultColors.length];
-      colorIndex++;
-
-      const title = document.createElement("h1");
-      title.textContent = category;
-      title.style.backgroundColor = bgColor;
-      title.style.color = "white";
-      title.style.padding = "10px";
-      title.style.borderRadius = "5px";
-      title.style.textAlign = "center";
-      title.id = `tag-${category}`; 
-      container.appendChild(title);
-
-      const table = document.createElement("table");
-      table.style.width = "80%";
-      table.style.maxWidth = "80%";
-      table.style.margin = "0 auto";
-      table.style.borderCollapse = "collapse";
-      table.style.tableLayout = "fixed";
-
-      const hasValueColumn = category === "Footnotes" || category === "References";
-      const headers = hasValueColumn ? ["Text", "Value"] : ["Text"];
-
-      const thead = document.createElement("thead");
-      const headerRow = document.createElement("tr");
-      headers.forEach(headerText => {
-        const th = document.createElement("th");
-        th.textContent = headerText;
-        th.style.border = "1px solid black";
-        th.style.padding = "8px";
-        th.style.backgroundColor = "#f2f2f2";
-        headerRow.appendChild(th);
-      });
-
-      thead.appendChild(headerRow);
-      table.appendChild(thead);
-
-      const tbody = document.createElement("tbody");
-      items.forEach(item => {
-        const row = document.createElement("tr");
-
-        const textCell = document.createElement("td");
-        textCell.textContent = item.text;
-        textCell.style.border = "1px solid black";
-        textCell.style.padding = "8px";
-        row.appendChild(textCell);
-
-        if (hasValueColumn) {
-          const valueCell = document.createElement("td");
-          if (category === "References" && item.value) {
-            const link = document.createElement("a");
-            link.href = item.value;
-            link.textContent = item.value;
-            link.target = "_blank";
-            valueCell.appendChild(link);
-          } else {
-            valueCell.textContent = item.value ? item.value : "-";
-          }
-          valueCell.style.border = "1px solid black";
-          valueCell.style.padding = "8px";
-          row.appendChild(valueCell);
-        }
-
-        tbody.appendChild(row);
-      });
-
-      table.appendChild(tbody);
-      container.appendChild(table);
-    }
-  }
-
-  function displayTagCounts(data) {
-    const countContainer = document.getElementById("tagCounts");
-    countContainer.innerHTML = ""; 
-
-    const countBoxContainer = document.createElement("div");
-    countBoxContainer.style.display = "flex";
-    countBoxContainer.style.justifyContent = "center";
-    countBoxContainer.style.gap = "10px";
-    countBoxContainer.style.marginTop = "20px";
-
-    const categoryColors = {
-      "Locations": "#FF5733",
-      "Individuals": "#33A1FF",
-      "Animals": "#4CAF50",
-      "Dates": "#FFC300",
-      "References": "#9C27B0",
-      "Footnotes": "#FF9800"
-    };
-
-    for (const [category, items] of Object.entries(data)) {
-      const countBox = document.createElement("div");
-      countBox.textContent = items.length;
-      countBox.style.backgroundColor = categoryColors[category] || "#ccc";
-      countBox.style.color = "white";
-      countBox.style.padding = "10px";
-      countBox.style.borderRadius = "5px";
-      countBox.style.fontSize = "20px";
-      countBox.style.fontWeight = "bold";
-      countBox.style.width = "50px";
-      countBox.style.textAlign = "center";
-      countBox.style.cursor = "pointer"; 
-
-      countBox.addEventListener("click", function () {
-        const targetSection = document.getElementById(`tag-${category}`);
-        if (targetSection) {
-          const navHeight = document.querySelector("nav")?.offsetHeight || 54.5; // Auto-detect nav height or default to 54.5px
-          const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - navHeight;
-          window.scrollTo({ top: targetPosition, behavior: "smooth" });
-        }
-      });
-
-      countBoxContainer.appendChild(countBox);
-    }
-
-    countContainer.appendChild(countBoxContainer);
-  }
-});
-
-
-
-
-</script>
-
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="w3-top">
-    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing: 4px;">
-      <a href="#home" class="w3-bar-item w3-button Gabriel-button">Gourmet Admin Page</a>
-      <div class="w3-right w3-hide-small">
-        <a href="#about" class="w3-bar-item w3-button Gabriel-button">Intro</a>
-        <a href="#Actions" class="w3-bar-item w3-button Gabriel-button">Actions</a>
-        <a href="#tagTable" class="w3-bar-item w3-button Gabriel-button">Saved</a>
-        <a href="#tagCounts" class="w3-bar-item w3-button Gabriel-button">End</a>
+    <div class="w3-bar w3-padding w3-card admin-nav">
+      <a href="#home" class="w3-bar-item w3-button admin-nav-title">Aghvesagirk Admin</a>
+      <div id="tagCounts" class="tag-counts-header" aria-label="Saved tag counts"></div>
+      <div class="admin-nav-links">
+        <a href="#Actions" class="w3-bar-item w3-button">Actions</a>
+        <a href="#savedTagsSection" class="w3-bar-item w3-button">Saved</a>
       </div>
     </div>
   </nav>
 
-  <!-- Page Content -->
-  <div class="w3-content" style="max-width: 1100px;">
-    <!-- About Section -->
-    <div class="w3-row w3-padding-64" id="about">
-      <div class="w3-col m6 w3-padding-large w3-hide-small">
-        <img src="admin.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
-        <h6> This admin page lets the Admin efficiently tag, reference, and annotate text. Actions are performed alongside the displayed text, and saved tags are organized into structured tables for easy access. №</h6>
-      </div>
-      <div class="w3-col m6 w3-padding-large">
-        <h1 class="w3-center">Aghvesagirk Admin Page</h1>
-        <h5 class="w3-center">Editing button description</h5>
-        
-        <p class="w3-large">Button 1:</p>
-        <p class="w3-large w3-text-grey w3-hide-medium">
-          Saves a text entry with an associated reference link in the References section of the JSON file.
-        </p>
-        
-        <p class="w3-large">Button 2:</p>
-        <p class="w3-large w3-text-grey w3-hide-medium">
-          Assigns a text entry to a category (e.g., Individuals, Animals, Locations, Dates) and saves it in the respective section.
-        </p>
-        
-        <p class="w3-large">Button 3:</p>
-        <p class="w3-large w3-text-grey w3-hide-medium">
-            Saves a text entry along with an explanation or definition in the Footnotes section.
-        </p>
-        <br>
-        <p class="w3-large w3-text-grey w3-hide-medium">
-            note: refresh using CTR+SHIFT+R after adding new tags if you want to see the new tags at the 'Saved' table bellow.
-        </p>
-      </div>
-    </div>
-    <hr>
+  <div id="statusMessage" class="status-message" role="status" aria-live="polite"></div>
 
-    <!-- Actions Section -->
-    <div class="w3-row w3-padding-64" id="Actions">
-      <main class="w3-col l6 w3-padding-large">
-        <h1 class="w3-center">Options:</h1>
-        <br>
-        <div class="action-container">
-          <h3>1. Create a reference link</h3>
-          <input type="text" placeholder="Enter text">
-          <input type="text" placeholder="Enter reference link">
-          <button class="w3-button w3-light-grey w3-left-align">Create Link</button>
-        </div>
-        <div class="action-container">
-          <h3>2. Tag a text</h3>
-          <input type="text" placeholder="Enter text">
-          <select>
-            <option>Person</option>
-            <option>Animal</option>
-            <option>Location</option>
-            <option>Date</option>
-          </select>
-          <button class="w3-button w3-light-grey w3-left-align">Tag Text</button>
-        </div>
-        <div class="action-container">
-          <h3>3. Add a description</h3>
-          <input type="text" placeholder="Enter text">
-          <textarea placeholder="Enter description"></textarea>
-          <button class="w3-button w3-light-grey w3-left-align">Add Description</button>
-        </div>
-        <div class="action-container">
-          <h3>4. Some other Button</h3>
-          <h6>If you want this button to do something, let me know.</h6>
-          <input type="text" placeholder="Enter text">
-          <button class="w3-button w3-light-grey w3-left-align">Button 4</button>
-        </div>
-      </main>
-      
-      <aside class="w3-col l6 w3-padding-large">
-        <h1 class="w3-center">The Text:</h1>
-        <br>
-        <div id="innerAside" id="dropdown-container">
-            
-          <header style="margin: 10px 0px 10px 0px; padding: 0px">
-            <select id="dropdown"></select>
-          </header>
-          
-          <div class="w3-container" id="headerText">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
-            </p> 
+  <main class="w3-content admin-shell" id="home">
+    <section class="top-summary" aria-labelledby="pageTitle">
+      <div>
+        <p class="eyebrow">Aghvesagirk Admin</p>
+        <h1 id="pageTitle">Tagging workspace</h1>
+        <p class="section-subtitle">Work through the text, save annotations, and review the growing tag list from one focused page.</p>
+      </div>
+      <div id="dashboardStats" class="quick-stats" aria-label="Saved tag totals"></div>
+    </section>
+
+    <section class="workspace-grid" id="Actions" aria-label="Annotation workspace">
+      <section class="panel action-panel" aria-labelledby="actionsTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Actions</p>
+            <h2 id="actionsTitle">Save annotations</h2>
           </div>
-          
-          </footer class="w3-container w3-light-grey">
-            <div class="w3-bar">
-              <button class="w3-button w3-bar-item w3-green w3-left" onclick="plusDivs(-1)">тЎ Previous</button>
-              <button class="w3-button w3-bar-item w3-green w3-right" onclick="plusDivs(1)">Next тЏ</button>
-            </div>
-          </footer>
-          
+          <div class="action-mode-switch" aria-label="Action panels">
+            <button type="button" class="action-mode-button is-active" data-action-panel-target="annotationActionPanel" aria-controls="annotationActionPanel" aria-selected="true">1</button>
+            <button type="button" class="action-mode-button" data-action-panel-target="englishTranslationPanel" aria-controls="englishTranslationPanel" aria-selected="false">2</button>
+          </div>
         </div>
-        
+
+        <div id="annotationActionPanel" class="action-tab-panel">
+          <div id="selectedTextPanel" class="selection-panel">
+            <div>
+              <span class="field-label">Selected text</span>
+              <p id="selectionPreview" class="selection-preview">No text selected</p>
+            </div>
+            <div class="selection-actions">
+              <button type="button" class="secondary-button" onclick="clearSelectedSnippet()">Clear</button>
+            </div>
+          </div>
+
+          <div class="form-stack">
+            <form id="referenceForm" class="action-container" autocomplete="off">
+              <h3>Reference</h3>
+              <div class="field-group">
+                <label class="field-label" for="referenceText">Text</label>
+                <div class="input-row">
+                  <input id="referenceText" class="tag-text-input" type="text" placeholder="Text to reference">
+                  <button class="secondary-button use-here-button" type="button" data-fill-target="referenceText">Use here</button>
+                </div>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="referenceLink">Reference link</label>
+                <input id="referenceLink" type="url" inputmode="url" placeholder="https://example.com/source">
+              </div>
+              <button class="primary-button" type="submit">Save reference</button>
+            </form>
+
+            <form id="tagTextForm" class="action-container" autocomplete="off">
+              <h3>Tag</h3>
+              <div class="field-group">
+                <label class="field-label" for="tagText">Text</label>
+                <div class="input-row">
+                  <input id="tagText" class="tag-text-input" type="text" placeholder="Text to tag">
+                  <button class="secondary-button use-here-button" type="button" data-fill-target="tagText">Use here</button>
+                </div>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="tagCategory">Category</label>
+                <select id="tagCategory">
+                  <option value="Individuals">Person</option>
+                  <option value="Animals">Animal</option>
+                  <option value="Locations">Location</option>
+                  <option value="Dates">Date</option>
+                </select>
+              </div>
+              <button class="primary-button" type="submit">Save tag</button>
+            </form>
+
+            <form id="footnoteForm" class="action-container" autocomplete="off">
+              <h3>Footnote</h3>
+              <div class="field-group">
+                <label class="field-label" for="footnoteText">Text</label>
+                <div class="input-row">
+                  <input id="footnoteText" class="tag-text-input" type="text" placeholder="Text to explain">
+                  <button class="secondary-button use-here-button" type="button" data-fill-target="footnoteText">Use here</button>
+                </div>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="footnoteDescription">Description</label>
+                <textarea id="footnoteDescription" placeholder="Explanation or definition"></textarea>
+              </div>
+              <button class="primary-button" type="submit">Save footnote</button>
+            </form>
+          </div>
+        </div>
+
+        <div id="englishTranslationPanel" class="action-tab-panel" hidden>
+          <div class="selection-panel section-title-panel">
+            <p id="englishTranslationSectionTitle" class="section-title-preview"></p>
+          </div>
+
+          <div class="form-stack">
+            <div class="action-container">
+              <h3>English translation</h3>
+              <div class="field-group">
+                <label class="field-label" for="englishTranslationTitle">english title</label>
+                <input id="englishTranslationTitle" type="text" placeholder="english title">
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="englishTranslationText">text</label>
+                <textarea id="englishTranslationText" placeholder="text"></textarea>
+              </div>
+              <button class="primary-button" type="button">save (doesn't work yet)</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel reader-panel" aria-labelledby="readerTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Text</p>
+            <h2 id="readerTitle">Reader</h2>
+          </div>
+        </div>
+
+        <header class="reader-toolbar">
+          <div>
+            <label class="field-label" for="dropdown">Section</label>
+            <select id="dropdown"></select>
+          </div>
+          <div id="readerPosition" class="reader-position">No sections</div>
+        </header>
+
+        <div class="w3-container" id="headerText" tabindex="0">
+          <h4 id="selectedTextTitle">Select a section</h4>
+          <p id="lemmaText">Choose a section from the dropdown to load its lemma text.</p>
+        </div>
+
+        <footer class="reader-footer">
+          <div class="text-nav">
+            <button type="button" class="text-nav-button" onclick="plusDivs(-1)">Previous</button>
+            <button type="button" id="highlightTagsButton" class="text-nav-button highlight-tags-button" onclick="toggleTagHighlights()">Highlight Tags</button>
+            <button type="button" class="text-nav-button" onclick="plusDivs(1)">Next</button>
+          </div>
+        </footer>
       </aside>
-      
-    </div>
-    <hr>
-    
-    <!-- Contact Section -->
-    <div class="w3-row w3-padding-64" id="tagTable"> 
-        
-    </div>
+    </section>
 
-    <!-- Tags Count -->
-    <div id="tagCounts"></div>
-    </br>
-    <!-- Extra Section -->
-    <div class="w3-container" id="contact">
-      <h1>More Things To Come...</h1>
-      <br>
-      <p>
-        This website has great future prospects, and will be very insightful for many generations.
-      </p>
-      <br/>
-      
-    </div>
-    <!-- End page content -->
-  </div>
-  <!-- Footer -->
+    <section id="savedTagsSection" class="panel saved-panel" aria-labelledby="savedTagsTitle">
+      <header class="saved-header">
+        <div>
+          <p class="eyebrow">Saved</p>
+          <h2 id="savedTagsTitle">Saved annotations</h2>
+        </div>
+        <div class="saved-controls">
+          <label class="visually-hidden" for="savedSearch">Search saved annotations</label>
+          <input id="savedSearch" type="search" placeholder="Search saved annotations">
+          <label class="visually-hidden" for="savedCategoryFilter">Filter saved annotations</label>
+          <select id="savedCategoryFilter">
+            <option value="">All categories</option>
+          </select>
+        </div>
+      </header>
+
+      <div class="w3-row tag-table-space" id="tagTable"></div>
+    </section>
+  </main>
+
   <footer class="w3-center w3-light-grey w3-padding-32">
-    <p>Powered by <a href="https://aghvesagirk.com/#/About" target="_blank" class="w3-hover-text-green G-name">Gabriel Coding Skills</a></p>
+    <p>Powered by <a href="https://aghvesagirk.com/#/About" target="_blank" rel="noopener" class="w3-hover-text-green G-name">Gabriel Coding Skills</a></p>
   </footer>
-</body>
 
-<script>
-    
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("🚀 Fetching index-panel.html to populate dropdown...");
+  <script>
+    const CATEGORY_COLORS = {
+      Locations: "#D65A3A",
+      Individuals: "#2F73B8",
+      Animals: "#2F8F5B",
+      Dates: "#B9830D",
+      References: "#7A4BC2",
+      Footnotes: "#667085"
+    };
 
-  fetch("index-panel.html") // Adjust if needed
-    .then(response => {
-      console.log(`🟢 HTTP Status: ${response.status}`); // Debug: Check HTTP response code
-      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-      return response.text();
-    })
-    .then(html => {
-      console.log("✅ index-panel.html fetched successfully.");
-      
-      if (!html.trim()) {
-        console.error("❌ Fetched HTML is empty!");
+    const CATEGORY_ORDER = [
+      "Locations",
+      "Individuals",
+      "Animals",
+      "Dates",
+      "References",
+      "Footnotes"
+    ];
+
+    let currentLemmaText = "";
+    let currentLemmaIsHighlightable = false;
+    let tagsHighlightEnabled = false;
+    let selectedSnippet = "";
+    let statusTimer = null;
+
+    function getSectionJsonLocations(fileId) {
+      return [
+        `get_section_json.php?fileId=${encodeURIComponent(fileId)}`
+      ];
+    }
+
+    async function fetchJsonFromLocations(locations) {
+      let lastError = null;
+
+      for (const location of locations) {
+        try {
+          const response = await fetch(location, { cache: "no-store" });
+          if (!response.ok) {
+            throw new Error(`${response.status} ${response.statusText}`);
+          }
+          return await response.json();
+        } catch (error) {
+          lastError = error;
+          console.warn(`Could not load ${location}:`, error);
+        }
+      }
+
+      throw lastError || new Error("No JSON locations were available.");
+    }
+
+    function getLemmaText(data) {
+      if (!data || !Array.isArray(data.nodes)) {
+        throw new Error("Invalid JSON: expected a nodes array.");
+      }
+
+      return data.nodes
+        .filter((node) => node.is_lemma)
+        .map((node) => node.text)
+        .filter(Boolean)
+        .join(" ");
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#039;"
+      }[char]));
+    }
+
+    function escapeRegExp(value) {
+      return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function getTextColorForBackground(hexColor) {
+      let color = hexColor.replace("#", "");
+      if (color.length === 3) {
+        color = color.split("").map((char) => char + char).join("");
+      }
+      if (color.length !== 6) return "#111";
+
+      const red = parseInt(color.slice(0, 2), 16);
+      const green = parseInt(color.slice(2, 4), 16);
+      const blue = parseInt(color.slice(4, 6), 16);
+      const brightness = (red * 299 + green * 587 + blue * 114) / 1000;
+      return brightness > 145 ? "#111" : "#fff";
+    }
+
+    function setStatus(message, type = "success") {
+      const status = document.getElementById("statusMessage");
+      if (!status) return;
+
+      clearTimeout(statusTimer);
+      status.textContent = message;
+      status.className = `status-message is-visible is-${type}`;
+      statusTimer = setTimeout(() => {
+        status.className = "status-message";
+      }, 3600);
+    }
+
+    function normalizeSnippet(value) {
+      return String(value || "").replace(/\s+/g, " ").trim();
+    }
+
+    function setSelectedSnippet(value) {
+      selectedSnippet = normalizeSnippet(value);
+
+      const panel = document.getElementById("selectedTextPanel");
+      const preview = document.getElementById("selectionPreview");
+      if (!panel || !preview) return;
+
+      panel.classList.toggle("has-selection", Boolean(selectedSnippet));
+      preview.textContent = selectedSnippet || "No text selected";
+    }
+
+    function getReaderSelectionText() {
+      const reader = document.getElementById("headerText");
+      const selection = window.getSelection();
+      if (!reader || !selection || selection.isCollapsed) return "";
+
+      const anchorNode = selection.anchorNode;
+      const focusNode = selection.focusNode;
+      if (!anchorNode || !focusNode) return "";
+      if (!reader.contains(anchorNode) || !reader.contains(focusNode)) return "";
+
+      return normalizeSnippet(selection.toString());
+    }
+
+    function captureReaderSelection() {
+      const text = getReaderSelectionText();
+      if (text) {
+        setSelectedSnippet(text);
+      }
+    }
+
+    function fillTargetTextField(targetId) {
+      const target = document.getElementById(targetId);
+      const text = normalizeSnippet(selectedSnippet);
+      if (!target) return;
+
+      if (!text) {
+        setStatus("Select text in the reader first.", "warning");
         return;
       }
 
-      console.log("📜 Full fetched HTML:", html); // Debug: Show fetched content
+      target.value = text;
+      target.focus();
+      setStatus("Selected text added here.");
+    }
 
-      const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = html;
+    function clearSelectedSnippet() {
+      setSelectedSnippet("");
+      setStatus("Selected text cleared.");
+    }
 
-      const yearBoxes = tempDiv.querySelectorAll(".year-box");
+    window.clearSelectedSnippet = clearSelectedSnippet;
 
-      if (yearBoxes.length === 0) {
-        console.error("❌ No .year-box elements found in index-panel.html!");
-        return;
+    function setButtonLoading(button, isLoading, loadingText = "Saving...") {
+      if (!button) return;
+
+      if (isLoading) {
+        button.dataset.originalText = button.textContent;
+        button.textContent = loadingText;
+        button.disabled = true;
+      } else {
+        button.textContent = button.dataset.originalText || button.textContent;
+        button.disabled = false;
+        delete button.dataset.originalText;
       }
+    }
 
-      // Get the select element inside the dropdown container
-      const dropdown = document.getElementById("dropdown");
-      if (!dropdown) {
-        console.error("❌ ERROR: <select id='dropdown'> NOT FOUND in admin123.html!");
-        return;
+    function normalizeReferenceUrl(value) {
+      const trimmedValue = value.trim();
+      if (!trimmedValue) return "";
+
+      const hasProtocol = /^[a-z][a-z\d+\-.]*:\/\//i.test(trimmedValue);
+      const urlValue = hasProtocol ? trimmedValue : `https://${trimmedValue}`;
+
+      try {
+        return new URL(urlValue).href;
+      } catch (error) {
+        return "";
       }
+    }
 
-      dropdown.innerHTML = ""; // Clear existing options
-
-      yearBoxes.forEach((item, index) => {
-        const option = document.createElement("option");
-        option.value = item.id;
-        option.textContent = item.textContent.trim();
-        dropdown.appendChild(option);
-
-        console.log(`📌 Added option [${index}]:`, option.textContent, " | ID:", option.value);
+    async function updateTag(group, node, action = "add") {
+      const response = await fetch("update_tags.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ group, node, action })
       });
 
-      console.log("✅ Dropdown successfully populated with sections.");
-    })
-    .catch(error => console.error("❌ Failed to load index-panel.html:", error));
-});
+      const data = await response.json().catch(() => ({
+        error: "The server returned an unreadable response."
+      }));
 
-</script>
+      if (!response.ok || data.error) {
+        throw new Error(data.error || `Request failed with ${response.status}`);
+      }
+
+      if (data.data) {
+        window.savedTagsData = data.data;
+        refreshSavedTagViews(data.data);
+      } else {
+        await loadSavedTags(true);
+      }
+
+      return data;
+    }
+
+    function clearWritableFields(form) {
+      form.querySelectorAll("input, textarea").forEach((field) => {
+        field.value = "";
+      });
+    }
+
+    function updateTagCategoryColor() {
+      const categorySelect = document.getElementById("tagCategory");
+      if (!categorySelect) return;
+
+      const selectedColor = CATEGORY_COLORS[categorySelect.value] || "#8b9388";
+      categorySelect.style.setProperty("--selected-tag-color", selectedColor);
+    }
+
+    function setupTagCategoryOptions() {
+      const categorySelect = document.getElementById("tagCategory");
+      if (!categorySelect) return;
+
+      categorySelect.addEventListener("change", updateTagCategoryColor);
+      updateTagCategoryColor();
+    }
+
+    async function submitTag(button, group, node, successMessage, form) {
+      try {
+        setButtonLoading(button, true);
+        await updateTag(group, node);
+        clearWritableFields(form);
+        setStatus(successMessage);
+      } catch (error) {
+        console.error("Save failed:", error);
+        setStatus(error.message || "Could not save annotation.", "error");
+      } finally {
+        setButtonLoading(button, false);
+      }
+    }
+
+    async function deleteSavedTag(button, group, node) {
+      const tagText = node && node.text ? node.text : "";
+      if (!tagText) return;
+
+      const confirmed = window.confirm(`Delete "${tagText}" from ${group}?`);
+      if (!confirmed) return;
+
+      try {
+        setButtonLoading(button, true, "Deleting...");
+        await updateTag(group, node, "delete");
+        setStatus("Saved annotation deleted.");
+      } catch (error) {
+        console.error("Delete failed:", error);
+        setStatus(error.message || "Could not delete annotation.", "error");
+      } finally {
+        setButtonLoading(button, false);
+      }
+    }
+
+    function setupActionPanels() {
+      const buttons = document.querySelectorAll("[data-action-panel-target]");
+      const panels = document.querySelectorAll(".action-tab-panel");
+      if (!buttons.length || !panels.length) return;
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const targetId = button.dataset.actionPanelTarget;
+
+          buttons.forEach((toggle) => {
+            const isActive = toggle === button;
+            toggle.classList.toggle("is-active", isActive);
+            toggle.setAttribute("aria-selected", String(isActive));
+          });
+
+          panels.forEach((panel) => {
+            panel.hidden = panel.id !== targetId;
+          });
+        });
+      });
+    }
+
+    function setupForms() {
+      const referenceForm = document.getElementById("referenceForm");
+      const tagTextForm = document.getElementById("tagTextForm");
+      const footnoteForm = document.getElementById("footnoteForm");
+
+      referenceForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const textInput = document.getElementById("referenceText");
+        const linkInput = document.getElementById("referenceLink");
+        const text = textInput.value.trim();
+        const refLink = normalizeReferenceUrl(linkInput.value);
+
+        if (!text) {
+          textInput.focus();
+          setStatus("Reference text is required.", "warning");
+          return;
+        }
+
+        if (!refLink) {
+          linkInput.focus();
+          setStatus("Reference link is required.", "warning");
+          return;
+        }
+
+        linkInput.value = refLink;
+
+        submitTag(
+          referenceForm.querySelector("button[type='submit']"),
+          "References",
+          { text, value: refLink },
+          "Reference saved.",
+          referenceForm
+        );
+      });
+
+      tagTextForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const textInput = document.getElementById("tagText");
+        const categorySelect = document.getElementById("tagCategory");
+        const text = textInput.value.trim();
+        const group = categorySelect.value;
+
+        if (!text) {
+          textInput.focus();
+          setStatus("Tag text is required.", "warning");
+          return;
+        }
+
+        submitTag(
+          tagTextForm.querySelector("button[type='submit']"),
+          group,
+          { text },
+          "Tag saved.",
+          tagTextForm
+        );
+      });
+
+      footnoteForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const textInput = document.getElementById("footnoteText");
+        const descriptionInput = document.getElementById("footnoteDescription");
+        const text = textInput.value.trim();
+        const description = descriptionInput.value.trim();
+
+        if (!text) {
+          textInput.focus();
+          setStatus("Footnote text is required.", "warning");
+          return;
+        }
+
+        if (!description) {
+          descriptionInput.focus();
+          setStatus("Footnote description is required.", "warning");
+          return;
+        }
+
+        submitTag(
+          footnoteForm.querySelector("button[type='submit']"),
+          "Footnotes",
+          { text, value: description },
+          "Footnote saved.",
+          footnoteForm
+        );
+      });
+
+      document.querySelectorAll("[data-fill-target]").forEach((button) => {
+        button.addEventListener("click", function () {
+          fillTargetTextField(button.dataset.fillTarget);
+        });
+      });
+    }
+
+    function getOrderedCategoryEntries(data) {
+      const entries = Object.entries(data || {});
+      return entries.sort(([categoryA], [categoryB]) => {
+        const indexA = CATEGORY_ORDER.indexOf(categoryA);
+        const indexB = CATEGORY_ORDER.indexOf(categoryB);
+        const sortA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
+        const sortB = indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB;
+        return sortA - sortB || categoryA.localeCompare(categoryB);
+      });
+    }
+
+    async function loadSavedTags(force = false) {
+      const cacheKey = force ? `?t=${Date.now()}` : "";
+      const response = await fetch(`tags.json${cacheKey}`, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`Could not load tags.json: ${response.status}`);
+      }
+
+      window.savedTagsData = await response.json();
+      refreshSavedTagViews(window.savedTagsData);
+      return window.savedTagsData;
+    }
+
+    function refreshSavedTagViews(data) {
+      updateSavedCategoryFilter(data);
+      displayTags(data);
+      displayTagCounts(data);
+      displayDashboardStats(data);
+      applyTagHighlights();
+    }
+
+    function updateSavedCategoryFilter(data) {
+      const filter = document.getElementById("savedCategoryFilter");
+      if (!filter) return;
+
+      const selectedValue = filter.value;
+      filter.innerHTML = "";
+
+      const allOption = document.createElement("option");
+      allOption.value = "";
+      allOption.textContent = "All categories";
+      filter.appendChild(allOption);
+
+      getOrderedCategoryEntries(data).forEach(([category, items]) => {
+        if (!Array.isArray(items)) return;
+        const option = document.createElement("option");
+        option.value = category;
+        option.textContent = `${category} (${items.length})`;
+        filter.appendChild(option);
+      });
+
+      filter.value = Array.from(filter.options).some((option) => option.value === selectedValue)
+        ? selectedValue
+        : "";
+    }
+
+    function itemMatchesSearch(item, query) {
+      if (!query) return true;
+      const text = normalizeSnippet(item.text).toLocaleLowerCase();
+      const value = normalizeSnippet(item.value).toLocaleLowerCase();
+      return text.includes(query) || value.includes(query);
+    }
+
+    function displayTags(data) {
+      const container = document.getElementById("tagTable");
+      if (!container) return;
+
+      const searchInput = document.getElementById("savedSearch");
+      const filter = document.getElementById("savedCategoryFilter");
+      const query = normalizeSnippet(searchInput ? searchInput.value : "").toLocaleLowerCase();
+      const activeCategory = filter ? filter.value : "";
+      let renderedCategories = 0;
+
+      container.innerHTML = "";
+
+      getOrderedCategoryEntries(data).forEach(([category, items]) => {
+        if (!Array.isArray(items) || (activeCategory && category !== activeCategory)) return;
+
+        const filteredItems = items.filter((item) => itemMatchesSearch(item || {}, query));
+        if (!filteredItems.length) return;
+
+        renderedCategories++;
+
+        const section = document.createElement("section");
+        section.className = "tag-category";
+        section.id = `tag-${category}`;
+        section.style.setProperty("--tag-color", CATEGORY_COLORS[category] || "#8b9388");
+
+        const header = document.createElement("header");
+        header.className = "tag-category-header";
+
+        const title = document.createElement("h3");
+        title.textContent = category;
+
+        const count = document.createElement("span");
+        count.className = "category-count";
+        count.textContent = `${filteredItems.length} shown`;
+
+        header.appendChild(title);
+        header.appendChild(count);
+        section.appendChild(header);
+
+        const tableWrap = document.createElement("div");
+        tableWrap.className = "table-wrap";
+
+        const table = document.createElement("table");
+        const hasValueColumn = category === "Footnotes" || category === "References";
+
+        const tbody = document.createElement("tbody");
+        filteredItems.forEach((item) => {
+          const row = document.createElement("tr");
+          row.className = "tag-row";
+
+          const textCell = document.createElement("td");
+          textCell.textContent = item.text || "";
+          row.appendChild(textCell);
+
+          if (hasValueColumn) {
+            const valueCell = document.createElement("td");
+            if (category === "References" && item.value) {
+              const link = document.createElement("a");
+              link.href = item.value;
+              link.textContent = item.value;
+              link.target = "_blank";
+              link.rel = "noopener";
+              valueCell.appendChild(link);
+            } else {
+              valueCell.textContent = item.value || "-";
+            }
+            row.appendChild(valueCell);
+          }
+
+          const actionCell = document.createElement("td");
+          actionCell.className = "table-action-cell";
+          const deleteButton = document.createElement("button");
+          deleteButton.type = "button";
+          deleteButton.className = "mini-button delete-button";
+          deleteButton.textContent = "Delete";
+          deleteButton.addEventListener("click", function () {
+            deleteSavedTag(deleteButton, category, {
+              text: item.text || "",
+              value: item.value || undefined
+            });
+          });
+          actionCell.appendChild(deleteButton);
+          row.appendChild(actionCell);
+
+          tbody.appendChild(row);
+        });
+
+        table.appendChild(tbody);
+        tableWrap.appendChild(table);
+        section.appendChild(tableWrap);
+        container.appendChild(section);
+      });
+
+      if (!renderedCategories) {
+        const emptyState = document.createElement("p");
+        emptyState.className = "empty-state";
+        emptyState.textContent = query || activeCategory
+          ? "No saved annotations match the current filter."
+          : "No saved annotations yet.";
+        container.appendChild(emptyState);
+      }
+    }
+
+    function scrollToTagCategory(category) {
+      const targetSection = document.getElementById(`tag-${category}`);
+      if (!targetSection) {
+        const filter = document.getElementById("savedCategoryFilter");
+        const searchInput = document.getElementById("savedSearch");
+        if (searchInput) {
+          searchInput.value = "";
+        }
+        if (filter) {
+          filter.value = category;
+        }
+        displayTags(window.savedTagsData);
+      }
+
+      const target = document.getElementById(`tag-${category}`);
+      if (!target) return;
+
+      const navHeight = document.querySelector("nav")?.offsetHeight || 70;
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+      window.scrollTo({ top: targetPosition, behavior: "smooth" });
+    }
+
+    function displayTagCounts(data) {
+      const countContainer = document.getElementById("tagCounts");
+      if (!countContainer) return;
+
+      countContainer.innerHTML = "";
+
+      getOrderedCategoryEntries(data).forEach(([category, items]) => {
+        if (!Array.isArray(items)) return;
+
+        const countBox = document.createElement("button");
+        countBox.type = "button";
+        countBox.textContent = items.length;
+        countBox.className = "tag-count-button";
+        countBox.title = `${category}: ${items.length}`;
+        countBox.setAttribute("aria-label", `${category}: ${items.length}`);
+        countBox.style.setProperty("--tag-color", CATEGORY_COLORS[category] || "#8b9388");
+        countBox.addEventListener("click", function () {
+          scrollToTagCategory(category);
+        });
+
+        countContainer.appendChild(countBox);
+      });
+    }
+
+    function displayDashboardStats(data) {
+      const statsContainer = document.getElementById("dashboardStats");
+      if (!statsContainer) return;
+
+      statsContainer.innerHTML = "";
+
+      getOrderedCategoryEntries(data).forEach(([category, items]) => {
+        if (!Array.isArray(items)) return;
+
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "stat-chip";
+        chip.style.setProperty("--tag-color", CATEGORY_COLORS[category] || "#8b9388");
+        chip.addEventListener("click", function () {
+          scrollToTagCategory(category);
+        });
+
+        const count = document.createElement("span");
+        count.className = "stat-count";
+        count.textContent = items.length;
+
+        const label = document.createElement("span");
+        label.className = "stat-label";
+        label.textContent = category;
+
+        chip.appendChild(count);
+        chip.appendChild(label);
+        statsContainer.appendChild(chip);
+      });
+    }
+
+    function getHighlightTags() {
+      const data = window.savedTagsData;
+      if (!data) return [];
+
+      const tagMap = new Map();
+      getOrderedCategoryEntries(data).forEach(([category, items]) => {
+        if (!Array.isArray(items)) return;
+
+        items.forEach((item) => {
+          const text = item && item.text ? item.text.trim() : "";
+          if (!text || tagMap.has(text)) return;
+          tagMap.set(text, {
+            text,
+            category,
+            color: CATEGORY_COLORS[category] || "#ccc"
+          });
+        });
+      });
+
+      return Array.from(tagMap.values()).sort((a, b) => b.text.length - a.text.length);
+    }
+
+    function renderLemmaText() {
+      const textElement = document.getElementById("lemmaText");
+      if (!textElement) return;
+
+      if (!tagsHighlightEnabled || !currentLemmaIsHighlightable) {
+        textElement.textContent = currentLemmaText;
+        return;
+      }
+
+      const tags = getHighlightTags();
+      if (!tags.length) {
+        textElement.textContent = currentLemmaText;
+        return;
+      }
+
+      const tagByText = new Map(tags.map((tag) => [tag.text, tag]));
+      const tagPattern = tags.map((tag) => escapeRegExp(tag.text)).join("|");
+      const regex = new RegExp(`(^|[^\\p{L}\\p{N}_])(${tagPattern})(?=$|[^\\p{L}\\p{N}_])`, "gu");
+
+      let html = "";
+      let lastIndex = 0;
+      let matchResult = null;
+
+      while ((matchResult = regex.exec(currentLemmaText)) !== null) {
+        const prefix = matchResult[1];
+        const match = matchResult[2];
+        const tag = tagByText.get(match);
+        html += escapeHtml(currentLemmaText.slice(lastIndex, matchResult.index));
+        html += escapeHtml(prefix);
+        lastIndex = matchResult.index + matchResult[0].length;
+
+        if (!tag) {
+          html += escapeHtml(match);
+          continue;
+        }
+
+        const label = `${tag.category}: ${match}`;
+        const textColor = getTextColorForBackground(tag.color);
+        html += `<span class="tag-highlight" title="${escapeHtml(label)}" style="background-color: ${tag.color}; color: ${textColor};">${escapeHtml(match)}</span>`;
+      }
+
+      html += escapeHtml(currentLemmaText.slice(lastIndex));
+      textElement.innerHTML = html;
+    }
+
+    function setLemmaText(text, canHighlight = false) {
+      currentLemmaText = text;
+      currentLemmaIsHighlightable = canHighlight;
+      renderLemmaText();
+    }
+
+    function scrollReaderToTop() {
+      const reader = document.getElementById("headerText");
+      if (reader) {
+        reader.scrollTop = 0;
+      }
+    }
+
+    async function ensureSavedTagsData() {
+      if (window.savedTagsData) return window.savedTagsData;
+      return loadSavedTags();
+    }
+
+    function updateHighlightButton() {
+      const button = document.getElementById("highlightTagsButton");
+      if (!button) return;
+
+      button.classList.toggle("is-active", tagsHighlightEnabled);
+      button.textContent = tagsHighlightEnabled ? "Hide Highlights" : "Highlight Tags";
+    }
+
+    async function toggleTagHighlights() {
+      tagsHighlightEnabled = !tagsHighlightEnabled;
+      updateHighlightButton();
+
+      if (tagsHighlightEnabled) {
+        try {
+          await ensureSavedTagsData();
+        } catch (error) {
+          console.error("Failed to load saved tags for highlighting:", error);
+          tagsHighlightEnabled = false;
+          updateHighlightButton();
+          setStatus("Could not load saved tags for highlighting.", "error");
+        }
+      }
+
+      renderLemmaText();
+    }
+
+    function applyTagHighlights() {
+      if (tagsHighlightEnabled) {
+        renderLemmaText();
+      }
+    }
+
+    window.toggleTagHighlights = toggleTagHighlights;
+    window.applyTagHighlights = applyTagHighlights;
+
+    function updateReaderPosition() {
+      const dropdown = document.getElementById("dropdown");
+      const position = document.getElementById("readerPosition");
+      if (!dropdown || !position) return;
+
+      position.textContent = dropdown.options.length
+        ? `Section ${dropdown.selectedIndex + 1} of ${dropdown.options.length}`
+        : "No sections";
+    }
+
+    async function loadSelectedLemmaText(fileId) {
+      const dropdown = document.getElementById("dropdown");
+      const titleElement = document.getElementById("selectedTextTitle");
+      const textElement = document.getElementById("lemmaText");
+      if (!fileId || !titleElement || !textElement) return;
+
+      const selectedTitle = dropdown && dropdown.selectedOptions[0]
+        ? dropdown.selectedOptions[0].textContent.trim()
+        : fileId;
+
+      titleElement.textContent = selectedTitle;
+      setLemmaText("Loading lemma text...");
+      updateReaderPosition();
+      scrollReaderToTop();
+
+      try {
+        const data = await fetchJsonFromLocations(getSectionJsonLocations(fileId));
+        const lemmaText = getLemmaText(data);
+        const sectionTitle = data.title || selectedTitle;
+        titleElement.textContent = sectionTitle;
+        setLemmaText(lemmaText || "No lemma text found for this section.", Boolean(lemmaText));
+        scrollReaderToTop();
+      } catch (error) {
+        console.error(`Failed to load lemma text for ${fileId}:`, error);
+        setLemmaText(`Could not load lemma text for ${selectedTitle}.`);
+        scrollReaderToTop();
+      }
+    }
+
+    function plusDivs(step) {
+      const dropdown = document.getElementById("dropdown");
+      if (!dropdown || !dropdown.options.length) return;
+
+      const optionCount = dropdown.options.length;
+      const nextIndex = (dropdown.selectedIndex + step + optionCount) % optionCount;
+      dropdown.selectedIndex = nextIndex;
+      updateReaderPosition();
+      loadSelectedLemmaText(dropdown.value);
+    }
+
+    window.plusDivs = plusDivs;
+
+    function setupReaderSelection() {
+      const reader = document.getElementById("headerText");
+      if (!reader) return;
+
+      reader.addEventListener("mouseup", function () {
+        window.setTimeout(captureReaderSelection, 0);
+      });
+      reader.addEventListener("keyup", captureReaderSelection);
+      reader.addEventListener("touchend", function () {
+        window.setTimeout(captureReaderSelection, 60);
+      });
+    }
+
+    function setupSavedFilters() {
+      const searchInput = document.getElementById("savedSearch");
+      const categoryFilter = document.getElementById("savedCategoryFilter");
+
+      if (searchInput) {
+        searchInput.addEventListener("input", function () {
+          displayTags(window.savedTagsData);
+        });
+      }
+
+      if (categoryFilter) {
+        categoryFilter.addEventListener("change", function () {
+          displayTags(window.savedTagsData);
+        });
+      }
+    }
+
+    function loadSectionList() {
+      fetch("index-panel.html", { cache: "no-store" })
+        .then((response) => {
+          if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+          return response.text();
+        })
+        .then((html) => {
+          const tempDiv = document.createElement("div");
+          tempDiv.innerHTML = html;
+
+          const yearBoxes = tempDiv.querySelectorAll(".year-box");
+          const dropdown = document.getElementById("dropdown");
+          if (!dropdown || !yearBoxes.length) {
+            updateReaderPosition();
+            return;
+          }
+
+          dropdown.innerHTML = "";
+
+          yearBoxes.forEach((item) => {
+            const option = document.createElement("option");
+            option.value = item.id;
+            option.textContent = item.textContent.trim();
+            dropdown.appendChild(option);
+          });
+
+          dropdown.addEventListener("change", function () {
+            updateReaderPosition();
+            loadSelectedLemmaText(dropdown.value);
+          });
+
+          updateReaderPosition();
+          loadSelectedLemmaText(dropdown.value);
+        })
+        .catch((error) => {
+          console.error("Failed to load index-panel.html:", error);
+          const textElement = document.getElementById("lemmaText");
+          if (textElement) {
+            textElement.textContent = "Could not load the section list.";
+          }
+          updateReaderPosition();
+          setStatus("Could not load the section list.", "error");
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      setupActionPanels();
+      setupForms();
+      setupTagCategoryOptions();
+      setupReaderSelection();
+      setupSavedFilters();
+      loadSectionList();
+
+      loadSavedTags()
+        .catch((error) => {
+          console.error("Error loading tags.json:", error);
+          setStatus("Could not load saved annotations.", "error");
+        });
+    });
+  </script>
+</body>
 </html>
