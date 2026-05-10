@@ -299,9 +299,97 @@ canvas {
   padding-left: 5px;
 }
 
+.tag-color-persons {
+  --tag-color: #2f73b8;
+}
+
+.tag-color-places {
+  --tag-color: #d65a3a;
+}
+
+.tag-color-animals {
+  --tag-color: #2f8f5b;
+}
+
+.tag-color-dates {
+  --tag-color: #b9830d;
+}
+
+.tag-color-references {
+  --tag-color: #7a4bc2;
+}
+
+.tag-color-footnotes {
+  --tag-color: #667085;
+}
+
 .reader-tag-highlight {
   padding: 0 3px;
   border-radius: 3px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+}
+
+.reader-status {
+  margin-top: 8px;
+  padding: 8px;
+  border-left: 4px solid #2f73b8;
+  background: #eef5fc;
+  color: #1f2937;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.reader-status.is-warning {
+  border-left-color: #b9830d;
+  background: #fff7e0;
+}
+
+.reader-status.is-error {
+  border-left-color: #d65a3a;
+  background: #fff0eb;
+}
+
+.graph-toggle-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.graph-control-buttons {
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.graph-control-button {
+  padding: 6px 8px;
+  border: 1px solid #aaa;
+  background: #fff;
+  color: #222;
+  cursor: pointer;
+}
+
+.graph-control-button:hover,
+.graph-control-button:focus-visible {
+  background: #ececec;
+}
+
+.year-box.is-active {
+  background-color: #d7e9fb;
+  outline: 2px solid #2f73b8;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+.toggle:focus-visible,
+.year-box:focus-visible {
+  outline: 3px solid #2f73b8;
+  outline-offset: 2px;
+}
+
+#cb-toggle:focus-visible + .toggle {
+  outline: 3px solid #2f73b8;
+  outline-offset: 2px;
 }

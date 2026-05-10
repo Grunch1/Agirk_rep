@@ -3,454 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Testing...</title>
+    <title>Aghvesagirk</title>
     <link rel="shortcut icon" href="../Nkarner/Logos.jpg" type="image/jpg" />
-
-    <style>
-      :root {
-        --dark: #343a40;
-      }
-      body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.5;
-        color: #212529;
-        background-color: #fffcf4;
-        /* display: flex; */
-        /* align-items: center;
-            justify-content: center; */
-      }
-
-      main {
-        padding: 50px 200px 50px 200px; /* Example padding for main */
-        /* width: 80%;  */
-      }
-      section {
-        width: 100%;
-        max-width: 1800px;
-        overflow: auto;
-        margin: 0 auto;
-        margin-bottom: 20px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-      }
-
-      #Manuscript {
-        /* display: flex; */
-        align-items: center;
-        justify-content: center;
-        max-height: 700px;
-      }
-
-      .Manuscript_Box {
-        max-height: 700px;
-        width: 300px !important;
-        border: 2px solid #212529;
-        padding: 20px;
-        margin: 50px 300px 50px 300px;
-        background-color: #d2b48c;
-      }
-
-      #Manuscripts_Detailed {
-        display: flex; /* irar kogh linen (box chelini */
-        align-items: center; /* verev - nerqev*/
-        justify-content: center; /* ach u dsax */
-        max-height: 700px;
-      }
-
-      .manuscript_img {
-        margin: 50px 100px 50px 100px;
-      }
-
-      .Manuscript_Details {
-        height: 550px;
-        width: 400px;
-        border: 2px solid #212529;
-        padding: 50px;
-        margin: 50px 100px 50px 100px;
-        background-color: #d2b48c;
-      }
-
-      .Manuscript_2_Read_Button,
-      .Manuscript_2_Download_Button {
-        box-shadow: 0px 0px 50px 2px rgba(120, 104, 57, 0.9); /* 0.X is the alpha value for opacity */
-        background: linear-gradient(
-          to bottom,
-          rgba(212, 130, 50, 0.7) 5%,
-          rgba(179, 115, 25, 0.7) 100%
-        ); /* 0.X is the alpha value for opacity */
-        background-color: rgba(
-          200,
-          140,
-          100,
-          0.7
-        ); /* 0.X is the alpha value for opacity */
-        border-radius: 10px;
-        border: 1px solid #0d2b48;
-        display: inline-block;
-        cursor: pointer;
-        color: #ffd4f6;
-        font-family: Arial;
-        font-size: 15px;
-        font-weight: bold;
-        padding: 15px 20px;
-        text-decoration: none;
-        text-shadow: 0px 1px 0px #424500;
-      }
-      .Manuscript_2_Read_Button:hover,
-      .Manuscript_2_Download_Button:hover {
-        background: linear-gradient(to bottom, #b37319 5%, #de7e00 100%);
-        background-color: #b37319;
-      }
-      .Manuscript_2_Read_Button:active,
-      .Manuscript_2_Download_Button:active {
-        position: relative;
-        top: 1px;
-      }
-
-      .Reference_Page {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        box-sizing: border-box;
-        padding: 10px;
-        height: 100vh;
-        max-height: 700px;
-        /* delete after testing*/
-      }
-
-      .Reference_of_Araks {
-        height: 220px;
-        width: 500px;
-        border: 2px solid #212529;
-        padding: 20px;
-        background-color: lightblue;
-        box-sizing: border-box;
-        margin: 10px 0;
-      }
-
-      /* Styles for the top image container with background */
-      .top-image-container {
-        max-width: 100%;
-        /* Set width to 100% to fill the parent */
-        height: 390px;
-        /* Set height to 390px */
-        background: url("../Nkarner/parchment.jpg") center/cover no-repeat;
-        /* Set background image */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-      }
-      h1 {
-        font-family: "Helvetica", sans-serif;
-      }
-      /*  */
-      /*  */
-      /*  */
-      /* Top image */
-      .top-image {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-        /* Ensure the image is contained within the specified area */
-      }
-
-      /* navbar */
-      a:hover {
-        color: #d62700;
-        text-decoration: underline;
-      }
-
-      /* Ensure at least 10% space in the middle */
-
-      /* Media query for smaller screens */
-      @media (max-width: 1405px) {
-        .navbar-div {
-          max-width: 100%;
-          justify-content: flex-end;
-        }
-
-        .navbar-toggler {
-          display: block;
-        }
-
-        .navbar-pages {
-          display: none;
-          flex-direction: column;
-          position: absolute;
-          top: 50px;
-          left: 10px;
-          background-color: #f8f9fa;
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-          z-index: 1000;
-          width: calc(100% - 20px);
-        }
-
-        .navbar-pages.active {
-          display: flex;
-        }
-
-        .nav-item {
-          margin: 10px 0;
-        }
-      }
-
-      /* Persons */
-      #Persons {
-        overflow: auto;
-        max-height: 750px;
-      }
-      .person {
-        border: dashed #017d75 1px;
-        margin-bottom: 10px;
-        margin-top: 2px;
-      }
-
-      /* Exploration */
-      #Exploration {
-        text-align: center;
-      }
-      .Exploration_div {
-        min-height: 285px;
-        min-width: 250px;
-        display: inline-block;
-        text-align: center;
-        padding: 4rem 4rem;
-        vertical-align: middle;
-        border: 3px double tan;
-      }
-
-      /* Editions */
-      .Edition-table {
-        margin: 0 auto;
-        width: 60%;
-        max-height: 700px;
-        overflow: auto;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      th,
-      td {
-        padding: 8px 12px;
-        border: 1px solid #ddd;
-        text-align: left;
-      }
-
-      th {
-        background-color: #f4f4f4;
-      }
-
-      tr:hover {
-        background-color: #f1f1f1;
-      }
-
-      a {
-        text-decoration: none;
-        color: #007bff;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-      /* Editions */
-
-      /* About */
-      p {
-        margin-bottom: 20px;
-      }
-
-      p.ii {
-        margin-bottom: 16px;
-      }
-
-      img {
-        margin: 20px;
-      }
-
-      div {
-        padding: 15px;
-      }
-
-      div.ii {
-        padding-top: 20px;
-        margin-left: 15px;
-        margin-right: 15px;
-      }
-
-      div.iii {
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-
-      .center {
-        text-align: center;
-        max-width: 400px;
-      }
-
-      h2 {
-        margin-bottom: 8px;
-      }
-
-      h4 {
-        margin-bottom: 8px;
-      }
-
-      .flex-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-
-      .flex-item {
-        flex: 1;
-        min-width: 200px;
-        /* Adjust based on desired responsiveness */
-      }
-
-      .ii .flex-container {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .ii .flex-item {
-        flex: 1;
-        margin: 0;
-      }
-      .iii {
-        max-height: 150px;
-      }
-      .About_Profile_Pic {
-        width: 100px;
-      }
-
-      /* About */
-
-      /* footer */
-      footer {
-        padding: auto;
-        border: dashed #000 1px;
-        text-align: center;
-        background-color: #f7f2e8;
-        height: 122px;
-        box-sizing: border-box;
-      }
-
-      /* footer hr {
-        border-top: 1px solid #000;
-        opacity: 0.5;
-        margin: 8px 0;
-      }   */
-
-      .footer-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px; /* spacing between elements */
-        padding: 15px;
-        flex-grow: 1;
-        height: calc(
-          100% - 10px
-        ); /* 10 pixel less than parent margon-top 10px */
-        padding: 10px 15px 0px 15px;
-      }
-
-      .footer-content img {
-        max-height: 50px; /* Adjust according to your design */
-        padding: 0px;
-        margin: 0px;
-      }
-
-      .footer-content p {
-        margin: 0;
-        font-size: 14px;
-      }
-      /* footer */
-
-      /* other */
-      section {
-        display: none;
-      }
-      #About {
-        display: block;
-      }
-      /* main{
-        max-width: 100%;
-      } */
-      /* other */
-    </style>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const navLinks = document.querySelectorAll(".nav-link");
-        const sections = document.querySelectorAll("section");
-        const heading = document.querySelector("#page-heading");
-
-        // Object to store the original display values of each section
-        const originalDisplay = {};
-
-        // Store the original display property for each section
-        sections.forEach((section) => {
-          const displayValue = window.getComputedStyle(section).display;
-          originalDisplay[section.id] =
-            displayValue !== "none" ? displayValue : "block";
-        });
-
-        // Initially show 'About' section and set heading
-        heading.textContent = "About";
-        const initialSection = document.querySelector("#About");
-        initialSection.style.display = originalDisplay["About"];
-
-        // Hide all other sections initially
-        sections.forEach((section) => {
-          if (section.id !== "About") {
-            section.style.display = "none"; // Explicitly hide all other sections
-          }
-        });
-
-        // Handle navigation button clicks
-        navLinks.forEach((link) => {
-          link.addEventListener("click", (event) => {
-            event.preventDefault();
-
-            // Hide all sections
-            sections.forEach((section) => {
-              section.style.display = "none"; // Hide all sections
-            });
-
-            // Get the target section ID and show the corresponding section
-            const target = link.getAttribute("href");
-            const sectionName = link.textContent.trim();
-            const targetSection = document.querySelector(target);
-
-            if (targetSection) {
-              const originalDisplayValue = originalDisplay[target.slice(1)]; // Remove '#' from target
-              targetSection.style.display = originalDisplayValue || "block";
-
-              // Scroll to the top of the document to show the navbar at its initial position
-              window.scrollTo({ top: 350, behavior: "smooth" });
-            }
-
-            heading.textContent = sectionName;
-          });
-        });
-      });
-    </script>
-  </head>
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="home_styles.css" />
+</head>
 
   <body>
     <!-- Top image -->
     <div class="top-image-container">
-      <img src="../Nkarner/TopImage.jpg" alt="Top Image" class="top-image" />
+      <img src="../Nkarner/TopImage.jpg" alt="Aghvesagirk header artwork" class="top-image" />
     </div>
 
     <!-- Navbar -->
@@ -463,32 +25,13 @@
       <!-- Manuscript -->
       
       <section id="Manuscript">
-        <script>
-        // dynamically load the Manuscript file
-        document.addEventListener("DOMContentLoaded", () => {
-            const placeholder = document.getElementById("Manuscript");
-            fetch('manuscripts.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Error loading HTML: ${response.statusText}`);
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    placeholder.innerHTML = html;
-                })
-                .catch(error => {
-                    console.error("Failed to load HTML:", error);
-                });
-        });
-    </script>
-    </section>
+</section>
       <!-- Manuscripts_Detailed -->
       <section id="Manuscripts_Detailed">
         <img
           class="manuscript_img"
           src="../Nkarner/manuscript_img.jpg"
-          alt="manuscript_img"
+          alt="Manuscript page image for MS 5118"
           width="390"
           height="640"
         />
@@ -507,24 +50,8 @@
           <br />
           <br />
           <br />
-          <a href="#" class="myButton">
-            <button
-              class="Manuscript_2_Read_Button"
-              type="submit"
-              value="Submit"
-            >
-              Read Transcript
-            </button>
-          </a>
-          <a href="#" class="myButton">
-            <button
-              class="Manuscript_2_Download_Button"
-              type="submit"
-              value="Submit"
-            >
-              Download
-            </button>
-          </a>
+          <a href="reading.html" class="Manuscript_2_Read_Button">Read Transcript</a>
+          <a href="download.php?file=MS_5118.zip" class="Manuscript_2_Download_Button">Download</a>
         </div>
       </section>
 
@@ -540,11 +67,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m058.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m058.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -557,11 +80,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m005.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m005.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -574,11 +93,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m058.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m058.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -591,11 +106,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m343.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m343.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -608,11 +119,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m135.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m135.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -625,11 +132,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m268.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m268.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -642,11 +145,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m351.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m351.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -659,11 +158,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m255.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m255.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -676,11 +171,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m243.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m243.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -693,11 +184,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m246.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m246.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -710,11 +197,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m240.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m240.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -727,11 +210,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m260.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m260.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -744,11 +223,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m249.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m249.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -756,16 +231,12 @@
           <h4>
             - - - - - - - - - - - - - - - - - - - - - -
             <a
-              href="tps://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m403.htm"
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m403.htm"
             >
               Story origin link</a
             >
           </h4>
-          <a
-            href="tps://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m403.htm"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m403.htm" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -778,11 +249,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m153.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m153.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -795,11 +262,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m007.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m007.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -812,11 +275,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m209.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m209.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -829,11 +288,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m200b.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m200b.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -846,11 +301,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m078.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m078.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -863,11 +314,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m334.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m334.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -880,11 +327,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m204.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m204.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -897,11 +340,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m134.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m134.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -914,11 +353,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m179.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m179.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -931,11 +366,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m021.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m021.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -948,11 +379,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m350.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m350.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -965,11 +392,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m181.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m181.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -982,11 +405,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m333.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m333.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -999,11 +418,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m097.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m097.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1016,11 +431,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m066.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m066.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1033,11 +444,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m027.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m027.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1050,11 +457,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m233.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m233.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1067,11 +470,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m401.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m401.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1084,11 +483,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m389.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m389.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1101,11 +496,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m225.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m225.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1118,11 +509,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m187.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m187.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1130,16 +517,12 @@
           <h4>
             - - - - - - - - - - - - - - - - - - - - - -
             <a
-              href="https://www.hs-augsburg.de/~harsch/graeca/Chronohttps://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m113.htmllogia/S_ante06/Aesop/aes_m362.html"
+              href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m362.html"
             >
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronohttps://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m113.htmllogia/S_ante06/Aesop/aes_m362.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m362.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1152,11 +535,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m015.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m015.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1169,11 +548,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m113.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m113.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1186,11 +561,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m098.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m098.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1203,11 +574,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m419.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m419.html" class="link-button">learn more</a>
         </div>
 
         <div class="Reference_of_Araks">
@@ -1220,11 +587,7 @@
               Story origin link</a
             >
           </h4>
-          <a
-            href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m100b.html"
-          >
-            <button type="Manuscript_Download">learn more</button>
-          </a>
+          <a href="https://www.hs-augsburg.de/~harsch/graeca/Chronologia/S_ante06/Aesop/aes_m100b.html" class="link-button">learn more</a>
         </div>
       </section>
 
@@ -1233,42 +596,42 @@
         <div class="person">
           <p><b>Name</b></p>
           <p>information about the person</p>
-          <p><a href="www.wikipedia.com">link if needed</a></p>
+          <p><span class="placeholder-link">Reference link missing</span></p>
         </div>
         <div class="person">
           <p><b>Name</b></p>
           <p>information about the person</p>
-          <p><a href="www.wikipedia.com">link if needed</a></p>
+          <p><span class="placeholder-link">Reference link missing</span></p>
         </div>
         <div class="person">
           <p><b>Name</b></p>
           <p>information about the person</p>
-          <p><a href="www.wikipedia.com">link if needed</a></p>
+          <p><span class="placeholder-link">Reference link missing</span></p>
         </div>
         <div class="person">
           <p><b>Name</b></p>
           <p>information about the person</p>
-          <p><a href="www.wikipedia.com">link if needed</a></p>
+          <p><span class="placeholder-link">Reference link missing</span></p>
         </div>
         <div class="person">
           <p><b>Name</b></p>
           <p>information about the person</p>
-          <p><a href="www.wikipedia.com">link if needed</a></p>
+          <p><span class="placeholder-link">Reference link missing</span></p>
         </div>
         <div class="person">
           <p><b>Name</b></p>
           <p>information about the person</p>
-          <p><a href="www.wikipedia.com">link if needed</a></p>
+          <p><span class="placeholder-link">Reference link missing</span></p>
         </div>
         <div class="person">
           <p><b>Name</b></p>
           <p>information about the person</p>
-          <p><a href="www.wikipedia.com">link if needed</a></p>
+          <p><span class="placeholder-link">Reference link missing</span></p>
         </div>
         <div class="person">
           <p><b>Name</b></p>
           <p>information about the person</p>
-          <p><a href="www.wikipedia.com">link if needed</a></p>
+          <p><span class="placeholder-link">Reference link missing</span></p>
         </div>
       </section>
 
@@ -1320,8 +683,8 @@
       </section>
 
       <!-- Edition -->
-      <section id="Edition" style="padding: 0px; margin-top: 10px">
-        <div class="Edition-table" style="padding: 0px">
+      <section id="Edition" class="edition-section">
+        <div class="Edition-table edition-table-flat">
           <table>
             <tr>
               <td>
@@ -4232,8 +3595,8 @@
         <div class="i">
           <img
             src="../Nkarner/gic.png"
-            style="width: 95%"
-            alt="Placeholder Image"
+            class="about-tradition-diagram"
+            alt="Aghvesagirk manuscript tradition diagram"
           />
         </div>
 
@@ -4261,10 +3624,9 @@
           <div class="flex-container">
             <div class="flex-item iii center">
               <img
-                class="About_Profile_Pic"
+                class="About_Profile_Pic founder-profile-pic"
                 src="../Nkarner/Ani Shahnazaryan.jpg"
-                alt="Placeholder Image"
-                style="width: 150px"
+                alt="Ani Shahnazaryan profile photo"
               />
             </div>
             <div class="flex-item iii">
@@ -4292,7 +3654,7 @@
               <img
                 class="About_Profile_Pic"
                 src="../Nkarner/Tara L. Andrews.png"
-                alt="Placeholder Image"
+                alt="Tara L. Andrews profile photo"
               />
             </div>
             <div class="flex-item iii">
@@ -4302,7 +3664,7 @@
                 B.Sc. in Humanities and Engineering at MIT (1995–1999), followed
                 by an M.Phil. (2003–2005) and D.Phil. (2006–2009) at the
                 University of Oxford. She began to study aspects of the
-                Chronicle while preparing her M.Phil. thesis; this together with
+                Aghvesagirk while preparing her M.Phil. thesis; this together with
                 her doctoral work resulted in a 2016 monograph published by
                 Brill. Tara's research interests include the history and
                 historiography of the Christian Near East in the tenth to
@@ -4324,7 +3686,7 @@
               <img
                 class="About_Profile_Pic"
                 src="../Nkarner/Anahit Safaryan.png"
-                alt="Placeholder Image"
+                alt="Anahit Safaryan profile photo"
               />
             </div>
             <div class="flex-item iii">
@@ -4335,7 +3697,7 @@
                 where she was also employed to work on the SNSF project. In
                 2017, together with the project itself, Anahit moved to the
                 University of Vienna to continue her doctoral research, which
-                focuses on the topic of the reception of the Chronicle in the
+                focuses on the topic of the reception of the Aghvesagirk in the
                 17th and 18th centuries.
               </p>
             </div>
@@ -4346,7 +3708,7 @@
               <img
                 class="About_Profile_Pic"
                 src="../Nkarner/Schiwa Aliabadi-Pongratz.png"
-                alt="Placeholder Image"
+                alt="Schiwa Aliabadi-Pongratz profile photo"
               />
             </div>
             <div class="flex-item iii">
@@ -4373,9 +3735,8 @@
               <img
                 class="About_Profile_Pic"
                 src="../Nkarner/Gabriel.jpg"
-                alt="Placeholder Image"
+                alt="Gabriel profile photo"
               />
-              <!-- https://via.placeholder.com/150-->
             </div>
             <div class="flex-item iii">
               <p class="ii">
@@ -4392,20 +3753,12 @@
           </div>
         </div>
       </section>
-
-      <script>
-        function toggleNavbar() {
-          var navbarContent = document.getElementById("navbarSupportedContent");
-          navbarContent.classList.toggle("active");
-        }
-      </script>
-
-      <!-- Methods -->
+<!-- Methods -->
       <section id="Methods">
         <h2>Methods of edition</h2>
         <h3>Digital workflow</h3>
         <p>
-          This edition of the Chronicle has been conceived and implemented with
+          This edition of the Aghvesagirk has been conceived and implemented with
           a fully digital workflow. Our implementation relies on two innovative
           strands of development. The first is a graph-based computational model
           for critical editions of texts that survive in multiple manuscript
@@ -4424,8 +3777,8 @@
         </p>
         <img
           src="../Nkarner/methods_interface.jpg"
-          alt="image"
-          style="max-width: 800px"
+          alt="T-PEN manuscript transcription interface"
+          class="methods-interface-image"
         />
 
         <p>
@@ -4440,8 +3793,8 @@
         <h3>The continuous integration pipeline</h3>
         <img
           src="../Nkarner/methods_pipeline.png"
-          alt="image"
-          style="max-width: 98%"
+          alt="Continuous integration pipeline diagram"
+          class="methods-pipeline-image"
         />
         <p>
           tpen-backup <br />
@@ -4470,7 +3823,7 @@
           <br />
           <br />
           validate-tei-xml <br />
-          Wherease the tpen2tei step in the pipeline will detect and alert us to
+          Whereas the tpen2tei step in the pipeline will detect and alert us to
           any badly-formed XML output from our transcriptions (e.g. bad syntax
           or mismatched element tags), it does not validate that XML against any
           TEI schema. That task is done in the subsequent step. If any
@@ -4505,7 +3858,7 @@
       <br /><br />
 
       <!-- Reading Page -->
-      <h1 id="">
+      <h1 class="reading-link-heading">
         <a href="reading.html">Go to reading Page</a>
       </h1>
     </main>
@@ -4513,96 +3866,14 @@
     <!-- footer -->
     <footer id="LastRow">
       <div class="footer-content">
-        <!--<img src="../Nkarner/cc-logo.png" alt="Creative Commons Logo">-->
         <p>Created with the generous support of:</p>
-        <img src="../Nkarner/NAASR.png" alt="Universität Wien Logo" />
+        <img src="../Nkarner/NAASR.png" alt="NAASR logo" />
         
-        <img src="../Nkarner/Matenadaran.png" alt="Universität Wien Logo" />
+        <img src="../Nkarner/Matenadaran.png" alt="Matenadaran logo" />
         
-        <img src="../Nkarner/vienna_logo.png" alt="Universität Wien Logo" />
+        <img src="../Nkarner/vienna_logo.png" alt="University of Vienna logo" />
       </div>
     </footer>
+    <script src="home.js"></script>
   </body>
-
-  <script>
-    // Toggle navbar function for small screens
-    function toggleNavbar() {
-      console.log("Toggle button clicked");
-      const navbarPages = document.getElementById("navbarSupportedContent");
-      navbarPages.classList.toggle("show");
-    }
-
-    // Fetch and load the navbar content
-    fetch("navbar.html")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("navbar").innerHTML = data;
-
-        // Attach toggleNavbar to the button if it exists
-        const navbarToggleButton = document.querySelector(".navbar-toggler");
-        if (navbarToggleButton) {
-          navbarToggleButton.onclick = toggleNavbar;
-        }
-
-        // Initialize navigation based on current URL fragment
-        handleSectionNavigation();
-
-        // Add click event to navbar links to close the navbar on small screens
-        const navLinks = document.querySelectorAll("#navbar .nav-link");
-        navLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            // Close the navbar on small screens when a link is clicked
-            if (window.innerWidth < 1405) {
-              const navbarPages = document.getElementById(
-                "navbarSupportedContent"
-              );
-              if (navbarPages) {
-                navbarPages.classList.remove("show");
-              }
-            }
-          });
-        });
-      })
-      .catch((error) => console.error("Error loading navbar:", error));
-
-    // Function to handle showing the correct section based on the URL fragment
-    function handleSectionNavigation() {
-      const sections = document.querySelectorAll("section");
-      const heading = document.querySelector("#page-heading");
-
-      // Hide all sections initially
-      sections.forEach((section) => (section.style.display = "none"));
-
-      // Get the fragment from the URL (e.g., "#Manuscript")
-      const fragment = window.location.hash;
-      const targetSection = fragment
-        ? document.querySelector(fragment)
-        : document.querySelector("#About");
-
-      if (targetSection) {
-        // Show the target section and update the heading
-        targetSection.style.display = "block";
-        const sectionName =
-          targetSection.getAttribute("data-heading") || targetSection.id;
-        heading.textContent = sectionName;
-
-        // Smooth scroll to the target section
-        targetSection.scrollIntoView({ behavior: "smooth" });
-
-        // Update the page title to reflect the current section
-        document.title = `${sectionName} - Home Page`;
-
-        // Collapse the navbar if the screen is small
-        const navbarPages = document.getElementById("navbarSupportedContent");
-        if (window.innerWidth < 1405 && navbarPages) {
-          navbarPages.classList.remove("show");
-        }
-      } else {
-        console.error(`Section ${fragment} not found.`);
-      }
-    }
-
-    // Listen for hash changes to activate navigation
-    window.addEventListener("hashchange", handleSectionNavigation);
-  </script>
 </html>
