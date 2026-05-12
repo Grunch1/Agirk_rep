@@ -18,7 +18,7 @@ const indexPanelLoadPromise = fetch("index-panel.html")
   .catch((err) => {
     setReaderStatus("Could not load the section index.", "error");
     console.error("Failed to load index-panel.html:", err);
-  });
+  });console.log("");
 
 // Toggle navbar function
     function toggleNavbar() {
@@ -109,12 +109,18 @@ let nodes = [];
       const status = document.getElementById("reader-status");
       if (!status) return;
 
-      status.textContent = message;
       status.classList.remove("is-error", "is-warning");
       if (type === "error") {
+        status.textContent = message;
+        status.hidden = false;
         status.classList.add("is-error");
       } else if (type === "warning") {
+        status.textContent = message;
+        status.hidden = false;
         status.classList.add("is-warning");
+      } else {
+        status.textContent = "";
+        status.hidden = true;
       }
     }
 
@@ -153,6 +159,7 @@ let nodes = [];
     }
 
     function setGraphVisible(isVisible) {
+      document.querySelector(".main-content")?.classList.toggle("is-graph-open", isVisible);
       if (graphSection) {
         graphSection.style.display = isVisible ? "block" : "none";
       }
@@ -206,29 +213,53 @@ let nodes = [];
       return "myCanvas";
     }
 
-    function handleCanvasClick(event, canvasId = null) {
-      const canvas = event.currentTarget || document.getElementById(canvasId || "myCanvas");
+    function getCanvasGraphPoint(event, canvas, canvasId = null) {
       const id = canvasId || (canvas && canvas.id) || "myCanvas";
       const rect = canvas.getBoundingClientRect();
       const state = getCanvasState(id);
       const mouseX = event.clientX - rect.left;
       const mouseY = event.clientY - rect.top;
-      const graphX = (mouseX - state.translateX) / state.scale;
-      const graphY = (mouseY - state.translateY) / state.scale;
+      return {
+        x: (mouseX - state.translateX) / state.scale,
+        y: (mouseY - state.translateY) / state.scale,
+      };
+    }
 
-      const clickedNode = nodes.find((node) => {
+    function findCanvasNodeAtPoint(graphPoint, canvas) {
+      return nodes.find((node) => {
         const width = node.width || calculateTextWidth(node.text, canvas);
         const height = node.height || 50;
         const x = node.x !== undefined ? node.x : 100 * (node.rank - 1);
         const y = node.y !== undefined ? node.y : 400 + getYOffset(nodes.indexOf(node));
 
         return (
-          graphX >= x &&
-          graphX <= x + width &&
-          graphY >= y &&
-          graphY <= y + height
+          graphPoint.x >= x &&
+          graphPoint.x <= x + width &&
+          graphPoint.y >= y &&
+          graphPoint.y <= y + height
         );
       });
+    }
+
+    function findCanvasNodeFromEvent(event, canvas, canvasId = null) {
+      return findCanvasNodeAtPoint(getCanvasGraphPoint(event, canvas, canvasId), canvas);
+    }
+
+    function updateCanvasCursor(event, canvasId) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      const state = getCanvasState(canvasId);
+      if (state.isDragging) {
+        canvas.style.cursor = "grabbing";
+        return;
+      }
+      canvas.style.cursor = findCanvasNodeFromEvent(event, canvas, canvasId) ? "default" : "grab";
+    }
+
+    function handleCanvasClick(event, canvasId = null) {
+      const canvas = event.currentTarget || document.getElementById(canvasId || "myCanvas");
+      const id = canvasId || (canvas && canvas.id) || "myCanvas";
+      const clickedNode = findCanvasNodeFromEvent(event, canvas, id);
 
       nodes.forEach((node) => {
         node.isClicked = false;
@@ -378,8 +409,8 @@ let nodes = [];
         const y = overviewCanvas.height - layout.padding - barHeight;
         const isSelected = selectedRank === item.rank;
 
-        ctx.fillStyle = isSelected ? "#FFC107" : "#4CAF50";
-        ctx.strokeStyle = isSelected ? "#FF9800" : "#2E7D32";
+        ctx.fillStyle = isSelected ? "#FFC107" : "#e1f5fe";
+        ctx.strokeStyle = isSelected ? "#FF9800" : "#2196F3";
         ctx.lineWidth = 1;
         ctx.fillRect(x, y, layout.barWidth, barHeight);
         ctx.strokeRect(x, y, layout.barWidth, barHeight);
@@ -424,6 +455,13 @@ let nodes = [];
         canvas.style.touchAction = "none";
         canvas.addEventListener("wheel", (event) => handleCanvasWheel(event, canvas.id));
         canvas.addEventListener("mousedown", (event) => handleCanvasPointerDown(event, canvas.id));
+        canvas.addEventListener("mousemove", (event) => updateCanvasCursor(event, canvas.id));
+        canvas.addEventListener("mouseleave", () => {
+          const state = getCanvasState(canvas.id);
+          if (!state.isDragging) {
+            canvas.style.cursor = "default";
+          }
+        });
         canvas.addEventListener("click", (event) => {
           const state = getCanvasState(canvas.id);
           if (state.ignoreClick) {
@@ -634,55 +672,15 @@ let nodes = [];
         ];
       }
 
-      const probabilities = [
-        { count: 1, probability: 40 },
-        { count: 2, probability: 25 },
-        { count: 3, probability: 10 },
-        { count: 4, probability: 10 },
-        { count: 5, probability: 5 },
-        { count: 6, probability: 4 },
-        { count: 7, probability: 2.5 },
-        { count: 8, probability: 1.5 },
-        { count: 9, probability: 0.5 },
-        { count: 10, probability: 0.5 },
-      ];
-
-      function getRandomBoxCount() {
-        const random = Math.random() * 100;
-        let cumulative = 0;
-        for (let i = 0; i < probabilities.length; i++) {
-          cumulative += probabilities[i].probability;
-          if (random < cumulative) {
-            return probabilities[i].count;
-          }
-        }
-        return 1;
-      }
-
       if (!nodes.length) {
         selectedRank = null;
-        nodes = [];
-        let currentRank = 1;
-        for (let i = 0; i < 20; i++) {
-          const boxCount = getRandomBoxCount();
-          for (let j = 0; j < boxCount; j++) {
-            nodes.push({
-              text: `Node ${nodes.length + 1}`,
-              rank: currentRank,
-              arrows: [],
-              isClicked: false,
-            });
-          }
-          currentRank++;
-        }
-
-        nodes.forEach((node, index) => {
-          const higherRankNodes = nodes.filter((n) => n.rank > node.rank);
-          if (higherRankNodes.length > 0) {
-            const randomNode = higherRankNodes[Math.floor(Math.random() * higherRankNodes.length)];
-            node.arrows.push(nodes.indexOf(randomNode) + 1);
-          }
-        });
+        ctx.restore();
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.fillStyle = "#444";
+        ctx.font = "16px Arial";
+        ctx.fillText("No graph data to display", 24, 36);
+        drawOverviewCanvas();
+        return;
       }
 
       const rankGroups = {};
@@ -782,13 +780,22 @@ let nodes = [];
 
     function handleCanvasPointerDown(event, canvasId) {
       if (event.button !== 0) return;
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
       const state = getCanvasState(canvasId);
+      if (findCanvasNodeFromEvent(event, canvas, canvasId)) {
+        state.isDragging = false;
+        state.ignoreClick = false;
+        canvas.style.cursor = "default";
+        return;
+      }
       state.isDragging = true;
       state.pointerStartX = event.clientX;
       state.pointerStartY = event.clientY;
       state.startTranslateX = state.translateX;
       state.startTranslateY = state.translateY;
       state.ignoreClick = false;
+      canvas.style.cursor = "grabbing";
       activeDragCanvasId = canvasId;
     }
 
@@ -803,14 +810,25 @@ let nodes = [];
       }
       state.translateX = state.startTranslateX + dx;
       state.translateY = state.startTranslateY + dy;
+      const canvas = document.getElementById(activeDragCanvasId);
+      if (canvas) {
+        canvas.style.cursor = "grabbing";
+      }
       drawCanvas(activeDragCanvasId);
     }
 
-    function handleCanvasPointerUp() {
+    function handleCanvasPointerUp(event) {
       if (!activeDragCanvasId) return;
+      const canvasId = activeDragCanvasId;
       const state = getCanvasState(activeDragCanvasId);
       state.isDragging = false;
       activeDragCanvasId = null;
+      const canvas = document.getElementById(canvasId);
+      if (canvas && event) {
+        updateCanvasCursor(event, canvasId);
+      } else if (canvas) {
+        canvas.style.cursor = "default";
+      }
     }
 
     window.addEventListener("mousemove", handleCanvasPointerMove);
@@ -1020,13 +1038,18 @@ const CATEGORY_COLORS = {
       });
     }
 
+    function getLemmaDisplayText(node) {
+      return node.normal_form || node.text || "";
+    }
+
     // Function to filter lemmas and display in #armenianText
     function filterAndDisplayLemmas() {
       if (lemmaNodes) {
         // making sure its loaded
         lemmas = lemmaNodes
           .filter((node) => node.is_lemma)
-          .map((node) => node.text)
+          .map(getLemmaDisplayText)
+          .filter(Boolean)
           .join(" ");
         renderArmenianText();
       } else {
@@ -1095,11 +1118,22 @@ const CATEGORY_COLORS = {
 
       const graphEl = xmlDoc.getElementsByTagName("graph")[0];
       const titleValue = graphEl ? graphEl.getAttribute("id") || "Untitled" : "Untitled";
-      const edges = Array.from(xmlDoc.getElementsByTagName("edge")).map((edgeEl) => ({
-        id: edgeEl.getAttribute("id"),
-        source: edgeEl.getAttribute("source"),
-        target: edgeEl.getAttribute("target"),
-      }));
+      const edges = Array.from(xmlDoc.getElementsByTagName("edge")).map((edgeEl) => {
+        const edgeObj = {
+          id: edgeEl.getAttribute("id"),
+          source: edgeEl.getAttribute("source"),
+          target: edgeEl.getAttribute("target"),
+        };
+
+        Array.from(edgeEl.getElementsByTagName("data")).forEach((dataEl) => {
+          const keyId = dataEl.getAttribute("key");
+          const name = keyMapById[keyId] || keyId;
+          const value = dataEl.textContent || "";
+          edgeObj[name] = parseGraphMLValue(value, name);
+        });
+
+        return edgeObj;
+      });
 
       return {
         title: titleValue,
@@ -1119,7 +1153,22 @@ const CATEGORY_COLORS = {
       const rawEdges = graphData.edges || [];
       const idToIndex = {};
 
+      function getTextLabel(rawNode) {
+        return rawNode.normal_form !== undefined && rawNode.normal_form !== null && rawNode.normal_form !== ""
+          ? rawNode.normal_form
+          : " ";
+      }
+
+      function getRankValue(rawNode, fallback) {
+        return rawNode.rank !== undefined && rawNode.rank !== null && rawNode.rank !== ""
+          ? rawNode.rank
+          : fallback;
+      }
+
       function shouldIgnoreGraphMLNode(rawNode) {
+        if (rawNode.is_start === true || rawNode.is_end === true) return true;
+        if (rawNode.neolabel === "[SECTION]") return true;
+
         return Object.values(rawNode).some((value) => {
           if (typeof value !== "string") return false;
           const normalizedValue = value.trim();
@@ -1130,21 +1179,13 @@ const CATEGORY_COLORS = {
       const visibleRawNodes = rawNodes.filter((rawNode) => !shouldIgnoreGraphMLNode(rawNode));
 
       const canvasNodes = visibleRawNodes.map((rawNode, index) => {
-        const text =
-          rawNode.text ||
-          rawNode.name ||
-          rawNode.display ||
-          rawNode.normal_form ||
-          rawNode.dn2 ||
-          rawNode.dn13 ||
-          rawNode.id ||
-          `Node ${index + 1}`;
-        const rank = rawNode.rank || rawNode.dn5 || index + 1;
+        const text = getTextLabel(rawNode);
+        const rank = getRankValue(rawNode, index + 1);
         const node = {
           id: rawNode.id,
           text,
           rank,
-          isLemma: rawNode.is_lemma === true || rawNode.dn13 === true || rawNode.dn14 === true,
+          isLemma: rawNode.is_lemma === true,
           arrows: [],
           isClicked: false,
         };
@@ -1152,15 +1193,40 @@ const CATEGORY_COLORS = {
         return node;
       });
 
-      rawEdges.forEach((edge) => {
-        const sourceIndex = idToIndex[edge.source];
-        const targetIndex = idToIndex[edge.target];
-        if (sourceIndex !== undefined && targetIndex !== undefined) {
-          canvasNodes[sourceIndex].arrows.push(targetIndex + 1);
-        }
+      if (rawEdges.length) {
+        rawEdges.forEach((edge) => {
+          const sourceIndex = idToIndex[edge.source];
+          const targetIndex = idToIndex[edge.target];
+          if (sourceIndex !== undefined && targetIndex !== undefined) {
+            canvasNodes[sourceIndex].arrows.push(targetIndex + 1);
+          }
+        });
+      } else {
+        visibleRawNodes.forEach((rawNode) => {
+          const sourceIndex = idToIndex[rawNode.id];
+          if (sourceIndex === undefined || !Array.isArray(rawNode.targets)) return;
+
+          rawNode.targets.forEach((targetId) => {
+            const targetIndex = idToIndex[targetId];
+            if (targetIndex !== undefined) {
+              canvasNodes[sourceIndex].arrows.push(targetIndex + 1);
+            }
+          });
+        });
+      }
+
+      canvasNodes.forEach((node) => {
+        node.arrows = Array.from(new Set(node.arrows));
       });
 
       return canvasNodes;
+    }
+
+    function convertJsonToCanvasNodes(data) {
+      return convertGraphMLToCanvasNodes({
+        nodes: data && Array.isArray(data.nodes) ? data.nodes : [],
+        edges: [],
+      });
     }
 
     function parseGraphMLValue(value, name) {
@@ -1202,7 +1268,7 @@ const CATEGORY_COLORS = {
           console.log(`${fileId}.json loaded successfully`);
           importTheVariables(data);
           filterAndDisplayLemmas();
-          return { success: true };
+          return { success: true, data };
         })
         .catch((error) => {
           console.error(`Failed to load ${fileId}.json:`, error);
@@ -1233,7 +1299,8 @@ const CATEGORY_COLORS = {
         }
 
         if (!graphResult.success) {
-          setReaderStatus(`Loaded text for ${title}; graph XML is missing.`, "warning");
+          nodes = convertJsonToCanvasNodes(textResult.data);
+          setReaderStatus("Warning: XML format Graph data was not found, using JSON", "warning");
         } else {
           setReaderStatus(`Loaded ${title}.`);
         }

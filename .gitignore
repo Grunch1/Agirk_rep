@@ -1,124 +1,99 @@
 # Root .gitignore for public_html repository
 
-# Node / frontend build artifacts
-node_modules/
-*/node_modules/
-Source code/node_modules/
-Source code/dist/
-Source code/.vite/
-Source code/.cache/
-Source code/coverage/
-Source code/build/
-
-# PHP dependencies and generated files
-myadmin/vendor/
-myadmin/js/dist/
-myadmin/js/node_modules/
-myadmin/.cache/
-vendor/
-
-
-# note
-
-test.aghvesagirk.com/Nkarner
-test.aghvesagirk.com/Lemma\mZip
+# Project tools
+Tools/All_Sections_legacy_code 9.15.24/
+Tools/Converter XML2JS/
+Tools/Editions page converter/
+Tools/GenerateDivs/
+Tools/Lemmaer/
+Tools/Manuscripts converter/
+Tools/References to HTML/
+Tools/Titles - Vernagrer/
 
 # Generated data exports
 converted/
 converted (js)/
 converted (test)/
 
-# Vite / React artifacts
-Source code/.temp/
-Source code/npm-debug.log*
-Source code/yarn-debug.log*
-Source code/pnpm-debug.log*
+# Test-site assets and archives
+test.aghvesagirk.com/Lemma/mZip/
+test.aghvesagirk.com/Nkarner/
 
-# Build outputs and caches
-dist/
-build/
+# Admin-site credentials and deployment artifacts
+# Remove this exclusion after the hardcoded credentials are removed.
+/admin.aghvesagirk.com/Admin-ik.html
+/admin.aghvesagirk.com/.well-known/acme-challenge/
+
+# Dependencies (at any depth)
+node_modules/
+vendor/
+
+# Build outputs and caches (at any depth)
 .cache/
 .vite/
-.env.local
-
-# Logs and temporary files
-*.log
-*.log*
-*.tmp
-*.bak
-*.swp
-*.swo
-*.orig
-*~
-*~.*
+build/
+dist/
+Source code/.temp/
+Source code/coverage/
 
 # Generated analysis and tree files
 analysis_output.txt
+analyze.py
 tree.txt
 tree_output.txt
-analyze.py
 
-# Ignore system files
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Editor settings
-.vscode/
-.idea/
-*.code-workspace
-.project
-.classpath
-
-# Environment files
+# Environment files and keys
 *.env
 *.env.*
 !.env.example
-
-# PHP session / temp files
-*.session
-*.cache
-*.tmp
-session/
-temp/
-
-# macOS / IDE
-.AppleDouble
-.LSOverride
-*.iml
-*.iws
-*.ipr
-
-# Optional: ignore private keys if accidentally added
-*.pem
-*.key
 *.crt
+*.key
+*.pem
 *.pfx
 
-# OS generated files
-._*
-.Spotlight-V100
-.Trashes
-
-# Ignore dependency directories in nested projects
-**/node_modules/
-**/dist/
-**/build/
-**/.vite/
-**/.cache/
-**/vendor/
-
-# Nested git repos
-**/.git/
+# Logs, sessions, and temporary files
+*.bak
+*.cache
+*.log*
+*.orig
+*.session
+*.swo
+*.swp
+*.tmp
+*~
+*~.*
+session/
+temp/
+Source code/npm-debug.log*
+Source code/pnpm-debug.log*
+Source code/yarn-debug.log*
 
 # Compiled files
-*.pyc
-__pycache__/
-*.o
 *.a
+*.o
+*.pyc
 *.so
+__pycache__/
 
+# Editor settings
+.classpath
+.idea/
+.project
+.vscode/
+*.code-workspace
+*.iml
+*.ipr
+*.iws
 
-# note
-test.aghvesagirk.com/Nkarner/
-test.aghvesagirk.com/Lemma/mZip/
+# Operating system files
+.AppleDouble
+.DS_Store
+.LSOverride
+.Spotlight-V100
+.Trashes
+._*
+desktop.ini
+Thumbs.db
+
+# Nested Git repositories
+**/.git/
