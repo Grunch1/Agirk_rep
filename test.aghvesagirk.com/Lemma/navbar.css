@@ -1,5 +1,4 @@
 #navbar {
-    position: relative;
     position: sticky;
     top: 0;
     max-width: 100%;
@@ -13,85 +12,116 @@
     /* Add shadows */
   }
 
-  .navbar-div {
+  #navbar .navbar-div {
     width: 100%;
-    max-width: 70%;
+    max-width: 1200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 24px;
   }
 
-  .navbar-toggler {
+  #navbar .navbar-toggler {
     display: none;
     background: none;
-    border: none;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 6px 10px;
     cursor: pointer;
   }
 
-  .navbar-toggler .navbar-toggler-icon {
+  #navbar .navbar-toggler .navbar-toggler-icon {
     font-size: 1.5rem;
   }
 
-  .navbar-pages {
+  #navbar .navbar-pages {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
     height: 100%;
   }
 
-  .nav-item {
-    margin-right: 15px;
+  #navbar .nav-item {
+    margin-right: 0;
     height: 100%;
   }
 
-  .nav-link {
+  #navbar .nav-link {
     text-decoration: none;
     color: #333;
     display: flex;
     align-items: center;
     height: 100%;
+    white-space: nowrap;
   }
 
-  .nav-link:hover {
+  #navbar .nav-link:hover {
     color: #d62700;
     text-decoration: underline;
   }
-  .d-flex {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+
+  #navbar .nav-item:hover {
+    background: transparent;
   }
 
-  @media (max-width: 1405px) {
-    .navbar-toggler {
+  #navbar .d-flex {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  @media (max-width: 768px) {
+    #navbar {
+      justify-content: flex-start;
+    }
+
+    #navbar .navbar-div {
+      max-width: 100%;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    #navbar .navbar-toggler {
       display: block; /* Show Menu button on smaller screens */
     }
 
-    .navbar-pages {
+    #navbar .navbar-pages {
       display: none; /* Hide the menu by default */
       flex-direction: column;
+      align-items: stretch;
+      gap: 0;
       width: 100%;
+      order: 3;
     }
 
-    .navbar-pages.show {
+    #navbar .navbar-pages.show {
       display: flex; /* Show menu when toggled */
     }
 
-    .nav-item {
-      width: 180px;
+    #navbar .nav-item {
+      width: 100%;
       height: 50px;
-      margin: 5px auto; /* Center the items and add spacing between them */
+      margin: 5px 0; /* Center the items and add spacing between them */
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .nav-link {
+    #navbar .nav-link {
       width: 100%; /* Make links take up full width */
       text-align: center;
+      justify-content: center;
       padding: 10px;
     }
-  }
 
+    #navbar .d-flex {
+      margin-left: auto;
+    }
+  }

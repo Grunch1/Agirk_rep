@@ -63,19 +63,25 @@ nav li:hover {
 
 .main-content {
   display: flex;
+  gap: 20px;
   padding: 20px;
   width: 100%;
-  max-width: 100vw;
-  overflow: hidden;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .sidebar {
-  width: 20%;
-  min-width: 150px;
+  flex: 0 1 clamp(180px, 13vw, 220px);
+  width: auto;
+  min-width: 160px;
   background-color: #f4f4f4;
   padding: 10px;
   border: 1px solid #ccc;
-  margin-right: 20px;
+  margin-right: 0;
+}
+
+.main-content.is-graph-open .sidebar {
+  flex-basis: clamp(160px, 10vw, 190px);
 }
 
 #fake-section{
@@ -113,11 +119,7 @@ nav li:hover {
   background-color: #fff;
   border: 1px solid #ccc;
   margin: 0 auto;
-  cursor: grab;
-}
-
-#myCanvas:active {
-  cursor: grabbing;
+  cursor: default;
 }
 
 .graph-placeholder {
@@ -231,16 +233,13 @@ canvas {
       border: 1px solid black;
       background-color: #f9f9f9;
   }
-  .sidebar{
-    width: 300px;
-    max-width: 12%;
-  }
 
 
 /* toggle canvas button */
 .toggle { 
   position: relative;
   display: inline-block;
+  flex: 0 0 50px;
   margin-top: 0.5rem;
   width: 50px;
   height: 26px;
@@ -340,6 +339,10 @@ canvas {
   line-height: 1.35;
 }
 
+.reader-status[hidden] {
+  display: none;
+}
+
 .reader-status.is-warning {
   border-left-color: #b9830d;
   background: #fff7e0;
@@ -363,6 +366,8 @@ canvas {
 }
 
 .graph-control-button {
+  width: 100%;
+  min-height: 30px;
   padding: 6px 8px;
   border: 1px solid #aaa;
   background: #fff;
@@ -392,4 +397,54 @@ input:focus-visible,
 #cb-toggle:focus-visible + .toggle {
   outline: 3px solid #2f73b8;
   outline-offset: 2px;
+}
+
+.Manuscript_Read_,
+.download-link,
+.download-missing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 112px;
+  min-height: 38px;
+  margin: 14px 14px 0 0;
+  padding: 8px 14px;
+  border: 1px solid #8f6f3a;
+  border-radius: 4px;
+  background: #8f6f3a;
+  color: #fff;
+  font: 700 14px/1 Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.Manuscript_Read_:hover,
+.download-link:hover,
+.download-link:visited:hover,
+.download-link:focus:hover {
+  background: #6f4b8b;
+  border-color: #6f4b8b;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.download-link:visited,
+.download-link:focus,
+.download-link:active {
+  color: #fff;
+  background: #8f6f3a;
+  border-color: #8f6f3a;
+}
+
+.download-missing {
+  background: #ece7dc;
+  border-color: #d4c7ad;
+  color: #6d6250;
+  cursor: not-allowed;
+}
+
+.Manuscript_Box h3 {
+  margin-bottom: 12px;
 }
