@@ -33,6 +33,32 @@ function loadManuscripts() {
     });
 }
 
+function loadEditionIndex() {
+  const table = document.querySelector("#Edition .Edition-table table");
+  if (!table) return Promise.resolve();
+
+  return SectionIndex.load()
+    .then((sections) => {
+      const rows = document.createDocumentFragment();
+      sections.forEach((section, position) => {
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+        const link = document.createElement("a");
+        link.href = `reading.html?section=${encodeURIComponent(section.id)}`;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = `${position + 1}. ${section.title}`;
+        cell.appendChild(link);
+        row.appendChild(cell);
+        rows.appendChild(row);
+      });
+
+      const tableBody = table.tBodies[0] || table.appendChild(document.createElement("tbody"));
+      tableBody.replaceChildren(rows);
+    })
+    .catch((error) => console.error("Failed to load edition index:", error));
+}
+
 function loadNavbar() {
   return fetch("navbar.html")
     .then((response) => response.text())
@@ -95,6 +121,7 @@ function handleSectionNavigation() {
 
 document.addEventListener("DOMContentLoaded", () => {
   loadManuscripts();
+  loadEditionIndex();
   loadNavbar().then(handleSectionNavigation);
   window.addEventListener("hashchange", handleSectionNavigation);
 });

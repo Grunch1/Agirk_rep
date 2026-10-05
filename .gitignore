@@ -1,48 +1,100 @@
-# Root .gitignore for public_html repository
+# Website code and folder structure are tracked; content datasets stay outside Git.
+# Restore excluded section data and media separately when deploying the site.
 
-# Project tools
-Tools/All_Sections_legacy_code 9.15.24/
-Tools/Converter XML2JS/
-Tools/Editions page converter/
-Tools/GenerateDivs/
-Tools/Lemmaer/
-Tools/Manuscripts converter/
-Tools/References to HTML/
-Tools/Titles - Vernagrer/
+# Content datasets and exports
+*.xml
+*.json
+*.jsonl
+*.ndjson
+*.yaml
+*.yml
+*.csv
+*.tsv
+*.sql
+*.db
+*.sqlite
+*.sqlite3
+*.xls
+*.xlsx
+*.ods
 
-# Generated data exports
-converted/
-converted (js)/
-converted (test)/
+# Title index, saved annotations, and dependency/build metadata
+!/test.aghvesagirk.com/Lemma/section-index.json
+!/php/tags.json
+!package.json
+!package-lock.json
+!npm-shrinkwrap.json
+!composer.json
+!/myadmin/babel.config.json
+!/myadmin/.rtlcssrc.json
+!/myadmin/themes/*/theme.json
 
-# Test-site assets and archives
-test.aghvesagirk.com/Lemma/mZip/
-test.aghvesagirk.com/Nkarner/
+# Media, binary data, and archives
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.svg
+*.ico
+*.bmp
+*.tif
+*.tiff
+*.pdf
+*.doc
+*.docx
+*.woff
+*.woff2
+*.ttf
+*.eot
+*.mo
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+*.bz2
+*.xz
+/test.aghvesagirk.com/Nkarner/**
+/test.aghvesagirk.com/Lemma/mZip/**
 
-# Admin-site credentials and deployment artifacts
-# Remove this exclusion after the hardcoded credentials are removed.
-/admin.aghvesagirk.com/Admin-ik.html
-/admin.aghvesagirk.com/.well-known/acme-challenge/
+# Local tool data and generated outputs; keep JS/Python source
+/Tools/All_Sections_legacy_code 9.15.24/**
+/Tools/LegacyXMLData/**
+/Tools/Converter XML2JS/converted/**
+/Tools/Converter XML2JS/section-*.js
+/Tools/Converter XML2JS/txt.dart
+/Tools/Editions page converter/Editions.html
+/Tools/GenerateDivs/converted/**
+/Tools/GenerateDivs/index-panel.html
+/Tools/Lemmaer/section-*.js
+/Tools/Lemmaer/Lemma_*.txt
+/Tools/Manuscripts converter/manuscripts.html
+/Tools/References to HTML/references.html
+/Tools/Titles - Vernagrer/Reference to HTML/references.html
+/Tools/Titles - Vernagrer/**/Vernagrer.html
+/Tools/**/*.txt
+!/Tools/Converter XML2JS/Delete code on all xml files.txt
+!/Tools/Lemmaer/put the js files here and run Lemmaer.txt
+!/Tools/Manuscripts converter/read me.txt
+/converted/**
+/converted (js)/**
+/converted (test)/**
 
-# Dependencies (at any depth)
-node_modules/
-vendor/
+# One small XML graph example is allowed; the full collections stay excluded.
+!/Source code/sample_data.txt
 
-# Build outputs and caches (at any depth)
-.cache/
-.vite/
-build/
-dist/
-Source code/.temp/
-Source code/coverage/
+# Only these six admin files are published; other local admin files stay private.
+/admin.aghvesagirk.com/**
+!/admin.aghvesagirk.com/update_tags.php
+!/admin.aghvesagirk.com/get_section_json.php
+!/admin.aghvesagirk.com/style.css
+!/admin.aghvesagirk.com/index.html
+!/admin.aghvesagirk.com/Admin_logo.png
+!/admin.aghvesagirk.com/admin.jpg
 
-# Generated analysis and tree files
-analysis_output.txt
-analyze.py
-tree.txt
-tree_output.txt
-
-# Environment files and keys
+# Credentials and local deployment files
+/myadmin/config.inc.php
 *.env
 *.env.*
 !.env.example
@@ -51,10 +103,30 @@ tree_output.txt
 *.pem
 *.pfx
 
-# Logs, sessions, and temporary files
+# Installed dependencies (their package metadata is excluded too)
+**/node_modules/**
+**/vendor/**
+
+# Local build outputs and caches; deployed assets/ bundles remain source here
+**/.cache/**
+**/.vite/**
+**/build/**
+**/dist/**
+**/dist-ssr/**
+/Source code/.temp/**
+/Source code/coverage/**
+
+# Analysis outputs, logs, sessions, and temporary files
+analysis_output.txt
+tree.txt
+tree_output.txt
+error_log
+error_log.*
+**/logs/**
 *.bak
 *.cache
-*.log*
+*.log
+*.log.*
 *.orig
 *.session
 *.swo
@@ -62,30 +134,30 @@ tree_output.txt
 *.tmp
 *~
 *~.*
-session/
-temp/
-Source code/npm-debug.log*
-Source code/pnpm-debug.log*
-Source code/yarn-debug.log*
+**/session/**
+**/temp/**
+**/tmp/**
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Compiled files
 *.a
 *.o
 *.pyc
 *.so
-__pycache__/
+**/__pycache__/**
 
-# Editor settings
+# Local editor and operating-system files
 .classpath
-.idea/
+**/.idea/**
 .project
-.vscode/
+**/.vscode/**
 *.code-workspace
 *.iml
 *.ipr
 *.iws
-
-# Operating system files
 .AppleDouble
 .DS_Store
 .LSOverride
@@ -95,5 +167,9 @@ __pycache__/
 desktop.ini
 Thumbs.db
 
-# Nested Git repositories
-**/.git/
+# Nested Git metadata
+**/.git/**
+
+# Traverse excluded folders so their empty structure can be preserved.
+!*/
+!.gitkeep

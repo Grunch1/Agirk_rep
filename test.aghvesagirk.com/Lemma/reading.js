@@ -1,23 +1,66 @@
 const DEFAULT_SECTION_ID = "section-3504207";
+let currentSectionId = null;
 
-const indexPanelLoadPromise = fetch("index-panel.html")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    return response.text();
-  })
-  .then((html) => {
-    const indexPanel = document.getElementById("index-panel");
-    if (indexPanel) {
-      indexPanel.innerHTML = html;
-      initializeIndexPanelItems();
-    }
-    return html;
+// BEGIN GENERATED_INITIAL_SECTIONS
+const INITIAL_SECTIONS = [
+  {
+    "id": "section-5765671",
+    "title": "Ագահ մարդ"
+  },
+  {
+    "id": "section-5770480",
+    "title": "Ագռաւ եւ հաքիմ"
+  },
+  {
+    "id": "section-5769615",
+    "title": "Ագռաւ եւ ձագքն"
+  },
+  {
+    "id": "section-5769616",
+    "title": "Ալմաստ"
+  },
+  {
+    "id": "section-5770002",
+    "title": "Աղաւթասէր պատանի եւ կախարդ"
+  },
+  {
+    "id": "section-5770285",
+    "title": "Աղաւթք աղքատի"
+  },
+  {
+    "id": "section-5770287",
+    "title": "Աղաւթք աղքատի 1"
+  }
+];
+// END GENERATED_INITIAL_SECTIONS
+
+function renderIndexPanelItems(sections) {
+  const indexPanel = document.getElementById("index-panel");
+  if (!indexPanel) return;
+
+  const items = document.createDocumentFragment();
+  sections.forEach(({ id, title }) => {
+    const item = document.createElement("div");
+    item.className = "year-box";
+    item.id = id;
+    item.textContent = title;
+    items.appendChild(item);
+  });
+  indexPanel.replaceChildren(items);
+  initializeIndexPanelItems();
+}
+
+// Render the first seven titles before requesting the full shared index.
+renderIndexPanelItems(INITIAL_SECTIONS);
+
+const indexPanelLoadPromise = SectionIndex.load()
+  .then((sections) => {
+    renderIndexPanelItems(sections);
+    return sections;
   })
   .catch((err) => {
     setReaderStatus("Could not load the section index.", "error");
-    console.error("Failed to load index-panel.html:", err);
+    console.error("Failed to load section-index.json:", err);
   });console.log("");
 
 // Toggle navbar function
@@ -75,7 +118,7 @@ let nodes = [];
     const canvasStates = {};
     let activeDragCanvasId = null;
     let selectedRank = null;
-    let currentSectionId = null;
+    let sectionLoadVersion = 0;
 
     function getCanvasState(canvasId) {
       if (!canvasStates[canvasId]) {
@@ -149,7 +192,10 @@ let nodes = [];
     }
 
     function initializeIndexPanelItems() {
-      document.querySelectorAll("#index-panel .year-box").forEach((item) => {
+      const indexPanel = document.getElementById("index-panel");
+      if (!indexPanel) return;
+
+      indexPanel.querySelectorAll(".year-box").forEach((item) => {
         item.setAttribute("role", "button");
         item.setAttribute("tabindex", "0");
       });
@@ -1039,18 +1085,14 @@ const CATEGORY_COLORS = {
     }
 
     function getLemmaDisplayText(node) {
-      return node.normal_form || node.text || "";
+      return SectionData.getDisplayText(node);
     }
 
     // Function to filter lemmas and display in #armenianText
     function filterAndDisplayLemmas() {
       if (lemmaNodes) {
         // making sure its loaded
-        lemmas = lemmaNodes
-          .filter((node) => node.is_lemma)
-          .map(getLemmaDisplayText)
-          .filter(Boolean)
-          .join(" ");
+        lemmas = SectionData.getLemmaText({ nodes: lemmaNodes });
         renderArmenianText();
       } else {
         console.warn("lemmaNodes is not loaded yet");
@@ -1060,9 +1102,7 @@ const CATEGORY_COLORS = {
     // load json data
     function importTheVariables(data) {
       if (!data || !Array.isArray(data.nodes) || !data.title) {
-        setReaderStatus("Invalid text data: expected title and nodes.", "error");
-        console.error("Invalid JSON data:", data);
-        return;
+        throw new Error("Invalid text data: expected title and nodes.");
       }
 
       lemmaNodes = [...data.nodes];
@@ -1077,6 +1117,7 @@ const CATEGORY_COLORS = {
       // Update HTML elements with the latest title
       document.getElementById("bookTitle_Arm").textContent = title;
       document.getElementById("bookTitle_Eng").textContent = title;
+      document.title = `${title} - Aghvesagirk`;
 
       console.log("data is loaded: ", {
         title,
@@ -1090,62 +1131,7 @@ const CATEGORY_COLORS = {
     }
 
     function parseGraphMLText(xmlText) {
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(xmlText, "application/xml");
-      if (xmlDoc.getElementsByTagName("parsererror").length) {
-        throw new Error("Invalid XML document");
-      }
-
-      const keyMapById = {};
-      Array.from(xmlDoc.getElementsByTagName("key")).forEach((key) => {
-        const id = key.getAttribute("id");
-        const name = key.getAttribute("attr.name") || key.getAttribute("name");
-        if (id && name) {
-          keyMapById[id] = name;
-        }
-      });
-
-      const nodes = Array.from(xmlDoc.getElementsByTagName("node")).map((nodeEl) => {
-        const nodeObj = { id: nodeEl.getAttribute("id") };
-        Array.from(nodeEl.getElementsByTagName("data")).forEach((dataEl) => {
-          const keyId = dataEl.getAttribute("key");
-          const name = keyMapById[keyId] || keyId;
-          const value = dataEl.textContent || "";
-          nodeObj[name] = parseGraphMLValue(value, name);
-        });
-        return nodeObj;
-      });
-
-      const graphEl = xmlDoc.getElementsByTagName("graph")[0];
-      const titleValue = graphEl ? graphEl.getAttribute("id") || "Untitled" : "Untitled";
-      const edges = Array.from(xmlDoc.getElementsByTagName("edge")).map((edgeEl) => {
-        const edgeObj = {
-          id: edgeEl.getAttribute("id"),
-          source: edgeEl.getAttribute("source"),
-          target: edgeEl.getAttribute("target"),
-        };
-
-        Array.from(edgeEl.getElementsByTagName("data")).forEach((dataEl) => {
-          const keyId = dataEl.getAttribute("key");
-          const name = keyMapById[keyId] || keyId;
-          const value = dataEl.textContent || "";
-          edgeObj[name] = parseGraphMLValue(value, name);
-        });
-
-        return edgeObj;
-      });
-
-      return {
-        title: titleValue,
-        nodes,
-        edges,
-        rankCount: {},
-        targetCount: {},
-        occurrences: {},
-        actual_time_zone_cuts: null,
-        extrasList: [],
-        keyMap: keyMapById,
-      };
+      return SectionData.parseGraphMLText(xmlText);
     }
 
     function convertGraphMLToCanvasNodes(graphData) {
@@ -1154,9 +1140,7 @@ const CATEGORY_COLORS = {
       const idToIndex = {};
 
       function getTextLabel(rawNode) {
-        return rawNode.normal_form !== undefined && rawNode.normal_form !== null && rawNode.normal_form !== ""
-          ? rawNode.normal_form
-          : " ";
+        return getLemmaDisplayText(rawNode);
       }
 
       function getRankValue(rawNode, fallback) {
@@ -1166,14 +1150,7 @@ const CATEGORY_COLORS = {
       }
 
       function shouldIgnoreGraphMLNode(rawNode) {
-        if (rawNode.is_start === true || rawNode.is_end === true) return true;
-        if (rawNode.neolabel === "[SECTION]") return true;
-
-        return Object.values(rawNode).some((value) => {
-          if (typeof value !== "string") return false;
-          const normalizedValue = value.trim();
-          return normalizedValue === "#START#" || normalizedValue.startsWith("milestone");
-        });
+        return !SectionData.isReadingNode(rawNode);
       }
 
       const visibleRawNodes = rawNodes.filter((rawNode) => !shouldIgnoreGraphMLNode(rawNode));
@@ -1229,78 +1206,68 @@ const CATEGORY_COLORS = {
       });
     }
 
-    function parseGraphMLValue(value, name) {
-      const trimmed = value.trim();
-      if (trimmed === "true") return true;
-      if (trimmed === "false") return false;
-      if (/^-?\d+$/.test(trimmed)) return Number(trimmed);
-      if ((trimmed.startsWith("{") && trimmed.endsWith("}")) || (trimmed.startsWith("[") && trimmed.endsWith("]"))) {
-        try {
-          return JSON.parse(trimmed);
-        } catch (e) {
-          return trimmed;
-        }
-      }
-      return trimmed;
-    }
-
     // Load JSON text and XML graph by section ID
-    function loadSectionData(fileId) {
-      if (!fileId) {
-        setReaderStatus("No section id was provided.", "error");
+    async function loadSectionData(fileId) {
+      const loadVersion = ++sectionLoadVersion;
+      currentSectionId = fileId;
+      setActiveIndexItem(fileId);
+      nodes = [];
+      graphEdges = [];
+      lemmaNodes = null;
+      lemmas = "";
+      title = null;
+      selectedRank = null;
+      const selectedItem = Array.from(document.querySelectorAll("#index-panel .year-box"))
+        .find((item) => item.id === fileId);
+      const selectedTitle = selectedItem ? selectedItem.textContent.trim() : fileId;
+      document.getElementById("bookTitle_Arm").textContent = selectedTitle || "Armenian Text";
+      document.getElementById("bookTitle_Eng").textContent = selectedTitle || "English Translation";
+      const textBody = getArmenianTextBody();
+      if (textBody) textBody.textContent = "Loading section...";
+      ["myCanvas", "overviewCanvas"].forEach((id) => {
+        const canvas = document.getElementById(id);
+        if (canvas) canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+      });
+      if (!/^section-\d+$/.test(fileId || "")) {
+        if (textBody) textBody.textContent = "Could not load the selected section.";
+        setReaderStatus("Invalid section id.", "error");
         return;
       }
 
-      currentSectionId = fileId;
       updateSelectedSectionInUrl(fileId);
-      setActiveIndexItem(fileId);
       setReaderStatus(`Loading ${fileId}...`);
 
       const jsonLocation = `converted/${fileId}.json`;
       const xmlLocation = `xml/${fileId}.xml`;
 
-      const textPromise = fetch(jsonLocation)
+      const textPromise = fetch(jsonLocation, { cache: "no-store" })
         .then((response) => {
           if (!response.ok) throw new Error(response.statusText);
           return response.json();
-        })
-        .then((data) => {
-          console.log(`${fileId}.json loaded successfully`);
-          importTheVariables(data);
-          filterAndDisplayLemmas();
-          return { success: true, data };
-        })
-        .catch((error) => {
-          console.error(`Failed to load ${fileId}.json:`, error);
-          return { success: false, error };
         });
 
-      const graphPromise = fetch(xmlLocation)
+      const graphPromise = fetch(xmlLocation, { cache: "no-store" })
         .then((response) => {
           if (!response.ok) throw new Error(response.statusText);
           return response.text();
         })
-        .then((text) => {
-          const graphData = parseGraphMLText(text);
-          nodes = convertGraphMLToCanvasNodes(graphData);
-          console.log(`${fileId}.xml loaded successfully`, graphData);
-          return { success: true };
-        })
-        .catch((error) => {
-          console.warn(`Failed to load ${fileId}.xml:`, error);
-          nodes = [];
-          return { success: false, error };
-        });
+        .then(parseGraphMLText);
 
-      Promise.all([textPromise, graphPromise]).then(([textResult, graphResult]) => {
-        if (!textResult.success) {
-          setReaderStatus(`Failed to load ${fileId}.json`, "error");
-          return;
-        }
+      try {
+        const [textResult, graphResult] = await Promise.allSettled([textPromise, graphPromise]);
+        if (loadVersion !== sectionLoadVersion) return;
+        if (textResult.status === "rejected") throw textResult.reason;
 
-        if (!graphResult.success) {
-          nodes = convertJsonToCanvasNodes(textResult.data);
-          setReaderStatus("Warning: XML format Graph data was not found, using JSON", "warning");
+        const graphData = graphResult.status === "fulfilled" ? graphResult.value : null;
+        const section = SectionData.createSection(textResult.value, graphData, fileId);
+        const sectionNodes = convertGraphMLToCanvasNodes(section);
+        importTheVariables(section);
+        nodes = sectionNodes;
+        filterAndDisplayLemmas();
+
+        if (!graphData) {
+          console.warn(`Could not load ${fileId}.xml:`, graphResult.reason);
+          setReaderStatus("Section XML is unavailable. The story and graph show original text.", "warning");
         } else {
           setReaderStatus(`Loaded ${title}.`);
         }
@@ -1310,7 +1277,12 @@ const CATEGORY_COLORS = {
         if (cb && cb.checked) {
           drawCanvas("myCanvas");
         }
-      });
+      } catch (error) {
+        if (loadVersion !== sectionLoadVersion) return;
+        console.error(`Failed to load ${fileId}:`, error);
+        if (textBody) textBody.textContent = "Could not load the selected section.";
+        setReaderStatus(`Could not load ${fileId}: ${error.message}`, "error");
+      }
     }
 
     // Click event listener on yearbox class divs
@@ -1363,8 +1335,10 @@ const CATEGORY_COLORS = {
       }
 
       indexPanelLoadPromise.finally(() => {
-        const requestedSectionId = getRequestedSectionIdFromUrl() || DEFAULT_SECTION_ID;
-        loadSectionData(requestedSectionId);
+        if (!currentSectionId) {
+          const requestedSectionId = getRequestedSectionIdFromUrl() || DEFAULT_SECTION_ID;
+          loadSectionData(requestedSectionId);
+        }
       });
     });
 
