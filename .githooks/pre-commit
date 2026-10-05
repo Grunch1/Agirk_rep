@@ -1,0 +1,3 @@
+#!/bin/sh
+root=$(git rev-parse --show-toplevel) || exit 1
+exec node "$root/Tools/check-public-repository.js" --staged
